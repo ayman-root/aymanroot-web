@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AYMAN ROOT</title>
+    <title>AYMAN ROOT | مطور برمجيات وحلول رقمية</title>
     
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Cairo (Arabic) & Inter (Latin) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- FontAwesome 6 Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -24,32 +26,27 @@
                         arabic: ['Cairo', 'sans-serif'],
                     },
                     colors: {
-                        primary: {
+                        brand: {
                             50: '#f5f3ff',
                             100: '#ede9fe',
+                            200: '#ddd6fe',
                             500: '#8b5cf6',
                             600: '#7c3aed',
+                            700: '#6d28d9',
+                            800: '#5b21b6',
                             900: '#4c1d95',
                         },
                         dark: {
-                            bg: '#0f172a',
-                            surface: '#1e293b',
-                            border: '#334155'
+                            bg: '#0a0f1d',
+                            surface: '#111827',
+                            card: '#1e293b',
+                            border: '#334155',
+                            text: '#f8fafc',
+                            muted: '#94a3b8'
                         }
                     },
-                    animation: {
-                        'fade-in': 'fadeIn 0.8s ease-out forwards',
-                        'slide-up': 'slideUp 0.6s ease-out forwards',
-                    },
-                    keyframes: {
-                        fadeIn: {
-                            '0%': { opacity: '0' },
-                            '100%': { opacity: '1' },
-                        },
-                        slideUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        }
+                    boxShadow: {
+                        'glow': '0 0 25px -5px rgba(124, 58, 237, 0.4)',
                     }
                 }
             }
@@ -60,97 +57,115 @@
         html[dir="rtl"] body { font-family: 'Cairo', sans-serif; }
         html[dir="ltr"] body { font-family: 'Inter', sans-serif; }
 
-        .glass {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
         }
-        .dark .glass {
-            background: rgba(15, 23, 42, 0.85);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        .dark .glass-nav {
+            background: rgba(10, 15, 29, 0.88);
+            border-bottom: 1px solid rgba(51, 65, 85, 0.6);
         }
 
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-        .dark ::-webkit-scrollbar-thumb { background: #475569; }
-        
         .text-gradient {
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-image: linear-gradient(to right, #7c3aed, #3b82f6);
+            background-image: linear-gradient(135deg, #7c3aed, #3b82f6, #06b6d4);
         }
-        
-        * { transition: background-color 0.3s ease, border-color 0.3s ease; }
-        
+
+        ::-webkit-scrollbar { width: 9px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+        .dark ::-webkit-scrollbar-thumb { background: #334155; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* Custom dropdown arrow */
         select.lang-select {
             appearance: none;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
             background-repeat: no-repeat;
-            background-position: right 0.5rem center;
-            background-size: 1em;
+            background-position: right 0.6rem center;
+            background-size: 1.1em;
         }
         html[dir="rtl"] select.lang-select {
-            background-position: left 0.5rem center;
+            background-position: left 0.6rem center;
+        }
+
+        .media-container iframe, .media-container img, .media-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-900 dark:bg-dark-bg dark:text-gray-100 antialiased selection:bg-primary-500 selection:text-white">
+<body class="bg-slate-50 text-slate-900 dark:bg-dark-bg dark:text-dark-text antialiased selection:bg-brand-600 selection:text-white transition-colors duration-200">
 
-    <nav class="fixed w-full z-50 glass transition-all duration-300" id="navbar">
+    <!-- Top Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
+                
                 <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-600 to-blue-500 flex items-center justify-center text-white text-xl font-bold shadow-lg">
+                <a href="#home" class="flex items-center gap-3 group focus:outline-none">
+                    <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-brand-600 to-blue-500 flex items-center justify-center text-white text-lg font-black shadow-lg shadow-brand-500/25 group-hover:scale-105 transition-transform">
                         AR
                     </div>
-                    <a href="#" class="text-2xl font-black tracking-tight dark:text-white">AYMAN ROOT</a>
-                </div>
+                    <div class="flex flex-col">
+                        <span class="text-2xl font-black tracking-tight text-slate-900 dark:text-white">AYMAN ROOT</span>
+                        <span class="text-[10px] uppercase font-bold tracking-widest text-brand-600 dark:text-brand-400 -mt-1">Software Lab</span>
+                    </div>
+                </a>
 
-                <!-- Desktop Menu -->
-                <div class="hidden lg:flex items-center space-x-8 rtl:space-x-reverse">
-                    <a href="#home" data-i18n="nav_home" class="text-gray-600 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 font-semibold transition-colors">الرئيسية</a>
-                    <a href="#services" data-i18n="nav_services" class="text-gray-600 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 font-semibold transition-colors">الخدمات</a>
-                    <a href="#software" data-i18n="nav_software" class="text-gray-600 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 font-semibold transition-colors">البرامج</a>
-                    <a href="#skills" data-i18n="nav_skills" class="text-gray-600 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 font-semibold transition-colors">المهارات</a>
-                    
-                    <div class="flex items-center gap-4 rtl:gap-4 border-l rtl:border-l-0 rtl:border-r border-gray-200 dark:border-gray-700 pl-4 rtl:pl-0 rtl:pr-4">
-                        <select id="lang-switcher" class="lang-select bg-transparent text-gray-700 dark:text-gray-200 font-medium py-1 px-3 pr-8 rtl:pr-3 rtl:pl-8 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-primary-500 focus:outline-none cursor-pointer">
+                <!-- Desktop Navigation Links -->
+                <div class="hidden lg:flex items-center space-x-7 rtl:space-x-reverse">
+                    <a href="#home" data-i18n="nav_home" class="text-slate-600 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-400 font-bold transition-colors">الرئيسية</a>
+                    <a href="#services" data-i18n="nav_services" class="text-slate-600 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-400 font-bold transition-colors">الخدمات</a>
+                    <a href="#software" data-i18n="nav_software" class="text-slate-600 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-400 font-bold transition-colors">البرامج</a>
+                    <a href="#skills" data-i18n="nav_skills" class="text-slate-600 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-400 font-bold transition-colors">المهارات</a>
+                    <a href="#contact" data-i18n="nav_contact" class="text-slate-600 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-400 font-bold transition-colors">التواصل</a>
+
+                    <!-- Language & Theme Controls -->
+                    <div class="flex items-center gap-3 border-l rtl:border-l-0 rtl:border-r border-slate-200 dark:border-dark-border pl-4 rtl:pl-0 rtl:pr-4">
+                        <select id="lang-switcher" class="lang-select bg-white/70 dark:bg-dark-surface text-slate-700 dark:text-slate-200 font-semibold text-sm py-1.5 px-3 pr-8 rtl:pr-3 rtl:pl-8 rounded-lg border border-slate-300 dark:border-dark-border hover:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500 cursor-pointer shadow-sm">
                             <option value="ar">العربية</option>
                             <option value="en">English</option>
                             <option value="fr">Français</option>
                             <option value="zh">中文</option>
                         </select>
-                        <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-dark-surface transition-colors focus:outline-none text-gray-600 dark:text-gray-300">
-                            <i id="theme-icon" class="fa-solid fa-moon text-xl"></i>
+
+                        <!-- Theme Toggle Button -->
+                        <button id="theme-toggle" aria-label="Toggle Theme" class="p-2.5 rounded-xl border border-slate-200 dark:border-dark-border hover:bg-slate-100 dark:hover:bg-dark-surface text-slate-700 dark:text-yellow-400 transition-colors focus:outline-none shadow-sm">
+                            <i id="theme-icon" class="fa-solid fa-moon text-lg"></i>
                         </button>
                     </div>
                 </div>
 
-                <!-- Mobile Menu Button -->
-                <div class="lg:hidden flex items-center gap-3">
-                    <button id="theme-toggle-mobile" class="p-2 text-gray-600 dark:text-gray-300 focus:outline-none">
+                <!-- Mobile Menu Toggles -->
+                <div class="lg:hidden flex items-center gap-2">
+                    <button id="theme-toggle-mobile" aria-label="Toggle Theme" class="p-2 text-slate-700 dark:text-yellow-400 focus:outline-none">
                         <i class="fa-solid fa-moon text-xl"></i>
                     </button>
-                    <button id="mobile-menu-btn" class="text-gray-600 dark:text-gray-300 p-2 focus:outline-none">
+                    <button id="mobile-menu-btn" aria-label="Menu" class="p-2 text-slate-800 dark:text-white focus:outline-none">
                         <i class="fa-solid fa-bars text-2xl"></i>
                     </button>
                 </div>
             </div>
         </div>
 
-        <div id="mobile-menu" class="hidden lg:hidden glass border-t border-gray-100 dark:border-gray-800">
-            <div class="px-4 pt-2 pb-6 space-y-2">
-                <a href="#home" data-i18n="nav_home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-primary-50 dark:hover:bg-dark-surface">الرئيسية</a>
-                <a href="#services" data-i18n="nav_services" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-primary-50 dark:hover:bg-dark-surface">الخدمات</a>
-                <a href="#software" data-i18n="nav_software" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-primary-50 dark:hover:bg-dark-surface">البرامج</a>
-                <a href="#skills" data-i18n="nav_skills" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-primary-50 dark:hover:bg-dark-surface">المهارات</a>
-                <div class="pt-4 border-t border-gray-200 dark:border-gray-700">
-                    <label data-i18n="choose_lang" class="block text-sm text-gray-500 dark:text-gray-400 mb-2 px-3">اختر اللغة</label>
-                    <select id="lang-switcher-mobile" class="w-full bg-white dark:bg-dark-surface text-gray-700 dark:text-gray-200 py-2 px-3 rounded-lg border border-gray-200 dark:border-gray-700 focus:outline-none">
+        <!-- Mobile Drawer -->
+        <div id="mobile-menu" class="hidden lg:hidden glass-nav border-t border-slate-200 dark:border-dark-border">
+            <div class="px-5 pt-3 pb-6 space-y-3">
+                <a href="#home" data-i18n="nav_home" class="block py-2 text-base font-bold text-slate-700 dark:text-slate-200 hover:text-brand-600 dark:hover:text-brand-400">الرئيسية</a>
+                <a href="#services" data-i18n="nav_services" class="block py-2 text-base font-bold text-slate-700 dark:text-slate-200 hover:text-brand-600 dark:hover:text-brand-400">الخدمات</a>
+                <a href="#software" data-i18n="nav_software" class="block py-2 text-base font-bold text-slate-700 dark:text-slate-200 hover:text-brand-600 dark:hover:text-brand-400">البرامج</a>
+                <a href="#skills" data-i18n="nav_skills" class="block py-2 text-base font-bold text-slate-700 dark:text-slate-200 hover:text-brand-600 dark:hover:text-brand-400">المهارات</a>
+                <a href="#contact" data-i18n="nav_contact" class="block py-2 text-base font-bold text-slate-700 dark:text-slate-200 hover:text-brand-600 dark:hover:text-brand-400">التواصل</a>
+                
+                <div class="pt-4 border-t border-slate-200 dark:border-dark-border">
+                    <label data-i18n="choose_lang" class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">اختر اللغة</label>
+                    <select id="lang-switcher-mobile" class="w-full bg-white dark:bg-dark-surface text-slate-800 dark:text-slate-200 py-2.5 px-3 rounded-xl border border-slate-300 dark:border-dark-border focus:outline-none focus:ring-2 focus:ring-brand-500">
                         <option value="ar">العربية</option>
                         <option value="en">English</option>
                         <option value="fr">Français</option>
@@ -161,191 +176,174 @@
         </div>
     </nav>
 
-    <section id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden min-h-screen flex items-center">
-        <!-- Background Pattern & Shapes -->
-        <div class="absolute inset-0 z-0 opacity-5 dark:opacity-10" style="background-image: radial-gradient(#7c3aed 1px, transparent 1px); background-size: 30px 30px;"></div>
-        <div class="absolute top-20 right-10 w-72 h-72 bg-primary-400/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse"></div>
-        <div class="absolute bottom-20 left-10 w-72 h-72 bg-blue-400/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse" style="animation-delay: 2s;"></div>
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-36 pb-20 lg:pt-48 lg:pb-32 overflow-hidden min-h-screen flex items-center">
+        <!-- Ambient Background -->
+        <div class="absolute inset-0 z-0 opacity-15 dark:opacity-10 pointer-events-none" style="background-image: radial-gradient(#7c3aed 1.2px, transparent 1.2px); background-size: 32px 32px;"></div>
+        <div class="absolute top-1/4 right-5 w-80 h-80 bg-brand-500/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-10 left-5 w-80 h-80 bg-blue-500/20 rounded-full blur-3xl pointer-events-none"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full text-center">
-            <div class="animate-slide-up">
-                <span data-i18n="hero_badge" class="inline-block py-1.5 px-4 rounded-full bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 text-sm font-bold mb-6 border border-primary-100 dark:border-primary-800">أهلاً بك في مساحتي الإبداعية</span>
+            <div class="max-w-3xl mx-auto">
+                <span data-i18n="hero_badge" class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-brand-50 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300 text-sm font-black mb-6 border border-brand-200 dark:border-brand-700/60 shadow-sm">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                    أهلاً بك في مساحتي الإبداعية
+                </span>
                 
-                <h1 class="text-5xl md:text-7xl font-black mb-6 text-gray-900 dark:text-white leading-tight">
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black mb-6 text-slate-900 dark:text-white leading-[1.2]">
                     <span data-i18n="hero_title_1">أنا</span> <span class="text-gradient">AYMAN ROOT</span><br>
-                    <span data-i18n="hero_title_2">مطور برمجيات محترف</span>
+                    <span data-i18n="hero_title_2" class="text-slate-800 dark:text-slate-100">مطور برمجيات وأنظمة متقدمة</span>
                 </h1>
                 
-                <p data-i18n="hero_subtitle" class="mt-4 text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-10">
-                    أقوم بتصميم وتطوير حلول برمجية متطورة، وتطبيقات ذكية، وأنظمة أتمتة تساعدك على تحقيق أهدافك الرقمية بكفاءة عالية.
+                <p data-i18n="hero_subtitle" class="text-lg sm:text-xl text-slate-600 dark:text-dark-muted font-medium mb-10 leading-relaxed">
+                    أقوم بابتكار وتطوير أدوات تقنية متطورة، بوتات ذكية، وتطبيقات ويب وسحابية تصنع الفارق وتساعدك على أتمتة أعمالك بدقة واحترافية.
                 </p>
                 
-                <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <a href="#software" data-i18n="btn_explore" class="px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white rounded-xl font-bold text-lg shadow-lg shadow-primary-500/30 transition-transform transform hover:-translate-y-1">
-                        تصفح برامجي
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                    <a href="#software" data-i18n="btn_explore" class="w-full sm:w-auto px-8 py-4 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-bold text-base shadow-lg shadow-brand-600/30 hover:shadow-glow transition-all transform hover:-translate-y-0.5">
+                        <i class="fa-solid fa-layer-group me-2"></i> تصفح البرامج والمشاريع
                     </a>
-                    <a href="#contact" data-i18n="btn_contact" class="px-8 py-4 bg-white dark:bg-dark-surface border-2 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white rounded-xl font-bold text-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-transform transform hover:-translate-y-1">
-                        تواصل معي
+                    <a href="#contact" data-i18n="btn_contact" class="w-full sm:w-auto px-8 py-4 bg-white dark:bg-dark-surface border border-slate-300 dark:border-dark-border text-slate-800 dark:text-slate-100 rounded-xl font-bold text-base hover:bg-slate-100 dark:hover:bg-dark-card transition-all transform hover:-translate-y-0.5 shadow-sm">
+                        <i class="fa-solid fa-paper-plane me-2"></i> تواصل معي الآن
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="services" class="py-24 bg-white dark:bg-dark-bg">
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-white dark:bg-dark-surface border-y border-slate-200 dark:border-dark-border">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 data-i18n="services_title" class="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-4">الخدمات التي أقدمها</h2>
-                <div class="w-20 h-1 bg-primary-500 mx-auto rounded-full"></div>
+                <h2 data-i18n="services_title" class="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white mb-3">الخدمات التي أقدمها</h2>
+                <p data-i18n="services_subtitle" class="text-slate-600 dark:text-dark-muted text-base max-w-xl mx-auto">حلول متكاملة مصممة بأعلى معايير الكفاءة والأمان</p>
+                <div class="w-16 h-1.5 bg-brand-600 mx-auto rounded-full mt-4"></div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Service 1 -->
-                <div class="bg-gray-50 dark:bg-dark-surface p-8 rounded-2xl border border-gray-100 dark:border-gray-700 hover:shadow-xl hover:border-primary-500/30 transition-all duration-300 group">
-                    <div class="w-14 h-14 bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                <div class="bg-slate-50 dark:bg-dark-card p-8 rounded-2xl border border-slate-200 dark:border-dark-border hover:border-brand-500/50 hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-brand-100 dark:bg-brand-900/40 text-brand-600 dark:text-brand-300 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-code"></i>
                     </div>
-                    <h3 data-i18n="srv_dev_title" class="text-xl font-bold mb-3 dark:text-white">تطوير البرمجيات</h3>
-                    <p data-i18n="srv_dev_desc" class="text-gray-600 dark:text-gray-400">بناء أنظمة برمجية متكاملة ومخصصة تناسب احتياجات عملك بدقة واحترافية.</p>
+                    <h3 data-i18n="srv_dev_title" class="text-xl font-extrabold mb-3 text-slate-900 dark:text-white">تطوير البرمجيات والأنظمة</h3>
+                    <p data-i18n="srv_dev_desc" class="text-slate-600 dark:text-dark-muted leading-relaxed">بناء برامج حاسوب وحلول رقمية مخصصة وقابلة للتطوير لتلبية متطلبات عملك الدقيقة.</p>
                 </div>
+
                 <!-- Service 2 -->
-                <div class="bg-gray-50 dark:bg-dark-surface p-8 rounded-2xl border border-gray-100 dark:border-gray-700 hover:shadow-xl hover:border-primary-500/30 transition-all duration-300 group">
-                    <div class="w-14 h-14 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-mobile-screen"></i>
-                    </div>
-                    <h3 data-i18n="srv_app_title" class="text-xl font-bold mb-3 dark:text-white">تطبيقات الموبايل</h3>
-                    <p data-i18n="srv_app_desc" class="text-gray-600 dark:text-gray-400">برمجة تطبيقات سريعة وذات واجهات عصرية لمنصات الأندرويد والآيفون.</p>
-                </div>
-                <!-- Service 3 -->
-                <div class="bg-gray-50 dark:bg-dark-surface p-8 rounded-2xl border border-gray-100 dark:border-gray-700 hover:shadow-xl hover:border-primary-500/30 transition-all duration-300 group">
-                    <div class="w-14 h-14 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                <div class="bg-slate-50 dark:bg-dark-card p-8 rounded-2xl border border-slate-200 dark:border-dark-border hover:border-blue-500/50 hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-300 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-robot"></i>
                     </div>
-                    <h3 data-i18n="srv_bot_title" class="text-xl font-bold mb-3 dark:text-white">برمجة البوتات والأتمتة</h3>
-                    <p data-i18n="srv_bot_desc" class="text-gray-600 dark:text-gray-400">تطوير بوتات ذكية لتيليجرام ومنصات أخرى، بالإضافة إلى سكربتات أتمتة المهام.</p>
+                    <h3 data-i18n="srv_bot_title" class="text-xl font-extrabold mb-3 text-slate-900 dark:text-white">برمجة البوتات والأتمتة</h3>
+                    <p data-i18n="srv_bot_desc" class="text-slate-600 dark:text-dark-muted leading-relaxed">تطوير بوتات ذكية فائقة السرعة لتيليجرام ومنصات التواصل، وسكربتات لإنجاز المهام الروتينية آلياً.</p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-slate-50 dark:bg-dark-card p-8 rounded-2xl border border-slate-200 dark:border-dark-border hover:border-emerald-500/50 hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-300 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 data-i18n="srv_sec_title" class="text-xl font-extrabold mb-3 text-slate-900 dark:text-white">الأمن السيبراني والدعم التقني</h3>
+                    <p data-i18n="srv_sec_desc" class="text-slate-600 dark:text-dark-muted leading-relaxed">فحص الثغرات، حماية الأنظمة الرقمية، وتقديم استشارات فنية متقدمة لرفع مستوى الأمان.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="software" class="py-24 bg-gray-50 dark:bg-dark-surface/50 border-y border-gray-200 dark:border-gray-800">
+    <!-- Software & Projects Section (Dynamic via Admin Panel) -->
+    <section id="software" class="py-24 bg-slate-50 dark:bg-dark-bg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 data-i18n="software_title" class="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-4">أحدث البرامج والمشاريع</h2>
-                <p data-i18n="software_subtitle" class="text-gray-600 dark:text-gray-400 text-lg">مجموعة من البرامج والأدوات الجاهزة التي قمت بتطويرها للتحميل المباشر.</p>
-                <div class="w-20 h-1 bg-primary-500 mx-auto rounded-full mt-6"></div>
+            <div class="flex flex-col md:flex-row justify-between items-center mb-16 gap-4">
+                <div>
+                    <h2 data-i18n="software_title" class="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white mb-2">البرامج والأدوات المتوفرة</h2>
+                    <p data-i18n="software_subtitle" class="text-slate-600 dark:text-dark-muted text-base">يمكنك معاينة أو تحميل برامجي وأدواتي الحصرية مباشرة</p>
+                </div>
+                <!-- Admin quick-badge (Visible when logged in or click to login) -->
+                <button id="admin-launch-btn" class="px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 dark:border-dark-border text-slate-600 dark:text-dark-muted hover:text-brand-600 dark:hover:text-brand-400 hover:border-brand-500 transition-colors flex items-center gap-2">
+                    <i class="fa-solid fa-lock"></i>
+                    <span data-i18n="admin_panel_btn">لوحة إدارة المحتوى</span>
+                </button>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- App Card 1 -->
-                <div class="bg-white dark:bg-dark-surface rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl border border-gray-100 dark:border-gray-700 transition-all duration-300 flex flex-col group">
-                    <div class="relative h-56 overflow-hidden bg-gray-200 dark:bg-gray-800">
-                        <img src="https://placehold.co/600x400/8b5cf6/ffffff?text=Bot+Manager" alt="Bot Manager" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 data-i18n="app1_title" class="text-2xl font-bold mb-2 dark:text-white">بوت إدارة المجموعات</h3>
-                        <p data-i18n="app1_desc" class="text-gray-600 dark:text-gray-400 mb-6 flex-grow">برنامج متكامل لإدارة مجموعات التيليجرام بذكاء، مع لوحة تحكم وإحصائيات دقيقة وميزات الحماية.</p>
-                        <a href="#" class="w-full flex items-center justify-center gap-2 py-3 bg-gray-900 dark:bg-gray-700 hover:bg-primary-600 dark:hover:bg-primary-600 text-white rounded-xl font-bold transition-colors">
-                            <i class="fa-solid fa-cloud-arrow-down"></i> <span data-i18n="btn_download">تحميل البرنامج</span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- App Card 2 -->
-                <div class="bg-white dark:bg-dark-surface rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl border border-gray-100 dark:border-gray-700 transition-all duration-300 flex flex-col group">
-                    <div class="relative h-56 overflow-hidden bg-gray-200 dark:bg-gray-800">
-                        <img src="https://placehold.co/600x400/3b82f6/ffffff?text=Data+Scraper" alt="Data Scraper" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 data-i18n="app2_title" class="text-2xl font-bold mb-2 dark:text-white">أداة استخراج البيانات</h3>
-                        <p data-i18n="app2_desc" class="text-gray-600 dark:text-gray-400 mb-6 flex-grow">أداة قوية لاستخراج البيانات من المواقع وتصديرها بصيغ متعددة بسهولة وسرعة عالية.</p>
-                        <a href="#" class="w-full flex items-center justify-center gap-2 py-3 bg-gray-900 dark:bg-gray-700 hover:bg-primary-600 dark:hover:bg-primary-600 text-white rounded-xl font-bold transition-colors">
-                            <i class="fa-solid fa-cloud-arrow-down"></i> <span data-i18n="btn_download">تحميل البرنامج</span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- App Card 3 -->
-                <div class="bg-white dark:bg-dark-surface rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl border border-gray-100 dark:border-gray-700 transition-all duration-300 flex flex-col group">
-                    <div class="relative h-56 overflow-hidden bg-gray-200 dark:bg-gray-800">
-                        <img src="https://placehold.co/600x400/10b981/ffffff?text=System+Cleaner" alt="System Cleaner" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 data-i18n="app3_title" class="text-2xl font-bold mb-2 dark:text-white">منظف النظام المتقدم</h3>
-                        <p data-i18n="app3_desc" class="text-gray-600 dark:text-gray-400 mb-6 flex-grow">برنامج لتنظيف وتسريع أنظمة التشغيل وحل مشاكل البطء بضغطة زر واحدة.</p>
-                        <a href="#" class="w-full flex items-center justify-center gap-2 py-3 bg-gray-900 dark:bg-gray-700 hover:bg-primary-600 dark:hover:bg-primary-600 text-white rounded-xl font-bold transition-colors">
-                            <i class="fa-solid fa-cloud-arrow-down"></i> <span data-i18n="btn_download">تحميل البرنامج</span>
-                        </a>
-                    </div>
-                </div>
+            <!-- Dynamic Projects Grid -->
+            <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Injected via JavaScript from LocalStorage or Defaults -->
             </div>
         </div>
     </section>
 
-    <section id="skills" class="py-24 bg-white dark:bg-dark-bg">
+    <!-- Skills Section -->
+    <section id="skills" class="py-24 bg-white dark:bg-dark-surface border-t border-slate-200 dark:border-dark-border">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 data-i18n="skills_title" class="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-4">مهاراتي التقنية</h2>
-                <div class="w-20 h-1 bg-primary-500 mx-auto rounded-full"></div>
+                <h2 data-i18n="skills_title" class="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white mb-3">المهارات والخبرات التقنية</h2>
+                <div class="w-16 h-1.5 bg-brand-600 mx-auto rounded-full"></div>
             </div>
 
             <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Skill List -->
+                <!-- Column 1 -->
                 <div class="space-y-6">
                     <div>
                         <div class="flex justify-between items-center mb-2">
-                            <span class="text-lg font-bold flex items-center gap-2 dark:text-white"><i class="fa-brands fa-python text-yellow-500"></i> Python</span>
-                            <span class="text-primary-600 dark:text-primary-400 font-bold">95%</span>
+                            <span class="font-bold flex items-center gap-2 text-slate-900 dark:text-white"><i class="fa-brands fa-python text-yellow-500"></i> Python & Automation</span>
+                            <span class="text-brand-600 dark:text-brand-400 font-bold">95%</span>
                         </div>
-                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                        <div class="w-full bg-slate-200 dark:bg-dark-border rounded-full h-3">
                             <div class="bg-gradient-to-r rtl:bg-gradient-to-l from-yellow-400 to-yellow-600 h-3 rounded-full" style="width: 95%"></div>
                         </div>
                     </div>
+
                     <div>
                         <div class="flex justify-between items-center mb-2">
-                            <span class="text-lg font-bold flex items-center gap-2 dark:text-white"><i class="fa-brands fa-js text-yellow-400"></i> JavaScript / TS</span>
-                            <span class="text-primary-600 dark:text-primary-400 font-bold">90%</span>
+                            <span class="font-bold flex items-center gap-2 text-slate-900 dark:text-white"><i class="fa-brands fa-js text-yellow-400"></i> JavaScript / Node.js</span>
+                            <span class="text-brand-600 dark:text-brand-400 font-bold">90%</span>
                         </div>
-                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
-                            <div class="bg-gradient-to-r rtl:bg-gradient-to-l from-yellow-300 to-yellow-500 h-3 rounded-full" style="width: 90%"></div>
+                        <div class="w-full bg-slate-200 dark:bg-dark-border rounded-full h-3">
+                            <div class="bg-gradient-to-r rtl:bg-gradient-to-l from-brand-500 to-blue-500 h-3 rounded-full" style="width: 90%"></div>
                         </div>
                     </div>
+
                     <div>
                         <div class="flex justify-between items-center mb-2">
-                            <span class="text-lg font-bold flex items-center gap-2 dark:text-white"><i class="fa-solid fa-mobile-screen text-blue-500"></i> Mobile Development</span>
-                            <span class="text-primary-600 dark:text-primary-400 font-bold">85%</span>
+                            <span class="font-bold flex items-center gap-2 text-slate-900 dark:text-white"><i class="fa-solid fa-network-wired text-blue-500"></i> API & Web Scraping</span>
+                            <span class="text-brand-600 dark:text-brand-400 font-bold">92%</span>
                         </div>
-                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
-                            <div class="bg-gradient-to-r rtl:bg-gradient-to-l from-blue-400 to-blue-600 h-3 rounded-full" style="width: 85%"></div>
+                        <div class="w-full bg-slate-200 dark:bg-dark-border rounded-full h-3">
+                            <div class="bg-gradient-to-r rtl:bg-gradient-to-l from-blue-400 to-blue-600 h-3 rounded-full" style="width: 92%"></div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Column 2 -->
                 <div class="space-y-6">
                     <div>
                         <div class="flex justify-between items-center mb-2">
-                            <span class="text-lg font-bold flex items-center gap-2 dark:text-white"><i class="fa-solid fa-server text-green-500"></i> Backend (Node/Django)</span>
-                            <span class="text-primary-600 dark:text-primary-400 font-bold">88%</span>
+                            <span class="font-bold flex items-center gap-2 text-slate-900 dark:text-white"><i class="fa-solid fa-server text-emerald-500"></i> Backend & Linux Servers</span>
+                            <span class="text-brand-600 dark:text-brand-400 font-bold">88%</span>
                         </div>
-                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
-                            <div class="bg-gradient-to-r rtl:bg-gradient-to-l from-green-400 to-green-600 h-3 rounded-full" style="width: 88%"></div>
+                        <div class="w-full bg-slate-200 dark:bg-dark-border rounded-full h-3">
+                            <div class="bg-gradient-to-r rtl:bg-gradient-to-l from-emerald-400 to-emerald-600 h-3 rounded-full" style="width: 88%"></div>
                         </div>
                     </div>
+
                     <div>
                         <div class="flex justify-between items-center mb-2">
-                            <span class="text-lg font-bold flex items-center gap-2 dark:text-white"><i class="fa-solid fa-database text-purple-500"></i> Databases (SQL/NoSQL)</span>
-                            <span class="text-primary-600 dark:text-primary-400 font-bold">85%</span>
+                            <span class="font-bold flex items-center gap-2 text-slate-900 dark:text-white"><i class="fa-solid fa-database text-purple-500"></i> Databases (SQL & Redis)</span>
+                            <span class="text-brand-600 dark:text-brand-400 font-bold">85%</span>
                         </div>
-                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                        <div class="w-full bg-slate-200 dark:bg-dark-border rounded-full h-3">
                             <div class="bg-gradient-to-r rtl:bg-gradient-to-l from-purple-400 to-purple-600 h-3 rounded-full" style="width: 85%"></div>
                         </div>
                     </div>
+
                     <div>
                         <div class="flex justify-between items-center mb-2">
-                            <span class="text-lg font-bold flex items-center gap-2 dark:text-white"><i class="fa-brands fa-git-alt text-orange-500"></i> Git & DevOps</span>
-                            <span class="text-primary-600 dark:text-primary-400 font-bold">80%</span>
+                            <span class="font-bold flex items-center gap-2 text-slate-900 dark:text-white"><i class="fa-solid fa-shield-virus text-rose-500"></i> Security & Cryptography</span>
+                            <span class="text-brand-600 dark:text-brand-400 font-bold">82%</span>
                         </div>
-                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
-                            <div class="bg-gradient-to-r rtl:bg-gradient-to-l from-orange-400 to-orange-600 h-3 rounded-full" style="width: 80%"></div>
+                        <div class="w-full bg-slate-200 dark:bg-dark-border rounded-full h-3">
+                            <div class="bg-gradient-to-r rtl:bg-gradient-to-l from-rose-400 to-rose-600 h-3 rounded-full" style="width: 82%"></div>
                         </div>
                     </div>
                 </div>
@@ -353,155 +351,289 @@
         </div>
     </section>
 
-    <footer id="contact" class="bg-gray-900 pt-16 pb-8 border-t border-gray-800">
+    <!-- Footer / Contact Section -->
+    <footer id="contact" class="bg-slate-950 text-slate-200 pt-20 pb-10 border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-                <!-- Branding -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+                
+                <!-- Brand Info -->
                 <div>
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-blue-500 flex items-center justify-center text-white text-xl font-bold shadow-lg">
+                    <div class="flex items-center gap-3 mb-6 cursor-pointer select-none" id="footer-secret-logo" title="Double click for Admin">
+                        <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-brand-600 to-blue-500 flex items-center justify-center text-white text-lg font-black shadow-lg">
                             AR
                         </div>
                         <span class="text-2xl font-black tracking-tight text-white">AYMAN ROOT</span>
                     </div>
-                    <p data-i18n="footer_desc" class="text-gray-400 text-sm leading-relaxed mb-6">
-                        أقدم لك أفضل الحلول البرمجية المتكاملة لتطوير أعمالك ونقلها إلى مستوى احترافي.
+                    <p data-i18n="footer_desc" class="text-slate-400 text-sm leading-relaxed mb-6">
+                        تطوير برمجيات، بوتات، وحلول برمجية تلبي تطلعاتك وترتقي بمشاريعك الرقمية بأعلى درجات الاحتراف.
                     </p>
+                    <div class="text-xs text-slate-500">
+                        <span data-i18n="admin_hint">اختصار لوحة المسؤول: Ctrl + Shift + A</span>
+                    </div>
                 </div>
 
-                <!-- Quick Links -->
+                <!-- Navigation Links -->
                 <div>
-                    <h4 data-i18n="footer_links_title" class="text-white text-lg font-bold mb-6">روابط هامة</h4>
-                    <ul class="space-y-3">
-                        <li><a href="#home" data-i18n="nav_home" class="text-gray-400 hover:text-primary-500 transition-colors">الرئيسية</a></li>
-                        <li><a href="#services" data-i18n="nav_services" class="text-gray-400 hover:text-primary-500 transition-colors">الخدمات</a></li>
-                        <li><a href="#software" data-i18n="nav_software" class="text-gray-400 hover:text-primary-500 transition-colors">البرامج</a></li>
+                    <h4 data-i18n="footer_links_title" class="text-white text-base font-extrabold mb-6">روابط سريعة</h4>
+                    <ul class="space-y-3 font-semibold text-sm">
+                        <li><a href="#home" data-i18n="nav_home" class="text-slate-400 hover:text-brand-400 transition-colors">الرئيسية</a></li>
+                        <li><a href="#services" data-i18n="nav_services" class="text-slate-400 hover:text-brand-400 transition-colors">الخدمات</a></li>
+                        <li><a href="#software" data-i18n="nav_software" class="text-slate-400 hover:text-brand-400 transition-colors">البرامج والمشاريع</a></li>
+                        <li><a href="#skills" data-i18n="nav_skills" class="text-slate-400 hover:text-brand-400 transition-colors">المهارات</a></li>
                     </ul>
                 </div>
 
-                <!-- Contact & Socials -->
+                <!-- Contact & Channels -->
                 <div>
-                    <h4 data-i18n="footer_contact_title" class="text-white text-lg font-bold mb-6">تواصل معي</h4>
-                    <div class="flex gap-4 mb-6">
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-blue-500 hover:text-white transition-all transform hover:scale-110">
-                            <i class="fa-brands fa-telegram text-xl"></i>
+                    <h4 data-i18n="footer_contact_title" class="text-white text-base font-extrabold mb-6">قنوات التواصل</h4>
+                    <div class="flex flex-wrap gap-3 mb-6">
+                        <a href="https://t.me/" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-300 hover:bg-[#229ED9] hover:text-white hover:border-transparent transition-all">
+                            <i class="fa-brands fa-telegram text-lg"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-gray-600 hover:text-white transition-all transform hover:scale-110">
-                            <i class="fa-brands fa-github text-xl"></i>
+                        <a href="https://github.com/ayman-root" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-300 hover:bg-slate-700 hover:text-white hover:border-transparent transition-all">
+                            <i class="fa-brands fa-github text-lg"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-blue-400 hover:text-white transition-all transform hover:scale-110">
-                            <i class="fa-brands fa-twitter text-xl"></i>
+                        <a href="https://wa.me/" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-300 hover:bg-[#25D366] hover:text-white hover:border-transparent transition-all">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-blue-700 hover:text-white transition-all transform hover:scale-110">
-                            <i class="fa-brands fa-facebook text-xl"></i>
+                        <a href="https://twitter.com/" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-300 hover:bg-sky-500 hover:text-white hover:border-transparent transition-all">
+                            <i class="fa-brands fa-x-twitter text-lg"></i>
                         </a>
                     </div>
-                    <a href="mailto:contact@aymanroot.com" class="text-gray-400 hover:text-white flex items-center gap-2">
-                        <i class="fa-solid fa-envelope text-primary-500"></i> contact@aymanroot.com
+                    <a href="mailto:contact@aymanroot.online" class="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors">
+                        <i class="fa-solid fa-envelope text-brand-400"></i> contact@aymanroot.online
                     </a>
                 </div>
             </div>
-            
-            <div class="pt-8 border-t border-gray-800 text-center">
-                <p class="text-gray-500 text-sm">
-                    &copy; <span id="year"></span> AYMAN ROOT. <span data-i18n="footer_rights">جميع الحقوق محفوظة.</span>
-                </p>
+
+            <div class="pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-400">
+                <p>&copy; <span id="year"></span> AYMAN ROOT. <span data-i18n="footer_rights">جميع الحقوق محفوظة.</span></p>
+                <div class="flex items-center gap-4">
+                    <span class="text-emerald-400 flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> HTTPS Secured</span>
+                </div>
             </div>
         </div>
     </footer>
 
+    <!-- ========================================== -->
+    <!--           ADMIN MODAL & MANAGER            -->
+    <!-- ========================================== -->
+    
+    <!-- Admin Login Modal -->
+    <div id="admin-login-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-dark-surface border border-slate-200 dark:border-dark-border w-full max-w-md rounded-2xl p-6 shadow-2xl relative">
+            <button id="close-login-btn" class="absolute top-4 end-4 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 rounded-xl bg-brand-600 text-white flex items-center justify-center text-lg">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-black text-slate-900 dark:text-white">تسجيل دخول المسؤول</h3>
+                    <p class="text-xs text-slate-500 dark:text-dark-muted">أدخل الرمز السري للتحكم في برامج الموقع</p>
+                </div>
+            </div>
+            
+            <form id="admin-login-form" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">الرمز السري (Default: root2026)</label>
+                    <input type="password" id="admin-password" placeholder="أدخل كلمة المرور..." required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-dark-border bg-slate-50 dark:bg-dark-card text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm">
+                </div>
+                <div id="login-error" class="hidden text-xs text-rose-500 font-bold">كلمة المرور غير صحيحة!</div>
+                <button type="submit" class="w-full py-3 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-xl text-sm transition-colors shadow-md">
+                    دخول إلى لوحة الإدارة
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard Modal -->
+    <div id="admin-dashboard-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-md hidden flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
+        <div class="bg-white dark:bg-dark-surface border border-slate-200 dark:border-dark-border w-full max-w-4xl rounded-2xl shadow-2xl my-auto flex flex-col max-h-[90vh]">
+            
+            <!-- Modal Header -->
+            <div class="px-6 py-4 border-b border-slate-200 dark:border-dark-border flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-xl bg-brand-600 text-white flex items-center justify-center text-sm font-bold">
+                        AR
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-black text-slate-900 dark:text-white">لوحة تحكم AYMAN ROOT</h3>
+                        <p class="text-xs text-slate-500 dark:text-dark-muted">إضافة، تعديل، وحذف البرامج والأدوات (المحفوظة تلقائياً)</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button id="admin-logout-btn" class="px-3 py-1.5 rounded-lg text-xs font-bold text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/30 transition-colors">
+                        خروج
+                    </button>
+                    <button id="close-dashboard-btn" class="p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+                        <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Modal Content (Scrollable) -->
+            <div class="p-6 overflow-y-auto space-y-8">
+                
+                <!-- Add / Edit Project Form -->
+                <div class="bg-slate-50 dark:bg-dark-card p-5 rounded-2xl border border-slate-200 dark:border-dark-border">
+                    <h4 id="form-heading" class="text-base font-extrabold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-plus-circle text-brand-600"></i> إضافة برنامج أو مشروع جديد
+                    </h4>
+                    
+                    <form id="project-form" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <input type="hidden" id="edit-project-id" value="">
+                        
+                        <div class="sm:col-span-1">
+                            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">اسم البرنامج / المشروع</label>
+                            <input type="text" id="project-title" required placeholder="مثال: أداة سحب البيانات" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-surface text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                        </div>
+
+                        <div class="sm:col-span-1">
+                            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">نوع الميديا (صورة أو فيديو)</label>
+                            <select id="project-media-type" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-surface text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                                <option value="image">صورة (Image URL)</option>
+                                <option value="video">فيديو مباشر (MP4/WebM)</option>
+                                <option value="youtube">فيديو يوتيوب (YouTube ID أو رابط)</option>
+                            </select>
+                        </div>
+
+                        <div class="sm:col-span-2">
+                            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">رابط الصورة أو الفيديو</label>
+                            <input type="url" id="project-media-url" required placeholder="https://example.com/image.jpg أو رابط الفيديو" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-surface text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                        </div>
+
+                        <div class="sm:col-span-2">
+                            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">وصف البرنامج وميزاته</label>
+                            <textarea id="project-desc" rows="3" required placeholder="اكتب نبذة وميزات البرنامج..." class="w-full px-3.5 py-2 rounded-xl border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-surface text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none"></textarea>
+                        </div>
+
+                        <div class="sm:col-span-1">
+                            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">رابط التحميل أو المعاينة</label>
+                            <input type="text" id="project-link" required placeholder="https://t.me/ أو https://github.com/..." class="w-full px-3.5 py-2 rounded-xl border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-surface text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                        </div>
+
+                        <div class="sm:col-span-1">
+                            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">نص زر التحميل</label>
+                            <input type="text" id="project-btn-text" placeholder="تحميل الآن (أو تواصل للشراء)" value="تحميل البرنامج" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-surface text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                        </div>
+
+                        <div class="sm:col-span-2 flex items-center justify-end gap-3 pt-2">
+                            <button type="button" id="cancel-edit-btn" class="hidden px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 dark:border-dark-border text-slate-600 dark:text-dark-muted hover:bg-slate-100 dark:hover:bg-dark-surface">
+                                إلغاء التعديل
+                            </button>
+                            <button type="submit" id="save-project-btn" class="px-6 py-2.5 bg-brand-600 hover:bg-brand-700 text-white text-xs font-black rounded-xl transition-all shadow-md">
+                                حفظ في الموقع
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Existing Items Management List -->
+                <div>
+                    <h4 class="text-base font-extrabold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-list-check text-brand-600"></i> البرامج الحالية المعروضة
+                    </h4>
+                    
+                    <div id="admin-items-list" class="space-y-3">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-5 start-5 z-50 bg-slate-900 dark:bg-white text-white dark:text-slate-900 py-3 px-5 rounded-xl shadow-2xl font-bold text-xs flex items-center gap-3 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+        <i class="fa-solid fa-circle-check text-emerald-400 dark:text-emerald-600 text-base"></i>
+        <span id="toast-msg">تمت العملية بنجاح!</span>
+    </div>
+
+    <!-- ========================================== -->
+    <!--           JAVASCRIPT LOGIC                 -->
+    <!-- ========================================== -->
     <script>
-        // Use an IIFE and strict mode to prevent variable leaking and catch syntax issues safely
         (function() {
             'use strict';
 
             document.addEventListener('DOMContentLoaded', function() {
-                // Set Current Year securely
+                
+                // Current Year
                 var yearEl = document.getElementById('year');
-                if (yearEl) {
-                    yearEl.textContent = new Date().getFullYear();
-                }
+                if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-                // Translation Dictionary (Clean, single-line strings to avoid SyntaxErrors)
                 var translations = {
                     'ar': {
-                        'nav_home': 'الرئيسية', 'nav_services': 'الخدمات', 'nav_software': 'البرامج', 'nav_skills': 'المهارات', 'choose_lang': 'اختر اللغة',
-                        'hero_badge': 'أهلاً بك في مساحتي الإبداعية', 'hero_title_1': 'أنا', 'hero_title_2': 'مطور برمجيات محترف',
-                        'hero_subtitle': 'أقوم بتصميم وتطوير حلول برمجية متطورة، وتطبيقات ذكية، وأنظمة أتمتة تساعدك على تحقيق أهدافك الرقمية بكفاءة عالية.',
-                        'btn_explore': 'تصفح برامجي', 'btn_contact': 'تواصل معي',
-                        'services_title': 'الخدمات التي أقدمها',
-                        'srv_dev_title': 'تطوير البرمجيات', 'srv_dev_desc': 'بناء أنظمة برمجية متكاملة ومخصصة تناسب احتياجات عملك بدقة واحترافية.',
-                        'srv_app_title': 'تطبيقات الموبايل', 'srv_app_desc': 'برمجة تطبيقات سريعة وذات واجهات عصرية لمنصات الأندرويد والآيفون.',
-                        'srv_bot_title': 'برمجة البوتات والأتمتة', 'srv_bot_desc': 'تطوير بوتات ذكية لتيليجرام ومنصات أخرى، بالإضافة إلى سكربتات أتمتة المهام.',
-                        'software_title': 'أحدث البرامج والمشاريع', 'software_subtitle': 'مجموعة من البرامج والأدوات الجاهزة التي قمت بتطويرها للتحميل المباشر.',
-                        'app1_title': 'بوت إدارة المجموعات', 'app1_desc': 'برنامج متكامل لإدارة مجموعات التيليجرام بذكاء، مع لوحة تحكم وإحصائيات دقيقة وميزات الحماية.',
-                        'app2_title': 'أداة استخراج البيانات', 'app2_desc': 'أداة قوية لاستخراج البيانات من المواقع وتصديرها بصيغ متعددة بسهولة وسرعة عالية.',
-                        'app3_title': 'منظف النظام المتقدم', 'app3_desc': 'برنامج لتنظيف وتسريع أنظمة التشغيل وحل مشاكل البطء بضغطة زر واحدة.',
-                        'btn_download': 'تحميل البرنامج',
-                        'skills_title': 'مهاراتي التقنية',
-                        'footer_desc': 'أقدم لك أفضل الحلول البرمجية المتكاملة لتطوير أعمالك ونقلها إلى مستوى احترافي.',
-                        'footer_links_title': 'روابط هامة', 'footer_contact_title': 'تواصل معي', 'footer_rights': 'جميع الحقوق محفوظة.'
+                        'nav_home': 'الرئيسية', 'nav_services': 'الخدمات', 'nav_software': 'البرامج', 'nav_skills': 'المهارات', 'nav_contact': 'تواصل معي', 'choose_lang': 'اختر اللغة',
+                        'hero_badge': 'أهلاً بك في مساحتي الإبداعية', 'hero_title_1': 'أنا', 'hero_title_2': 'مطور برمجيات وأنظمة متقدمة',
+                        'hero_subtitle': 'أقوم بابتكار وتطوير أدوات تقنية متطورة، بوتات ذكية، وتطبيقات ويب وسحابية تصنع الفارق وتساعدك على أتمتة أعمالك بدقة واحترافية.',
+                        'btn_explore': 'تصفح البرامج والمشاريع', 'btn_contact': 'تواصل معي الآن',
+                        'services_title': 'الخدمات التي أقدمها', 'services_subtitle': 'حلول متكاملة مصممة بأعلى معايير الكفاءة والأمان',
+                        'srv_dev_title': 'تطوير البرمجيات والأنظمة', 'srv_dev_desc': 'بناء برامج حاسوب وحلول رقمية مخصصة وقابلة للتطوير لتلبية متطلبات عملك الدقيقة.',
+                        'srv_bot_title': 'برمجة البوتات والأتمتة', 'srv_bot_desc': 'تطوير بوتات ذكية فائقة السرعة لتيليجرام ومنصات التواصل، وسكربتات لإنجاز المهام الروتينية آلياً.',
+                        'srv_sec_title': 'الأمن السيبراني والدعم التقني', 'srv_sec_desc': 'فحص الثغرات، حماية الأنظمة الرقمية، وتقديم استشارات فنية متقدمة لرفع مستوى الأمان.',
+                        'software_title': 'البرامج والأدوات المتوفرة', 'software_subtitle': 'يمكنك معاينة أو تحميل برامجي وأدواتي الحصرية مباشرة',
+                        'admin_panel_btn': 'لوحة إدارة المحتوى',
+                        'skills_title': 'المهارات والخبرات التقنية',
+                        'footer_desc': 'تطوير برمجيات، بوتات، وحلول برمجية تلبي تطلعاتك وترتقي بمشاريعك الرقمية بأعلى درجات الاحتراف.',
+                        'footer_links_title': 'روابط سريعة', 'footer_contact_title': 'قنوات التواصل', 'footer_rights': 'جميع الحقوق محفوظة.',
+                        'admin_hint': 'اختصار لوحة المسؤول: Ctrl + Shift + A'
                     },
                     'en': {
-                        'nav_home': 'Home', 'nav_services': 'Services', 'nav_software': 'Software', 'nav_skills': 'Skills', 'choose_lang': 'Choose Language',
-                        'hero_badge': 'Welcome to my creative space', 'hero_title_1': 'I am', 'hero_title_2': 'Professional Developer',
-                        'hero_subtitle': 'I design and develop advanced software solutions, smart applications, and automation systems to help you achieve your digital goals efficiently.',
-                        'btn_explore': 'Explore Software', 'btn_contact': 'Contact Me',
-                        'services_title': 'Services I Provide',
-                        'srv_dev_title': 'Software Development', 'srv_dev_desc': 'Building fully integrated and customized software systems that perfectly suit your business needs.',
-                        'srv_app_title': 'Mobile Applications', 'srv_app_desc': 'Programming fast and modern applications for Android and iOS platforms.',
-                        'srv_bot_title': 'Bots & Automation', 'srv_bot_desc': 'Developing smart bots for Telegram and other platforms, in addition to task automation scripts.',
-                        'software_title': 'Latest Software & Projects', 'software_subtitle': 'A collection of ready-made software and tools I developed for direct download.',
-                        'app1_title': 'Group Management Bot', 'app1_desc': 'A complete program for smartly managing Telegram groups, with a dashboard, precise statistics, and protection features.',
-                        'app2_title': 'Data Scraper Tool', 'app2_desc': 'A powerful tool for extracting data from websites and exporting it to multiple formats easily and quickly.',
-                        'app3_title': 'Advanced System Cleaner', 'app3_desc': 'A program to clean and speed up operating systems and solve slowdown issues with a single click.',
-                        'btn_download': 'Download Software',
-                        'skills_title': 'Technical Skills',
-                        'footer_desc': 'I provide the best integrated software solutions to develop your business and take it to a professional level.',
-                        'footer_links_title': 'Important Links', 'footer_contact_title': 'Contact Me', 'footer_rights': 'All rights reserved.'
+                        'nav_home': 'Home', 'nav_services': 'Services', 'nav_software': 'Software', 'nav_skills': 'Skills', 'nav_contact': 'Contact', 'choose_lang': 'Language',
+                        'hero_badge': 'Welcome to My Creative Space', 'hero_title_1': 'I am', 'hero_title_2': 'Advanced Software & Systems Engineer',
+                        'hero_subtitle': 'I engineer cutting-edge tools, smart bots, and scalable web solutions that empower you to automate tasks with peak performance.',
+                        'btn_explore': 'Explore Software', 'btn_contact': 'Contact Me Now',
+                        'services_title': 'Services I Provide', 'services_subtitle': 'End-to-end solutions designed with precision and security',
+                        'srv_dev_title': 'Software & Systems Engineering', 'srv_dev_desc': 'Building tailor-made, reliable software solutions to fulfill your custom business needs.',
+                        'srv_bot_title': 'Bots & Process Automation', 'srv_bot_desc': 'Developing high-speed bots for Telegram & social networks with workflow automation scripts.',
+                        'srv_sec_title': 'Cybersecurity & Tech Support', 'srv_sec_desc': 'System hardening, vulnerability audits, and specialized engineering consultations.',
+                        'software_title': 'Available Software & Projects', 'software_subtitle': 'Directly preview or download my exclusive software and tools',
+                        'admin_panel_btn': 'Content Admin Hub',
+                        'skills_title': 'Technical Skills & Arsenal',
+                        'footer_desc': 'Building top-tier software and automation tools to elevate your digital operations to elite standards.',
+                        'footer_links_title': 'Quick Links', 'footer_contact_title': 'Get In Touch', 'footer_rights': 'All rights reserved.',
+                        'admin_hint': 'Admin Shortcut: Ctrl + Shift + A'
                     },
                     'fr': {
-                        'nav_home': 'Accueil', 'nav_services': 'Services', 'nav_software': 'Logiciels', 'nav_skills': 'Compétences', 'choose_lang': 'Choisir la langue',
-                        'hero_badge': 'Bienvenue dans mon espace créatif', 'hero_title_1': 'Je suis', 'hero_title_2': 'Développeur Professionnel',
-                        'hero_subtitle': 'Je conçois et développe des solutions logicielles avancées, des applications intelligentes et des systèmes d\'automatisation pour vous aider à atteindre vos objectifs numériques.',
-                        'btn_explore': 'Explorer les logiciels', 'btn_contact': 'Contactez-moi',
-                        'services_title': 'Services que je fournis',
-                        'srv_dev_title': 'Développement de logiciels', 'srv_dev_desc': 'Construire des systèmes logiciels entièrement intégrés et personnalisés qui répondent parfaitement aux besoins de votre entreprise.',
-                        'srv_app_title': 'Applications Mobiles', 'srv_app_desc': 'Programmation d\'applications rapides et modernes pour les plateformes Android et iOS.',
-                        'srv_bot_title': 'Bots et Automatisation', 'srv_bot_desc': 'Développement de bots intelligents pour Telegram et autres plateformes, en plus des scripts d\'automatisation des tâches.',
-                        'software_title': 'Derniers Logiciels et Projets', 'software_subtitle': 'Une collection de logiciels et d\'outils prêts à l\'emploi que j\'ai développés pour un téléchargement direct.',
-                        'app1_title': 'Bot de gestion de groupe', 'app1_desc': 'Un programme complet pour gérer intelligemment les groupes Telegram, avec un tableau de bord, des statistiques précises et des fonctionnalités de protection.',
-                        'app2_title': 'Outil d\'extraction de données', 'app2_desc': 'Un outil puissant pour extraire des données de sites Web et les exporter vers plusieurs formats facilement et rapidement.',
-                        'app3_title': 'Nettoyeur de Système Avancé', 'app3_desc': 'Un programme pour nettoyer et accélérer les systèmes d\'exploitation et résoudre les problèmes de lenteur en un seul clic.',
-                        'btn_download': 'Télécharger',
+                        'nav_home': 'Accueil', 'nav_services': 'Services', 'nav_software': 'Logiciels', 'nav_skills': 'Compétences', 'nav_contact': 'Contact', 'choose_lang': 'Langue',
+                        'hero_badge': 'Bienvenue dans mon espace créatif', 'hero_title_1': 'Je suis', 'hero_title_2': 'Développeur Logiciel & Systèmes Avancés',
+                        'hero_subtitle': 'Je conçois des outils modernes, des robots intelligents et des solutions logicielles sur mesure pour automatiser vos tâches.',
+                        'btn_explore': 'Explorer les logiciels', 'btn_contact': 'Me contacter',
+                        'services_title': 'Services proposés', 'services_subtitle': 'Des solutions complètes conçues selon les plus hauts standards',
+                        'srv_dev_title': 'Développement de logiciels', 'srv_dev_desc': 'Création de systèmes informatiques sur mesure et hautement performants pour vos projets.',
+                        'srv_bot_title': 'Bots & Automatisation', 'srv_bot_desc': 'Développement de bots Telegram rapides et de scripts pour automatiser vos opérations.',
+                        'srv_sec_title': 'Cybersécurité & Support', 'srv_sec_desc': 'Audit de sécurité, protection des données et assistance technique spécialisée.',
+                        'software_title': 'Logiciels & Projets Disponibles', 'software_subtitle': 'Consultez et téléchargez directement mes programmes exclusifs',
+                        'admin_panel_btn': 'Gestion du contenu',
                         'skills_title': 'Compétences Techniques',
-                        'footer_desc': 'Je fournis les meilleures solutions logicielles intégrées pour développer votre entreprise et la porter à un niveau professionnel.',
-                        'footer_links_title': 'Liens importants', 'footer_contact_title': 'Contact', 'footer_rights': 'Tous droits réservés.'
+                        'footer_desc': 'Développement de solutions et bots haut de gamme pour porter vos projets au niveau professionnel.',
+                        'footer_links_title': 'Liens Rapides', 'footer_contact_title': 'Réseaux', 'footer_rights': 'Tous droits réservés.',
+                        'admin_hint': 'Raccourci Admin: Ctrl + Shift + A'
                     },
                     'zh': {
-                        'nav_home': '首页', 'nav_services': '服务', 'nav_software': '软件', 'nav_skills': '技能', 'choose_lang': '选择语言',
-                        'hero_badge': '欢迎来到我的创意空间', 'hero_title_1': '我是', 'hero_title_2': '专业开发人员',
-                        'hero_subtitle': '我设计和开发先进的软件解决方案、智能应用程序和自动化系统，帮助您高效实现数字目标。',
-                        'btn_explore': '探索软件', 'btn_contact': '联系我',
-                        'services_title': '我提供的服务',
-                        'srv_dev_title': '软件开发', 'srv_dev_desc': '构建完全集成和定制的软件系统，完美适合您的业务需求。',
-                        'srv_app_title': '移动应用', 'srv_app_desc': '为 Android 和 iOS 平台编写快速现代的应用程序。',
-                        'srv_bot_title': '机器人和自动化', 'srv_bot_desc': '除了任务自动化脚本之外，还为 Telegram 和其他平台开发智能机器人。',
-                        'software_title': '最新软件和项目', 'software_subtitle': '我开发的一系列现成的软件和工具，可直接下载。',
-                        'app1_title': '群组管理机器人', 'app1_desc': '一个用于智能管理 Telegram 群组的完整程序，具有仪表板、精确的统计数据和保护功能。',
-                        'app2_title': '数据抓取工具', 'app2_desc': '一个强大的工具，可从网站提取数据并快速轻松地将其导出为多种格式。',
-                        'app3_title': '高级系统清理器', 'app3_desc': '一个只需单击即可清理和加速操作系统并解决速度缓慢问题的程序。',
-                        'btn_download': '下载软件',
-                        'skills_title': '技术能力',
-                        'footer_desc': '我提供最佳的集成软件解决方案来发展您的业务并将其提升到专业水平。',
-                        'footer_links_title': '重要链接', 'footer_contact_title': '联系我', 'footer_rights': '版权所有。'
+                        'nav_home': '首页', 'nav_services': '服务', 'nav_software': '软件', 'nav_skills': '技能', 'nav_contact': '联系', 'choose_lang': '选择语言',
+                        'hero_badge': '欢迎来到我的创意空间', 'hero_title_1': '我是', 'hero_title_2': '高级软件与系统开发人员',
+                        'hero_subtitle': '我设计并开发先进的技术工具、智能机器人和云端应用，助您高效自动化各项业务。',
+                        'btn_explore': '浏览软件项目', 'btn_contact': '立即联系我',
+                        'services_title': '我提供的服务', 'services_subtitle': '遵循最高效率与安全标准构建的全套解决方案',
+                        'srv_dev_title': '软件与系统开发', 'srv_dev_desc': '量身定制高性能、可扩展的桌面及后端软件系统。',
+                        'srv_bot_title': '机器人与自动化编程', 'srv_bot_desc': '为 Telegram 等平台开发极速响应的智能机器人与流程自动化脚本。',
+                        'srv_sec_title': '网络安全与技术支持', 'srv_sec_desc': '漏洞检测、系统安全加固及全方位高级技术顾问服务。',
+                        'software_title': '可用软件与项目', 'software_subtitle': '直接预览并下载我开发的专有工具与应用',
+                        'admin_panel_btn': '内容管理控制台',
+                        'skills_title': '专业技术能力',
+                        'footer_desc': '打造顶尖软件与自动化利器，助您的数字化业务迈向更高境界。',
+                        'footer_links_title': '快速链接', 'footer_contact_title': '联系方式', 'footer_rights': '版权所有。',
+                        'admin_hint': '管理员快捷键: Ctrl + Shift + A'
                     }
                 };
 
-                // Language Logic
                 var langSelect = document.getElementById('lang-switcher');
                 var langSelectMobile = document.getElementById('lang-switcher-mobile');
-                
+
                 function setLanguage(lang) {
                     if (!lang || !translations[lang]) lang = 'ar';
                     
@@ -525,12 +657,8 @@
                     } catch(e) {}
                 }
 
-                function handleLangChange(e) {
-                    setLanguage(e.target.value);
-                }
-
-                if (langSelect) langSelect.addEventListener('change', handleLangChange);
-                if (langSelectMobile) langSelectMobile.addEventListener('change', handleLangChange);
+                if (langSelect) langSelect.addEventListener('change', function(e) { setLanguage(e.target.value); });
+                if (langSelectMobile) langSelectMobile.addEventListener('change', function(e) { setLanguage(e.target.value); });
 
                 var savedLang = 'ar';
                 try {
@@ -538,76 +666,377 @@
                 } catch(e) {}
                 setLanguage(savedLang);
 
-                // Theme Logic
                 var themeBtn = document.getElementById('theme-toggle');
                 var themeBtnMobile = document.getElementById('theme-toggle-mobile');
                 var themeIcon = document.getElementById('theme-icon');
                 var themeIconMobile = themeBtnMobile ? themeBtnMobile.querySelector('i') : null;
 
-                function updateThemeIcons(isDark) {
+                function updateThemeDisplay(isDark) {
                     if (isDark) {
-                        if (themeIcon) { themeIcon.classList.replace('fa-moon', 'fa-sun'); themeIcon.classList.add('text-yellow-400'); }
-                        if (themeIconMobile) { themeIconMobile.classList.replace('fa-moon', 'fa-sun'); themeIconMobile.classList.add('text-yellow-400'); }
+                        document.documentElement.classList.add('dark');
+                        if (themeIcon) { themeIcon.classList.replace('fa-moon', 'fa-sun'); }
+                        if (themeIconMobile) { themeIconMobile.classList.replace('fa-moon', 'fa-sun'); }
                     } else {
-                        if (themeIcon) { themeIcon.classList.replace('fa-sun', 'fa-moon'); themeIcon.classList.remove('text-yellow-400'); }
-                        if (themeIconMobile) { themeIconMobile.classList.replace('fa-sun', 'fa-moon'); themeIconMobile.classList.remove('text-yellow-400'); }
+                        document.documentElement.classList.remove('dark');
+                        if (themeIcon) { themeIcon.classList.replace('fa-sun', 'fa-moon'); }
+                        if (themeIconMobile) { themeIconMobile.classList.replace('fa-sun', 'fa-moon'); }
                     }
                 }
 
                 function toggleTheme() {
-                    var isDark = document.documentElement.classList.toggle('dark');
+                    var isDark = !document.documentElement.classList.contains('dark');
                     try {
                         localStorage.setItem('theme', isDark ? 'dark' : 'light');
                     } catch(e) {}
-                    updateThemeIcons(isDark);
+                    updateThemeDisplay(isDark);
                 }
 
                 if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
                 if (themeBtnMobile) themeBtnMobile.addEventListener('click', toggleTheme);
 
-                var isDarkMode = false;
+                var isDark = false;
                 try {
-                    isDarkMode = localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+                    isDark = localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
                 } catch(e) {
-                    isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                    isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
                 }
+                updateThemeDisplay(isDark);
 
-                if (isDarkMode) {
-                    document.documentElement.classList.add('dark');
-                    updateThemeIcons(true);
-                } else {
-                    document.documentElement.classList.remove('dark');
-                    updateThemeIcons(false);
-                }
-
-                // Mobile Menu Logic
                 var mobileMenuBtn = document.getElementById('mobile-menu-btn');
                 var mobileMenu = document.getElementById('mobile-menu');
-                
                 if (mobileMenuBtn && mobileMenu) {
                     mobileMenuBtn.addEventListener('click', function() {
                         mobileMenu.classList.toggle('hidden');
                     });
-
-                    var links = mobileMenu.querySelectorAll('a');
-                    for (var j = 0; j < links.length; j++) {
-                        links[j].addEventListener('click', function() {
+                    var navLinks = mobileMenu.querySelectorAll('a');
+                    for (var k = 0; k < navLinks.length; k++) {
+                        navLinks[k].addEventListener('click', function() {
                             mobileMenu.classList.add('hidden');
                         });
                     }
                 }
 
-                // Navbar Scroll
-                window.addEventListener('scroll', function() {
-                    var navbar = document.getElementById('navbar');
-                    if (navbar) {
-                        if (window.scrollY > 20) {
-                            navbar.classList.add('shadow-md');
-                        } else {
-                            navbar.classList.remove('shadow-md');
+                var defaultProjects = [
+                    {
+                        id: 'proj_1',
+                        title: 'بوت إدارة تيليجرام المتطور (Bot Manager)',
+                        mediaType: 'image',
+                        mediaUrl: 'https://placehold.co/800x480/4c1d95/ffffff?text=Telegram+Bot+Manager',
+                        desc: 'برنامج حماية وإدارة المجموعات والقنوات مع لوحة تحكم وإحصائيات مباشرة وقفل الروابط والإعلانات.',
+                        link: 'https://t.me/',
+                        btnText: 'تحميل البوت أو المعاينة'
+                    },
+                    {
+                        id: 'proj_2',
+                        title: 'أداة استخراج البيانات الذكية (Data Scraper Pro)',
+                        mediaType: 'image',
+                        mediaUrl: 'https://placehold.co/800x480/1e3a8a/ffffff?text=Data+Scraper+Pro',
+                        desc: 'أداة برمجية سريعة لسحب البيانات من صفحات ومواقع الويب وتصديرها بصيغ Excel و JSON بنقرة واحدة.',
+                        link: 'https://github.com/ayman-root',
+                        btnText: 'تحميل الأداة'
+                    },
+                    {
+                        id: 'proj_3',
+                        title: 'منظف وتسريع النظام (System Optimizer)',
+                        mediaType: 'image',
+                        mediaUrl: 'https://placehold.co/800x480/065f46/ffffff?text=System+Optimizer',
+                        desc: 'برنامج لتنظيف ملفات الكاش، إدارة الذاكرة العشوائية RAM وتسريع استجابة النظام بالكامل.',
+                        link: 'https://t.me/',
+                        btnText: 'تحميل البرنامج المجاني'
+                    }
+                ];
+
+                function getProjects() {
+                    try {
+                        var stored = localStorage.getItem('ayman_root_projects');
+                        if (stored) {
+                            var parsed = JSON.parse(stored);
+                            if (Array.isArray(parsed) && parsed.length > 0) {
+                                return parsed;
+                            }
                         }
+                    } catch(e) {}
+                    return defaultProjects;
+                }
+
+                function saveProjects(items) {
+                    try {
+                        localStorage.setItem('ayman_root_projects', JSON.stringify(items));
+                    } catch(e) {}
+                }
+
+                function showToast(msg) {
+                    var toast = document.getElementById('toast');
+                    var toastMsg = document.getElementById('toast-msg');
+                    if (toast && toastMsg) {
+                        toastMsg.textContent = msg;
+                        toast.classList.remove('translate-y-24', 'opacity-0');
+                        toast.classList.add('translate-y-0', 'opacity-100');
+                        setTimeout(function() {
+                            toast.classList.add('translate-y-24', 'opacity-0');
+                            toast.classList.remove('translate-y-0', 'opacity-100');
+                        }, 2800);
+                    }
+                }
+
+                function renderMedia(type, url, title) {
+                    if (type === 'video') {
+                        return '<video src="' + url + '" controls class="w-full h-full object-cover" preload="metadata"></video>';
+                    } else if (type === 'youtube') {
+                        var videoId = url;
+                        if (url.indexOf('v=') > -1) {
+                            videoId = url.split('v=')[1].split('&')[0];
+                        } else if (url.indexOf('youtu.be/') > -1) {
+                            videoId = url.split('youtu.be/')[1].split('?')[0];
+                        }
+                        return '<iframe src="https://www.youtube.com/embed/' + videoId + '" title="' + title + '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-full"></iframe>';
+                    } else {
+                        return '<img src="' + url + '" alt="' + title + '" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src=\'https://placehold.co/800x480/1e293b/ffffff?text=Image+Unavailable\'">';
+                    }
+                }
+
+                function renderPublicProjects() {
+                    var container = document.getElementById('projects-grid');
+                    if (!container) return;
+                    var projects = getProjects();
+                    container.innerHTML = '';
+
+                    projects.forEach(function(item) {
+                        var card = document.createElement('div');
+                        card.className = "bg-white dark:bg-dark-card rounded-2xl overflow-hidden border border-slate-200 dark:border-dark-border shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col group";
+                        
+                        var mediaMarkup = renderMedia(item.mediaType, item.mediaUrl, item.title);
+                        
+                        card.innerHTML = 
+                            '<div class="relative h-56 bg-slate-100 dark:bg-slate-900 overflow-hidden media-container">' +
+                                mediaMarkup +
+                            '</div>' +
+                            '<div class="p-6 flex flex-col flex-grow">' +
+                                '<h3 class="text-xl font-extrabold mb-3 text-slate-900 dark:text-white">' + item.title + '</h3>' +
+                                '<p class="text-slate-600 dark:text-dark-muted text-sm mb-6 flex-grow leading-relaxed">' + item.desc + '</p>' +
+                                '<div class="mt-auto">' +
+                                    '<a href="' + item.link + '" target="_blank" rel="noopener" class="w-full inline-flex items-center justify-center gap-2 py-3 px-4 bg-slate-900 dark:bg-brand-600 hover:bg-brand-600 dark:hover:bg-brand-700 text-white rounded-xl font-black text-sm transition-colors shadow-sm">' +
+                                        '<i class="fa-solid fa-arrow-down"></i> ' + (item.btnText || 'تحميل البرنامج') +
+                                    '</a>' +
+                                '</div>' +
+                            '</div>';
+                        
+                        container.appendChild(card);
+                    });
+                }
+
+                var adminLoginModal = document.getElementById('admin-login-modal');
+                var adminDashboardModal = document.getElementById('admin-dashboard-modal');
+                var adminLoginForm = document.getElementById('admin-login-form');
+                var adminPassInput = document.getElementById('admin-password');
+                var loginError = document.getElementById('login-error');
+                var adminLaunchBtn = document.getElementById('admin-launch-btn');
+                var closeLoginBtn = document.getElementById('close-login-btn');
+                var closeDashboardBtn = document.getElementById('close-dashboard-btn');
+                var adminLogoutBtn = document.getElementById('admin-logout-btn');
+                var footerSecretLogo = document.getElementById('footer-secret-logo');
+
+                var projectForm = document.getElementById('project-form');
+                var editIdInput = document.getElementById('edit-project-id');
+                var titleInput = document.getElementById('project-title');
+                var mediaTypeInput = document.getElementById('project-media-type');
+                var mediaUrlInput = document.getElementById('project-media-url');
+                var descInput = document.getElementById('project-desc');
+                var linkInput = document.getElementById('project-link');
+                var btnTextInput = document.getElementById('project-btn-text');
+                var formHeading = document.getElementById('form-heading');
+                var cancelEditBtn = document.getElementById('cancel-edit-btn');
+                var adminItemsList = document.getElementById('admin-items-list');
+
+                var ADMIN_PASS = 'root2026'; // Secret Passcode
+                var isAuthenticated = false;
+
+                function openAdmin() {
+                    if (isAuthenticated) {
+                        renderAdminItems();
+                        adminDashboardModal.classList.remove('hidden');
+                    } else {
+                        loginError.classList.add('hidden');
+                        adminPassInput.value = '';
+                        adminLoginModal.classList.remove('hidden');
+                        setTimeout(function() { adminPassInput.focus(); }, 100);
+                    }
+                }
+
+                if (adminLaunchBtn) adminLaunchBtn.addEventListener('click', openAdmin);
+                if (footerSecretLogo) footerSecretLogo.addEventListener('dblclick', openAdmin);
+
+                // Keyboard Shortcut: Ctrl + Shift + A
+                window.addEventListener('keydown', function(e) {
+                    if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
+                        e.preventDefault();
+                        openAdmin();
                     }
                 });
+
+                if (closeLoginBtn) {
+                    closeLoginBtn.addEventListener('click', function() {
+                        adminLoginModal.classList.add('hidden');
+                    });
+                }
+
+                if (closeDashboardBtn) {
+                    closeDashboardBtn.addEventListener('click', function() {
+                        adminDashboardModal.classList.add('hidden');
+                    });
+                }
+
+                if (adminLogoutBtn) {
+                    adminLogoutBtn.addEventListener('click', function() {
+                        isAuthenticated = false;
+                        adminDashboardModal.classList.add('hidden');
+                        showToast('تم تسجيل الخروج بنجاح.');
+                    });
+                }
+
+                if (adminLoginForm) {
+                    adminLoginForm.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        if (adminPassInput.value.trim() === ADMIN_PASS) {
+                            isAuthenticated = true;
+                            adminLoginModal.classList.add('hidden');
+                            renderAdminItems();
+                            adminDashboardModal.classList.remove('hidden');
+                            showToast('مرحباً بك يا مدير الموقع!');
+                        } else {
+                            loginError.classList.remove('hidden');
+                            adminPassInput.value = '';
+                            adminPassInput.focus();
+                        }
+                    });
+                }
+
+                function resetProjectForm() {
+                    editIdInput.value = '';
+                    titleInput.value = '';
+                    mediaTypeInput.value = 'image';
+                    mediaUrlInput.value = '';
+                    descInput.value = '';
+                    linkInput.value = '';
+                    btnTextInput.value = 'تحميل البرنامج';
+                    formHeading.innerHTML = '<i class="fa-solid fa-plus-circle text-brand-600"></i> إضافة برنامج أو مشروع جديد';
+                    cancelEditBtn.classList.add('hidden');
+                }
+
+                if (cancelEditBtn) {
+                    cancelEditBtn.addEventListener('click', resetProjectForm);
+                }
+
+                function renderAdminItems() {
+                    if (!adminItemsList) return;
+                    var projects = getProjects();
+                    adminItemsList.innerHTML = '';
+
+                    if (projects.length === 0) {
+                        adminItemsList.innerHTML = '<p class="text-sm text-slate-500 py-3 text-center">لا توجد مشاريع مضافة حالياً.</p>';
+                        return;
+                    }
+
+                    projects.forEach(function(item) {
+                        var row = document.createElement('div');
+                        row.className = "flex flex-col sm:flex-row justify-between items-start sm:items-center p-3.5 bg-white dark:bg-dark-surface rounded-xl border border-slate-200 dark:border-dark-border gap-3";
+                        
+                        row.innerHTML = 
+                            '<div class="flex items-center gap-3 overflow-hidden">' +
+                                '<div class="w-10 h-10 rounded-lg bg-slate-100 dark:bg-dark-card flex items-center justify-center flex-shrink-0 text-brand-600 text-sm">' +
+                                    (item.mediaType === 'video' ? '<i class="fa-solid fa-video"></i>' : (item.mediaType === 'youtube' ? '<i class="fa-brands fa-youtube"></i>' : '<i class="fa-solid fa-image"></i>')) +
+                                '</div>' +
+                                '<div class="min-w-0">' +
+                                    '<h5 class="text-sm font-extrabold text-slate-900 dark:text-white truncate">' + item.title + '</h5>' +
+                                    '<p class="text-xs text-slate-500 dark:text-dark-muted truncate max-w-sm">' + item.desc + '</p>' +
+                                '</div>' +
+                            '</div>' +
+                            '<div class="flex items-center gap-2 self-end sm:self-center flex-shrink-0">' +
+                                '<button data-edit-id="' + item.id + '" class="edit-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 dark:bg-dark-card hover:bg-brand-50 hover:text-brand-600 dark:hover:text-brand-400 transition-colors">' +
+                                    '<i class="fa-solid fa-pen-to-square me-1"></i> تعديل' +
+                                '</button>' +
+                                '<button data-del-id="' + item.id + '" class="del-btn px-3 py-1.5 rounded-lg text-xs font-bold text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors">' +
+                                    '<i class="fa-solid fa-trash me-1"></i> حذف' +
+                                '</button>' +
+                            '</div>';
+
+                        adminItemsList.appendChild(row);
+                    });
+
+                    // Bind edit buttons
+                    var editBtns = adminItemsList.querySelectorAll('.edit-btn');
+                    editBtns.forEach(function(btn) {
+                        btn.addEventListener('click', function() {
+                            var id = this.getAttribute('data-edit-id');
+                            var currentProjects = getProjects();
+                            var target = currentProjects.find(function(p) { return p.id === id; });
+                            if (target) {
+                                editIdInput.value = target.id;
+                                titleInput.value = target.title;
+                                mediaTypeInput.value = target.mediaType || 'image';
+                                mediaUrlInput.value = target.mediaUrl;
+                                descInput.value = target.desc;
+                                linkInput.value = target.link;
+                                btnTextInput.value = target.btnText || 'تحميل البرنامج';
+                                formHeading.innerHTML = '<i class="fa-solid fa-pen-to-square text-brand-600"></i> تعديل البرنامج: ' + target.title;
+                                cancelEditBtn.classList.remove('hidden');
+                                projectForm.scrollIntoView({ behavior: 'smooth' });
+                            }
+                        });
+                    });
+
+                    // Bind delete buttons
+                    var delBtns = adminItemsList.querySelectorAll('.del-btn');
+                    delBtns.forEach(function(btn) {
+                        btn.addEventListener('click', function() {
+                            var id = this.getAttribute('data-del-id');
+                            var currentProjects = getProjects();
+                            var updated = currentProjects.filter(function(p) { return p.id !== id; });
+                            saveProjects(updated);
+                            renderAdminItems();
+                            renderPublicProjects();
+                            showToast('تم حذف البرنامج بنجاح.');
+                        });
+                    });
+                }
+
+                if (projectForm) {
+                    projectForm.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        var currentProjects = getProjects();
+                        var editId = editIdInput.value;
+
+                        var newProject = {
+                            id: editId ? editId : ('proj_' + Date.now()),
+                            title: titleInput.value.trim(),
+                            mediaType: mediaTypeInput.value,
+                            mediaUrl: mediaUrlInput.value.trim(),
+                            desc: descInput.value.trim(),
+                            link: linkInput.value.trim(),
+                            btnText: btnTextInput.value.trim() || 'تحميل البرنامج'
+                        };
+
+                        if (editId) {
+                            var index = currentProjects.findIndex(function(p) { return p.id === editId; });
+                            if (index > -1) {
+                                currentProjects[index] = newProject;
+                                showToast('تم تحديث بيانات البرنامج بنجاح!');
+                            }
+                        } else {
+                            currentProjects.unshift(newProject);
+                            showToast('تمت إضافة البرنامج الجديد بنجاح!');
+                        }
+
+                        saveProjects(currentProjects);
+                        resetProjectForm();
+                        renderAdminItems();
+                        renderPublicProjects();
+                    });
+                }
+
+                // Initial render of projects
+                renderPublicProjects();
+
             });
         })();
     </script>
