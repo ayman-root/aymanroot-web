@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AYMAN ROOT</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        arabic: ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            900: '#4c1d95',
+                        },
+                        dark: {
+                            bg: '#0f172a',
+                            surface: '#1e293b',
+                            border: '#334155'
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-out forwards',
+                        'slide-up': 'slideUp 0.6s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html[dir="rtl"] body { font-family: 'Cairo', sans-serif; }
+        html[dir="ltr"] body { font-family: 'Inter', sans-serif; }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .dark .glass {
+            background: rgba(15, 23, 42, 0.85);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .dark ::-webkit-scrollbar-thumb { background: #475569; }
+        
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(to right, #7c3aed, #3b82f6);
+        }
+        
+        * { transition: background-color 0.3s ease, border-color 0.3s ease; }
+        
+        select.lang-select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 0.5rem center;
+            background-size: 1em;
+        }
+        html[dir="rtl"] select.lang-select {
+            background-position: left 0.5rem center;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 dark:bg-dark-bg dark:text-gray-100 antialiased selection:bg-primary-500 selection:text-white">
+
+    <nav class="fixed w-full z-50 glass transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-600 to-blue-500 flex items-center justify-center text-white text-xl font-bold shadow-lg">
+                        AR
+                    </div>
+                    <a href="#" class="text-2xl font-black tracking-tight dark:text-white">AYMAN ROOT</a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center space-x-8 rtl:space-x-reverse">
+                    <a href="#home" data-i18n="nav_home" class="text-gray-600 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 font-semibold transition-colors">الرئيسية</a>
+                    <a href="#services" data-i18n="nav_services" class="text-gray-600 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 font-semibold transition-colors">الخدمات</a>
+                    <a href="#software" data-i18n="nav_software" class="text-gray-600 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 font-semibold transition-colors">البرامج</a>
+                    <a href="#skills" data-i18n="nav_skills" class="text-gray-600 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 font-semibold transition-colors">المهارات</a>
+                    
+                    <div class="flex items-center gap-4 rtl:gap-4 border-l rtl:border-l-0 rtl:border-r border-gray-200 dark:border-gray-700 pl-4 rtl:pl-0 rtl:pr-4">
+                        <select id="lang-switcher" class="lang-select bg-transparent text-gray-700 dark:text-gray-200 font-medium py-1 px-3 pr-8 rtl:pr-3 rtl:pl-8 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-primary-500 focus:outline-none cursor-pointer">
+                            <option value="ar">العربية</option>
+                            <option value="en">English</option>
+                            <option value="fr">Français</option>
+                            <option value="zh">中文</option>
+                        </select>
+                        <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-dark-surface transition-colors focus:outline-none text-gray-600 dark:text-gray-300">
+                            <i id="theme-icon" class="fa-solid fa-moon text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden flex items-center gap-3">
+                    <button id="theme-toggle-mobile" class="p-2 text-gray-600 dark:text-gray-300 focus:outline-none">
+                        <i class="fa-solid fa-moon text-xl"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="text-gray-600 dark:text-gray-300 p-2 focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden lg:hidden glass border-t border-gray-100 dark:border-gray-800">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#home" data-i18n="nav_home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-primary-50 dark:hover:bg-dark-surface">الرئيسية</a>
+                <a href="#services" data-i18n="nav_services" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-primary-50 dark:hover:bg-dark-surface">الخدمات</a>
+                <a href="#software" data-i18n="nav_software" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-primary-50 dark:hover:bg-dark-surface">البرامج</a>
+                <a href="#skills" data-i18n="nav_skills" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-primary-50 dark:hover:bg-dark-surface">المهارات</a>
+                <div class="pt-4 border-t border-gray-200 dark:border-gray-700">
+                    <label data-i18n="choose_lang" class="block text-sm text-gray-500 dark:text-gray-400 mb-2 px-3">اختر اللغة</label>
+                    <select id="lang-switcher-mobile" class="w-full bg-white dark:bg-dark-surface text-gray-700 dark:text-gray-200 py-2 px-3 rounded-lg border border-gray-200 dark:border-gray-700 focus:outline-none">
+                        <option value="ar">العربية</option>
+                        <option value="en">English</option>
+                        <option value="fr">Français</option>
+                        <option value="zh">中文</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden min-h-screen flex items-center">
+        <!-- Background Pattern & Shapes -->
+        <div class="absolute inset-0 z-0 opacity-5 dark:opacity-10" style="background-image: radial-gradient(#7c3aed 1px, transparent 1px); background-size: 30px 30px;"></div>
+        <div class="absolute top-20 right-10 w-72 h-72 bg-primary-400/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse"></div>
+        <div class="absolute bottom-20 left-10 w-72 h-72 bg-blue-400/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse" style="animation-delay: 2s;"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full text-center">
+            <div class="animate-slide-up">
+                <span data-i18n="hero_badge" class="inline-block py-1.5 px-4 rounded-full bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 text-sm font-bold mb-6 border border-primary-100 dark:border-primary-800">أهلاً بك في مساحتي الإبداعية</span>
+                
+                <h1 class="text-5xl md:text-7xl font-black mb-6 text-gray-900 dark:text-white leading-tight">
+                    <span data-i18n="hero_title_1">أنا</span> <span class="text-gradient">AYMAN ROOT</span><br>
+                    <span data-i18n="hero_title_2">مطور برمجيات محترف</span>
+                </h1>
+                
+                <p data-i18n="hero_subtitle" class="mt-4 text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-10">
+                    أقوم بتصميم وتطوير حلول برمجية متطورة، وتطبيقات ذكية، وأنظمة أتمتة تساعدك على تحقيق أهدافك الرقمية بكفاءة عالية.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#software" data-i18n="btn_explore" class="px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white rounded-xl font-bold text-lg shadow-lg shadow-primary-500/30 transition-transform transform hover:-translate-y-1">
+                        تصفح برامجي
+                    </a>
+                    <a href="#contact" data-i18n="btn_contact" class="px-8 py-4 bg-white dark:bg-dark-surface border-2 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white rounded-xl font-bold text-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-transform transform hover:-translate-y-1">
+                        تواصل معي
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-24 bg-white dark:bg-dark-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 data-i18n="services_title" class="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-4">الخدمات التي أقدمها</h2>
+                <div class="w-20 h-1 bg-primary-500 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-gray-50 dark:bg-dark-surface p-8 rounded-2xl border border-gray-100 dark:border-gray-700 hover:shadow-xl hover:border-primary-500/30 transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <h3 data-i18n="srv_dev_title" class="text-xl font-bold mb-3 dark:text-white">تطوير البرمجيات</h3>
+                    <p data-i18n="srv_dev_desc" class="text-gray-600 dark:text-gray-400">بناء أنظمة برمجية متكاملة ومخصصة تناسب احتياجات عملك بدقة واحترافية.</p>
+                </div>
+                <!-- Service 2 -->
+                <div class="bg-gray-50 dark:bg-dark-surface p-8 rounded-2xl border border-gray-100 dark:border-gray-700 hover:shadow-xl hover:border-primary-500/30 transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-mobile-screen"></i>
+                    </div>
+                    <h3 data-i18n="srv_app_title" class="text-xl font-bold mb-3 dark:text-white">تطبيقات الموبايل</h3>
+                    <p data-i18n="srv_app_desc" class="text-gray-600 dark:text-gray-400">برمجة تطبيقات سريعة وذات واجهات عصرية لمنصات الأندرويد والآيفون.</p>
+                </div>
+                <!-- Service 3 -->
+                <div class="bg-gray-50 dark:bg-dark-surface p-8 rounded-2xl border border-gray-100 dark:border-gray-700 hover:shadow-xl hover:border-primary-500/30 transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <h3 data-i18n="srv_bot_title" class="text-xl font-bold mb-3 dark:text-white">برمجة البوتات والأتمتة</h3>
+                    <p data-i18n="srv_bot_desc" class="text-gray-600 dark:text-gray-400">تطوير بوتات ذكية لتيليجرام ومنصات أخرى، بالإضافة إلى سكربتات أتمتة المهام.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="software" class="py-24 bg-gray-50 dark:bg-dark-surface/50 border-y border-gray-200 dark:border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 data-i18n="software_title" class="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-4">أحدث البرامج والمشاريع</h2>
+                <p data-i18n="software_subtitle" class="text-gray-600 dark:text-gray-400 text-lg">مجموعة من البرامج والأدوات الجاهزة التي قمت بتطويرها للتحميل المباشر.</p>
+                <div class="w-20 h-1 bg-primary-500 mx-auto rounded-full mt-6"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- App Card 1 -->
+                <div class="bg-white dark:bg-dark-surface rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl border border-gray-100 dark:border-gray-700 transition-all duration-300 flex flex-col group">
+                    <div class="relative h-56 overflow-hidden bg-gray-200 dark:bg-gray-800">
+                        <img src="https://placehold.co/600x400/8b5cf6/ffffff?text=Bot+Manager" alt="Bot Manager" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 data-i18n="app1_title" class="text-2xl font-bold mb-2 dark:text-white">بوت إدارة المجموعات</h3>
+                        <p data-i18n="app1_desc" class="text-gray-600 dark:text-gray-400 mb-6 flex-grow">برنامج متكامل لإدارة مجموعات التيليجرام بذكاء، مع لوحة تحكم وإحصائيات دقيقة وميزات الحماية.</p>
+                        <a href="#" class="w-full flex items-center justify-center gap-2 py-3 bg-gray-900 dark:bg-gray-700 hover:bg-primary-600 dark:hover:bg-primary-600 text-white rounded-xl font-bold transition-colors">
+                            <i class="fa-solid fa-cloud-arrow-down"></i> <span data-i18n="btn_download">تحميل البرنامج</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- App Card 2 -->
+                <div class="bg-white dark:bg-dark-surface rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl border border-gray-100 dark:border-gray-700 transition-all duration-300 flex flex-col group">
+                    <div class="relative h-56 overflow-hidden bg-gray-200 dark:bg-gray-800">
+                        <img src="https://placehold.co/600x400/3b82f6/ffffff?text=Data+Scraper" alt="Data Scraper" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 data-i18n="app2_title" class="text-2xl font-bold mb-2 dark:text-white">أداة استخراج البيانات</h3>
+                        <p data-i18n="app2_desc" class="text-gray-600 dark:text-gray-400 mb-6 flex-grow">أداة قوية لاستخراج البيانات من المواقع وتصديرها بصيغ متعددة بسهولة وسرعة عالية.</p>
+                        <a href="#" class="w-full flex items-center justify-center gap-2 py-3 bg-gray-900 dark:bg-gray-700 hover:bg-primary-600 dark:hover:bg-primary-600 text-white rounded-xl font-bold transition-colors">
+                            <i class="fa-solid fa-cloud-arrow-down"></i> <span data-i18n="btn_download">تحميل البرنامج</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- App Card 3 -->
+                <div class="bg-white dark:bg-dark-surface rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl border border-gray-100 dark:border-gray-700 transition-all duration-300 flex flex-col group">
+                    <div class="relative h-56 overflow-hidden bg-gray-200 dark:bg-gray-800">
+                        <img src="https://placehold.co/600x400/10b981/ffffff?text=System+Cleaner" alt="System Cleaner" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 data-i18n="app3_title" class="text-2xl font-bold mb-2 dark:text-white">منظف النظام المتقدم</h3>
+                        <p data-i18n="app3_desc" class="text-gray-600 dark:text-gray-400 mb-6 flex-grow">برنامج لتنظيف وتسريع أنظمة التشغيل وحل مشاكل البطء بضغطة زر واحدة.</p>
+                        <a href="#" class="w-full flex items-center justify-center gap-2 py-3 bg-gray-900 dark:bg-gray-700 hover:bg-primary-600 dark:hover:bg-primary-600 text-white rounded-xl font-bold transition-colors">
+                            <i class="fa-solid fa-cloud-arrow-down"></i> <span data-i18n="btn_download">تحميل البرنامج</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-24 bg-white dark:bg-dark-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 data-i18n="skills_title" class="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-4">مهاراتي التقنية</h2>
+                <div class="w-20 h-1 bg-primary-500 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Skill List -->
+                <div class="space-y-6">
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-lg font-bold flex items-center gap-2 dark:text-white"><i class="fa-brands fa-python text-yellow-500"></i> Python</span>
+                            <span class="text-primary-600 dark:text-primary-400 font-bold">95%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                            <div class="bg-gradient-to-r rtl:bg-gradient-to-l from-yellow-400 to-yellow-600 h-3 rounded-full" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-lg font-bold flex items-center gap-2 dark:text-white"><i class="fa-brands fa-js text-yellow-400"></i> JavaScript / TS</span>
+                            <span class="text-primary-600 dark:text-primary-400 font-bold">90%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                            <div class="bg-gradient-to-r rtl:bg-gradient-to-l from-yellow-300 to-yellow-500 h-3 rounded-full" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-lg font-bold flex items-center gap-2 dark:text-white"><i class="fa-solid fa-mobile-screen text-blue-500"></i> Mobile Development</span>
+                            <span class="text-primary-600 dark:text-primary-400 font-bold">85%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                            <div class="bg-gradient-to-r rtl:bg-gradient-to-l from-blue-400 to-blue-600 h-3 rounded-full" style="width: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-lg font-bold flex items-center gap-2 dark:text-white"><i class="fa-solid fa-server text-green-500"></i> Backend (Node/Django)</span>
+                            <span class="text-primary-600 dark:text-primary-400 font-bold">88%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                            <div class="bg-gradient-to-r rtl:bg-gradient-to-l from-green-400 to-green-600 h-3 rounded-full" style="width: 88%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-lg font-bold flex items-center gap-2 dark:text-white"><i class="fa-solid fa-database text-purple-500"></i> Databases (SQL/NoSQL)</span>
+                            <span class="text-primary-600 dark:text-primary-400 font-bold">85%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                            <div class="bg-gradient-to-r rtl:bg-gradient-to-l from-purple-400 to-purple-600 h-3 rounded-full" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-lg font-bold flex items-center gap-2 dark:text-white"><i class="fa-brands fa-git-alt text-orange-500"></i> Git & DevOps</span>
+                            <span class="text-primary-600 dark:text-primary-400 font-bold">80%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                            <div class="bg-gradient-to-r rtl:bg-gradient-to-l from-orange-400 to-orange-600 h-3 rounded-full" style="width: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="bg-gray-900 pt-16 pb-8 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+                <!-- Branding -->
+                <div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-blue-500 flex items-center justify-center text-white text-xl font-bold shadow-lg">
+                            AR
+                        </div>
+                        <span class="text-2xl font-black tracking-tight text-white">AYMAN ROOT</span>
+                    </div>
+                    <p data-i18n="footer_desc" class="text-gray-400 text-sm leading-relaxed mb-6">
+                        أقدم لك أفضل الحلول البرمجية المتكاملة لتطوير أعمالك ونقلها إلى مستوى احترافي.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 data-i18n="footer_links_title" class="text-white text-lg font-bold mb-6">روابط هامة</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#home" data-i18n="nav_home" class="text-gray-400 hover:text-primary-500 transition-colors">الرئيسية</a></li>
+                        <li><a href="#services" data-i18n="nav_services" class="text-gray-400 hover:text-primary-500 transition-colors">الخدمات</a></li>
+                        <li><a href="#software" data-i18n="nav_software" class="text-gray-400 hover:text-primary-500 transition-colors">البرامج</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact & Socials -->
+                <div>
+                    <h4 data-i18n="footer_contact_title" class="text-white text-lg font-bold mb-6">تواصل معي</h4>
+                    <div class="flex gap-4 mb-6">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-blue-500 hover:text-white transition-all transform hover:scale-110">
+                            <i class="fa-brands fa-telegram text-xl"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-gray-600 hover:text-white transition-all transform hover:scale-110">
+                            <i class="fa-brands fa-github text-xl"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-blue-400 hover:text-white transition-all transform hover:scale-110">
+                            <i class="fa-brands fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-blue-700 hover:text-white transition-all transform hover:scale-110">
+                            <i class="fa-brands fa-facebook text-xl"></i>
+                        </a>
+                    </div>
+                    <a href="mailto:contact@aymanroot.com" class="text-gray-400 hover:text-white flex items-center gap-2">
+                        <i class="fa-solid fa-envelope text-primary-500"></i> contact@aymanroot.com
+                    </a>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-gray-800 text-center">
+                <p class="text-gray-500 text-sm">
+                    &copy; <span id="year"></span> AYMAN ROOT. <span data-i18n="footer_rights">جميع الحقوق محفوظة.</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Use an IIFE and strict mode to prevent variable leaking and catch syntax issues safely
+        (function() {
+            'use strict';
+
+            document.addEventListener('DOMContentLoaded', function() {
+                // Set Current Year securely
+                var yearEl = document.getElementById('year');
+                if (yearEl) {
+                    yearEl.textContent = new Date().getFullYear();
+                }
+
+                // Translation Dictionary (Clean, single-line strings to avoid SyntaxErrors)
+                var translations = {
+                    'ar': {
+                        'nav_home': 'الرئيسية', 'nav_services': 'الخدمات', 'nav_software': 'البرامج', 'nav_skills': 'المهارات', 'choose_lang': 'اختر اللغة',
+                        'hero_badge': 'أهلاً بك في مساحتي الإبداعية', 'hero_title_1': 'أنا', 'hero_title_2': 'مطور برمجيات محترف',
+                        'hero_subtitle': 'أقوم بتصميم وتطوير حلول برمجية متطورة، وتطبيقات ذكية، وأنظمة أتمتة تساعدك على تحقيق أهدافك الرقمية بكفاءة عالية.',
+                        'btn_explore': 'تصفح برامجي', 'btn_contact': 'تواصل معي',
+                        'services_title': 'الخدمات التي أقدمها',
+                        'srv_dev_title': 'تطوير البرمجيات', 'srv_dev_desc': 'بناء أنظمة برمجية متكاملة ومخصصة تناسب احتياجات عملك بدقة واحترافية.',
+                        'srv_app_title': 'تطبيقات الموبايل', 'srv_app_desc': 'برمجة تطبيقات سريعة وذات واجهات عصرية لمنصات الأندرويد والآيفون.',
+                        'srv_bot_title': 'برمجة البوتات والأتمتة', 'srv_bot_desc': 'تطوير بوتات ذكية لتيليجرام ومنصات أخرى، بالإضافة إلى سكربتات أتمتة المهام.',
+                        'software_title': 'أحدث البرامج والمشاريع', 'software_subtitle': 'مجموعة من البرامج والأدوات الجاهزة التي قمت بتطويرها للتحميل المباشر.',
+                        'app1_title': 'بوت إدارة المجموعات', 'app1_desc': 'برنامج متكامل لإدارة مجموعات التيليجرام بذكاء، مع لوحة تحكم وإحصائيات دقيقة وميزات الحماية.',
+                        'app2_title': 'أداة استخراج البيانات', 'app2_desc': 'أداة قوية لاستخراج البيانات من المواقع وتصديرها بصيغ متعددة بسهولة وسرعة عالية.',
+                        'app3_title': 'منظف النظام المتقدم', 'app3_desc': 'برنامج لتنظيف وتسريع أنظمة التشغيل وحل مشاكل البطء بضغطة زر واحدة.',
+                        'btn_download': 'تحميل البرنامج',
+                        'skills_title': 'مهاراتي التقنية',
+                        'footer_desc': 'أقدم لك أفضل الحلول البرمجية المتكاملة لتطوير أعمالك ونقلها إلى مستوى احترافي.',
+                        'footer_links_title': 'روابط هامة', 'footer_contact_title': 'تواصل معي', 'footer_rights': 'جميع الحقوق محفوظة.'
+                    },
+                    'en': {
+                        'nav_home': 'Home', 'nav_services': 'Services', 'nav_software': 'Software', 'nav_skills': 'Skills', 'choose_lang': 'Choose Language',
+                        'hero_badge': 'Welcome to my creative space', 'hero_title_1': 'I am', 'hero_title_2': 'Professional Developer',
+                        'hero_subtitle': 'I design and develop advanced software solutions, smart applications, and automation systems to help you achieve your digital goals efficiently.',
+                        'btn_explore': 'Explore Software', 'btn_contact': 'Contact Me',
+                        'services_title': 'Services I Provide',
+                        'srv_dev_title': 'Software Development', 'srv_dev_desc': 'Building fully integrated and customized software systems that perfectly suit your business needs.',
+                        'srv_app_title': 'Mobile Applications', 'srv_app_desc': 'Programming fast and modern applications for Android and iOS platforms.',
+                        'srv_bot_title': 'Bots & Automation', 'srv_bot_desc': 'Developing smart bots for Telegram and other platforms, in addition to task automation scripts.',
+                        'software_title': 'Latest Software & Projects', 'software_subtitle': 'A collection of ready-made software and tools I developed for direct download.',
+                        'app1_title': 'Group Management Bot', 'app1_desc': 'A complete program for smartly managing Telegram groups, with a dashboard, precise statistics, and protection features.',
+                        'app2_title': 'Data Scraper Tool', 'app2_desc': 'A powerful tool for extracting data from websites and exporting it to multiple formats easily and quickly.',
+                        'app3_title': 'Advanced System Cleaner', 'app3_desc': 'A program to clean and speed up operating systems and solve slowdown issues with a single click.',
+                        'btn_download': 'Download Software',
+                        'skills_title': 'Technical Skills',
+                        'footer_desc': 'I provide the best integrated software solutions to develop your business and take it to a professional level.',
+                        'footer_links_title': 'Important Links', 'footer_contact_title': 'Contact Me', 'footer_rights': 'All rights reserved.'
+                    },
+                    'fr': {
+                        'nav_home': 'Accueil', 'nav_services': 'Services', 'nav_software': 'Logiciels', 'nav_skills': 'Compétences', 'choose_lang': 'Choisir la langue',
+                        'hero_badge': 'Bienvenue dans mon espace créatif', 'hero_title_1': 'Je suis', 'hero_title_2': 'Développeur Professionnel',
+                        'hero_subtitle': 'Je conçois et développe des solutions logicielles avancées, des applications intelligentes et des systèmes d\'automatisation pour vous aider à atteindre vos objectifs numériques.',
+                        'btn_explore': 'Explorer les logiciels', 'btn_contact': 'Contactez-moi',
+                        'services_title': 'Services que je fournis',
+                        'srv_dev_title': 'Développement de logiciels', 'srv_dev_desc': 'Construire des systèmes logiciels entièrement intégrés et personnalisés qui répondent parfaitement aux besoins de votre entreprise.',
+                        'srv_app_title': 'Applications Mobiles', 'srv_app_desc': 'Programmation d\'applications rapides et modernes pour les plateformes Android et iOS.',
+                        'srv_bot_title': 'Bots et Automatisation', 'srv_bot_desc': 'Développement de bots intelligents pour Telegram et autres plateformes, en plus des scripts d\'automatisation des tâches.',
+                        'software_title': 'Derniers Logiciels et Projets', 'software_subtitle': 'Une collection de logiciels et d\'outils prêts à l\'emploi que j\'ai développés pour un téléchargement direct.',
+                        'app1_title': 'Bot de gestion de groupe', 'app1_desc': 'Un programme complet pour gérer intelligemment les groupes Telegram, avec un tableau de bord, des statistiques précises et des fonctionnalités de protection.',
+                        'app2_title': 'Outil d\'extraction de données', 'app2_desc': 'Un outil puissant pour extraire des données de sites Web et les exporter vers plusieurs formats facilement et rapidement.',
+                        'app3_title': 'Nettoyeur de Système Avancé', 'app3_desc': 'Un programme pour nettoyer et accélérer les systèmes d\'exploitation et résoudre les problèmes de lenteur en un seul clic.',
+                        'btn_download': 'Télécharger',
+                        'skills_title': 'Compétences Techniques',
+                        'footer_desc': 'Je fournis les meilleures solutions logicielles intégrées pour développer votre entreprise et la porter à un niveau professionnel.',
+                        'footer_links_title': 'Liens importants', 'footer_contact_title': 'Contact', 'footer_rights': 'Tous droits réservés.'
+                    },
+                    'zh': {
+                        'nav_home': '首页', 'nav_services': '服务', 'nav_software': '软件', 'nav_skills': '技能', 'choose_lang': '选择语言',
+                        'hero_badge': '欢迎来到我的创意空间', 'hero_title_1': '我是', 'hero_title_2': '专业开发人员',
+                        'hero_subtitle': '我设计和开发先进的软件解决方案、智能应用程序和自动化系统，帮助您高效实现数字目标。',
+                        'btn_explore': '探索软件', 'btn_contact': '联系我',
+                        'services_title': '我提供的服务',
+                        'srv_dev_title': '软件开发', 'srv_dev_desc': '构建完全集成和定制的软件系统，完美适合您的业务需求。',
+                        'srv_app_title': '移动应用', 'srv_app_desc': '为 Android 和 iOS 平台编写快速现代的应用程序。',
+                        'srv_bot_title': '机器人和自动化', 'srv_bot_desc': '除了任务自动化脚本之外，还为 Telegram 和其他平台开发智能机器人。',
+                        'software_title': '最新软件和项目', 'software_subtitle': '我开发的一系列现成的软件和工具，可直接下载。',
+                        'app1_title': '群组管理机器人', 'app1_desc': '一个用于智能管理 Telegram 群组的完整程序，具有仪表板、精确的统计数据和保护功能。',
+                        'app2_title': '数据抓取工具', 'app2_desc': '一个强大的工具，可从网站提取数据并快速轻松地将其导出为多种格式。',
+                        'app3_title': '高级系统清理器', 'app3_desc': '一个只需单击即可清理和加速操作系统并解决速度缓慢问题的程序。',
+                        'btn_download': '下载软件',
+                        'skills_title': '技术能力',
+                        'footer_desc': '我提供最佳的集成软件解决方案来发展您的业务并将其提升到专业水平。',
+                        'footer_links_title': '重要链接', 'footer_contact_title': '联系我', 'footer_rights': '版权所有。'
+                    }
+                };
+
+                // Language Logic
+                var langSelect = document.getElementById('lang-switcher');
+                var langSelectMobile = document.getElementById('lang-switcher-mobile');
+                
+                function setLanguage(lang) {
+                    if (!lang || !translations[lang]) lang = 'ar';
+                    
+                    document.documentElement.lang = lang;
+                    document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+                    
+                    if (langSelect) langSelect.value = lang;
+                    if (langSelectMobile) langSelectMobile.value = lang;
+                    
+                    var elements = document.querySelectorAll('[data-i18n]');
+                    for (var i = 0; i < elements.length; i++) {
+                        var el = elements[i];
+                        var key = el.getAttribute('data-i18n');
+                        if (translations[lang] && translations[lang][key]) {
+                            el.textContent = translations[lang][key];
+                        }
+                    }
+                    
+                    try {
+                        localStorage.setItem('preferred_language', lang);
+                    } catch(e) {}
+                }
+
+                function handleLangChange(e) {
+                    setLanguage(e.target.value);
+                }
+
+                if (langSelect) langSelect.addEventListener('change', handleLangChange);
+                if (langSelectMobile) langSelectMobile.addEventListener('change', handleLangChange);
+
+                var savedLang = 'ar';
+                try {
+                    savedLang = localStorage.getItem('preferred_language') || 'ar';
+                } catch(e) {}
+                setLanguage(savedLang);
+
+                // Theme Logic
+                var themeBtn = document.getElementById('theme-toggle');
+                var themeBtnMobile = document.getElementById('theme-toggle-mobile');
+                var themeIcon = document.getElementById('theme-icon');
+                var themeIconMobile = themeBtnMobile ? themeBtnMobile.querySelector('i') : null;
+
+                function updateThemeIcons(isDark) {
+                    if (isDark) {
+                        if (themeIcon) { themeIcon.classList.replace('fa-moon', 'fa-sun'); themeIcon.classList.add('text-yellow-400'); }
+                        if (themeIconMobile) { themeIconMobile.classList.replace('fa-moon', 'fa-sun'); themeIconMobile.classList.add('text-yellow-400'); }
+                    } else {
+                        if (themeIcon) { themeIcon.classList.replace('fa-sun', 'fa-moon'); themeIcon.classList.remove('text-yellow-400'); }
+                        if (themeIconMobile) { themeIconMobile.classList.replace('fa-sun', 'fa-moon'); themeIconMobile.classList.remove('text-yellow-400'); }
+                    }
+                }
+
+                function toggleTheme() {
+                    var isDark = document.documentElement.classList.toggle('dark');
+                    try {
+                        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                    } catch(e) {}
+                    updateThemeIcons(isDark);
+                }
+
+                if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
+                if (themeBtnMobile) themeBtnMobile.addEventListener('click', toggleTheme);
+
+                var isDarkMode = false;
+                try {
+                    isDarkMode = localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+                } catch(e) {
+                    isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                }
+
+                if (isDarkMode) {
+                    document.documentElement.classList.add('dark');
+                    updateThemeIcons(true);
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    updateThemeIcons(false);
+                }
+
+                // Mobile Menu Logic
+                var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+                var mobileMenu = document.getElementById('mobile-menu');
+                
+                if (mobileMenuBtn && mobileMenu) {
+                    mobileMenuBtn.addEventListener('click', function() {
+                        mobileMenu.classList.toggle('hidden');
+                    });
+
+                    var links = mobileMenu.querySelectorAll('a');
+                    for (var j = 0; j < links.length; j++) {
+                        links[j].addEventListener('click', function() {
+                            mobileMenu.classList.add('hidden');
+                        });
+                    }
+                }
+
+                // Navbar Scroll
+                window.addEventListener('scroll', function() {
+                    var navbar = document.getElementById('navbar');
+                    if (navbar) {
+                        if (window.scrollY > 20) {
+                            navbar.classList.add('shadow-md');
+                        } else {
+                            navbar.classList.remove('shadow-md');
+                        }
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
