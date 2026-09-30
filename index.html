@@ -58,13 +58,13 @@
         html[dir="ltr"] body { font-family: 'Inter', sans-serif; }
 
         .glass-nav {
-            background: rgba(255, 255, 255, 0.88);
+            background: rgba(255, 255, 255, 0.90);
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
             border-bottom: 1px solid rgba(226, 232, 240, 0.8);
         }
         .dark .glass-nav {
-            background: rgba(10, 15, 29, 0.88);
+            background: rgba(10, 15, 29, 0.90);
             border-bottom: 1px solid rgba(51, 65, 85, 0.6);
         }
 
@@ -81,7 +81,6 @@
         .dark ::-webkit-scrollbar-thumb { background: #334155; }
         ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
 
-        /* Custom dropdown arrow */
         select.lang-select {
             appearance: none;
             background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
@@ -103,7 +102,7 @@
 <body class="bg-slate-50 text-slate-900 dark:bg-dark-bg dark:text-dark-text antialiased selection:bg-brand-600 selection:text-white transition-colors duration-200">
 
     <!-- Top Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300" id="navbar">
+    <nav class="fixed top-0 left-0 right-0 z-40 glass-nav transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 
@@ -113,7 +112,7 @@
                         AR
                     </div>
                     <div class="flex flex-col">
-                        <span class="text-2xl font-black tracking-tight text-slate-900 dark:text-white">AYMAN ROOT</span>
+                        <span class="text-2xl font-black tracking-tight text-slate-900 dark:text-white" id="brand-logo-text">AYMAN ROOT</span>
                         <span class="text-[10px] uppercase font-bold tracking-widest text-brand-600 dark:text-brand-400 -mt-1">Software Lab</span>
                     </div>
                 </a>
@@ -135,7 +134,6 @@
                             <option value="zh">中文</option>
                         </select>
 
-                        <!-- Theme Toggle Button -->
                         <button id="theme-toggle" aria-label="Toggle Theme" class="p-2.5 rounded-xl border border-slate-200 dark:border-dark-border hover:bg-slate-100 dark:hover:bg-dark-surface text-slate-700 dark:text-yellow-400 transition-colors focus:outline-none shadow-sm">
                             <i id="theme-icon" class="fa-solid fa-moon text-lg"></i>
                         </button>
@@ -164,7 +162,7 @@
                 <a href="#contact" data-i18n="nav_contact" class="block py-2 text-base font-bold text-slate-700 dark:text-slate-200 hover:text-brand-600 dark:hover:text-brand-400">التواصل</a>
                 
                 <div class="pt-4 border-t border-slate-200 dark:border-dark-border">
-                    <label data-i18n="choose_lang" class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">اختر اللغة</label>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">اختر اللغة</label>
                     <select id="lang-switcher-mobile" class="w-full bg-white dark:bg-dark-surface text-slate-800 dark:text-slate-200 py-2.5 px-3 rounded-xl border border-slate-300 dark:border-dark-border focus:outline-none focus:ring-2 focus:ring-brand-500">
                         <option value="ar">العربية</option>
                         <option value="en">English</option>
@@ -178,32 +176,31 @@
 
     <!-- Hero Section -->
     <section id="home" class="relative pt-36 pb-20 lg:pt-48 lg:pb-32 overflow-hidden min-h-screen flex items-center">
-        <!-- Ambient Background -->
         <div class="absolute inset-0 z-0 opacity-15 dark:opacity-10 pointer-events-none" style="background-image: radial-gradient(#7c3aed 1.2px, transparent 1.2px); background-size: 32px 32px;"></div>
         <div class="absolute top-1/4 right-5 w-80 h-80 bg-brand-500/20 rounded-full blur-3xl pointer-events-none"></div>
         <div class="absolute bottom-10 left-5 w-80 h-80 bg-blue-500/20 rounded-full blur-3xl pointer-events-none"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full text-center">
             <div class="max-w-3xl mx-auto">
-                <span data-i18n="hero_badge" class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-brand-50 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300 text-sm font-black mb-6 border border-brand-200 dark:border-brand-700/60 shadow-sm">
+                <span id="display-hero-badge" class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-brand-50 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300 text-sm font-black mb-6 border border-brand-200 dark:border-brand-700/60 shadow-sm">
                     <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
                     أهلاً بك في مساحتي الإبداعية
                 </span>
                 
                 <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black mb-6 text-slate-900 dark:text-white leading-[1.2]">
-                    <span data-i18n="hero_title_1">أنا</span> <span class="text-gradient">AYMAN ROOT</span><br>
-                    <span data-i18n="hero_title_2" class="text-slate-800 dark:text-slate-100">مطور برمجيات وأنظمة متقدمة</span>
+                    <span>أنا</span> <span id="display-hero-name" class="text-gradient">AYMAN ROOT</span><br>
+                    <span id="display-hero-title" class="text-slate-800 dark:text-slate-100">مطور برمجيات وأنظمة متقدمة</span>
                 </h1>
                 
-                <p data-i18n="hero_subtitle" class="text-lg sm:text-xl text-slate-600 dark:text-dark-muted font-medium mb-10 leading-relaxed">
+                <p id="display-hero-desc" class="text-lg sm:text-xl text-slate-600 dark:text-dark-muted font-medium mb-10 leading-relaxed">
                     أقوم بابتكار وتطوير أدوات تقنية متطورة، بوتات ذكية، وتطبيقات ويب وسحابية تصنع الفارق وتساعدك على أتمتة أعمالك بدقة واحترافية.
                 </p>
                 
                 <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
-                    <a href="#software" data-i18n="btn_explore" class="w-full sm:w-auto px-8 py-4 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-bold text-base shadow-lg shadow-brand-600/30 hover:shadow-glow transition-all transform hover:-translate-y-0.5">
+                    <a id="display-hero-btn1" href="#software" class="w-full sm:w-auto px-8 py-4 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-bold text-base shadow-lg shadow-brand-600/30 hover:shadow-glow transition-all transform hover:-translate-y-0.5">
                         <i class="fa-solid fa-layer-group me-2"></i> تصفح البرامج والمشاريع
                     </a>
-                    <a href="#contact" data-i18n="btn_contact" class="w-full sm:w-auto px-8 py-4 bg-white dark:bg-dark-surface border border-slate-300 dark:border-dark-border text-slate-800 dark:text-slate-100 rounded-xl font-bold text-base hover:bg-slate-100 dark:hover:bg-dark-card transition-all transform hover:-translate-y-0.5 shadow-sm">
+                    <a id="display-hero-btn2" href="#contact" class="w-full sm:w-auto px-8 py-4 bg-white dark:bg-dark-surface border border-slate-300 dark:border-dark-border text-slate-800 dark:text-slate-100 rounded-xl font-bold text-base hover:bg-slate-100 dark:hover:bg-dark-card transition-all transform hover:-translate-y-0.5 shadow-sm">
                         <i class="fa-solid fa-paper-plane me-2"></i> تواصل معي الآن
                     </a>
                 </div>
@@ -216,54 +213,23 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 data-i18n="services_title" class="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white mb-3">الخدمات التي أقدمها</h2>
-                <p data-i18n="services_subtitle" class="text-slate-600 dark:text-dark-muted text-base max-w-xl mx-auto">حلول متكاملة مصممة بأعلى معايير الكفاءة والأمان</p>
+                <p class="text-slate-600 dark:text-dark-muted text-base max-w-xl mx-auto">حلول متكاملة مصممة بأعلى معايير الكفاءة والأمان</p>
                 <div class="w-16 h-1.5 bg-brand-600 mx-auto rounded-full mt-4"></div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Service 1 -->
-                <div class="bg-slate-50 dark:bg-dark-card p-8 rounded-2xl border border-slate-200 dark:border-dark-border hover:border-brand-500/50 hover:shadow-xl transition-all duration-300 group">
-                    <div class="w-14 h-14 bg-brand-100 dark:bg-brand-900/40 text-brand-600 dark:text-brand-300 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-code"></i>
-                    </div>
-                    <h3 data-i18n="srv_dev_title" class="text-xl font-extrabold mb-3 text-slate-900 dark:text-white">تطوير البرمجيات والأنظمة</h3>
-                    <p data-i18n="srv_dev_desc" class="text-slate-600 dark:text-dark-muted leading-relaxed">بناء برامج حاسوب وحلول رقمية مخصصة وقابلة للتطوير لتلبية متطلبات عملك الدقيقة.</p>
-                </div>
-
-                <!-- Service 2 -->
-                <div class="bg-slate-50 dark:bg-dark-card p-8 rounded-2xl border border-slate-200 dark:border-dark-border hover:border-blue-500/50 hover:shadow-xl transition-all duration-300 group">
-                    <div class="w-14 h-14 bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-300 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-robot"></i>
-                    </div>
-                    <h3 data-i18n="srv_bot_title" class="text-xl font-extrabold mb-3 text-slate-900 dark:text-white">برمجة البوتات والأتمتة</h3>
-                    <p data-i18n="srv_bot_desc" class="text-slate-600 dark:text-dark-muted leading-relaxed">تطوير بوتات ذكية فائقة السرعة لتيليجرام ومنصات التواصل، وسكربتات لإنجاز المهام الروتينية آلياً.</p>
-                </div>
-
-                <!-- Service 3 -->
-                <div class="bg-slate-50 dark:bg-dark-card p-8 rounded-2xl border border-slate-200 dark:border-dark-border hover:border-emerald-500/50 hover:shadow-xl transition-all duration-300 group">
-                    <div class="w-14 h-14 bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-300 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-shield-halved"></i>
-                    </div>
-                    <h3 data-i18n="srv_sec_title" class="text-xl font-extrabold mb-3 text-slate-900 dark:text-white">الأمن السيبراني والدعم التقني</h3>
-                    <p data-i18n="srv_sec_desc" class="text-slate-600 dark:text-dark-muted leading-relaxed">فحص الثغرات، حماية الأنظمة الرقمية، وتقديم استشارات فنية متقدمة لرفع مستوى الأمان.</p>
-                </div>
+            <div id="services-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Injected dynamically via JS / CMS -->
             </div>
         </div>
     </section>
 
-    <!-- Software & Projects Section (Dynamic via Admin Panel) -->
+    <!-- Software & Projects Section (Clean, NO BUTTONS/LOCKS) -->
     <section id="software" class="py-24 bg-slate-50 dark:bg-dark-bg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center mb-16 gap-4">
-                <div>
-                    <h2 data-i18n="software_title" class="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white mb-2">البرامج والأدوات المتوفرة</h2>
-                    <p data-i18n="software_subtitle" class="text-slate-600 dark:text-dark-muted text-base">يمكنك معاينة أو تحميل برامجي وأدواتي الحصرية مباشرة</p>
-                </div>
-                <!-- Admin quick-badge (Visible when logged in or click to login) -->
-                <button id="admin-launch-btn" class="px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 dark:border-dark-border text-slate-600 dark:text-dark-muted hover:text-brand-600 dark:hover:text-brand-400 hover:border-brand-500 transition-colors flex items-center gap-2">
-                    <i class="fa-solid fa-lock"></i>
-                    <span data-i18n="admin_panel_btn">لوحة إدارة المحتوى</span>
-                </button>
+            <div class="text-center mb-16">
+                <h2 data-i18n="software_title" class="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white mb-3">البرامج والأدوات المتوفرة</h2>
+                <p class="text-slate-600 dark:text-dark-muted text-base max-w-2xl mx-auto">يمكنك معاينة أو تحميل برامجي وأدواتي الحصرية مباشرة بروابط فورية</p>
+                <div class="w-16 h-1.5 bg-brand-600 mx-auto rounded-full mt-4"></div>
             </div>
 
             <!-- Dynamic Projects Grid -->
@@ -281,100 +247,33 @@
                 <div class="w-16 h-1.5 bg-brand-600 mx-auto rounded-full"></div>
             </div>
 
-            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Column 1 -->
-                <div class="space-y-6">
-                    <div>
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="font-bold flex items-center gap-2 text-slate-900 dark:text-white"><i class="fa-brands fa-python text-yellow-500"></i> Python & Automation</span>
-                            <span class="text-brand-600 dark:text-brand-400 font-bold">95%</span>
-                        </div>
-                        <div class="w-full bg-slate-200 dark:bg-dark-border rounded-full h-3">
-                            <div class="bg-gradient-to-r rtl:bg-gradient-to-l from-yellow-400 to-yellow-600 h-3 rounded-full" style="width: 95%"></div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="font-bold flex items-center gap-2 text-slate-900 dark:text-white"><i class="fa-brands fa-js text-yellow-400"></i> JavaScript / Node.js</span>
-                            <span class="text-brand-600 dark:text-brand-400 font-bold">90%</span>
-                        </div>
-                        <div class="w-full bg-slate-200 dark:bg-dark-border rounded-full h-3">
-                            <div class="bg-gradient-to-r rtl:bg-gradient-to-l from-brand-500 to-blue-500 h-3 rounded-full" style="width: 90%"></div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="font-bold flex items-center gap-2 text-slate-900 dark:text-white"><i class="fa-solid fa-network-wired text-blue-500"></i> API & Web Scraping</span>
-                            <span class="text-brand-600 dark:text-brand-400 font-bold">92%</span>
-                        </div>
-                        <div class="w-full bg-slate-200 dark:bg-dark-border rounded-full h-3">
-                            <div class="bg-gradient-to-r rtl:bg-gradient-to-l from-blue-400 to-blue-600 h-3 rounded-full" style="width: 92%"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Column 2 -->
-                <div class="space-y-6">
-                    <div>
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="font-bold flex items-center gap-2 text-slate-900 dark:text-white"><i class="fa-solid fa-server text-emerald-500"></i> Backend & Linux Servers</span>
-                            <span class="text-brand-600 dark:text-brand-400 font-bold">88%</span>
-                        </div>
-                        <div class="w-full bg-slate-200 dark:bg-dark-border rounded-full h-3">
-                            <div class="bg-gradient-to-r rtl:bg-gradient-to-l from-emerald-400 to-emerald-600 h-3 rounded-full" style="width: 88%"></div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="font-bold flex items-center gap-2 text-slate-900 dark:text-white"><i class="fa-solid fa-database text-purple-500"></i> Databases (SQL & Redis)</span>
-                            <span class="text-brand-600 dark:text-brand-400 font-bold">85%</span>
-                        </div>
-                        <div class="w-full bg-slate-200 dark:bg-dark-border rounded-full h-3">
-                            <div class="bg-gradient-to-r rtl:bg-gradient-to-l from-purple-400 to-purple-600 h-3 rounded-full" style="width: 85%"></div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="font-bold flex items-center gap-2 text-slate-900 dark:text-white"><i class="fa-solid fa-shield-virus text-rose-500"></i> Security & Cryptography</span>
-                            <span class="text-brand-600 dark:text-brand-400 font-bold">82%</span>
-                        </div>
-                        <div class="w-full bg-slate-200 dark:bg-dark-border rounded-full h-3">
-                            <div class="bg-gradient-to-r rtl:bg-gradient-to-l from-rose-400 to-rose-600 h-3 rounded-full" style="width: 82%"></div>
-                        </div>
-                    </div>
-                </div>
+            <div id="skills-grid" class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Injected dynamically via JS / CMS -->
             </div>
         </div>
     </section>
 
-    <!-- Footer / Contact Section -->
+    <!-- Footer / Contact Section (100% Clean, NO SHORTCUT HINT) -->
     <footer id="contact" class="bg-slate-950 text-slate-200 pt-20 pb-10 border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
                 
                 <!-- Brand Info -->
                 <div>
-                    <div class="flex items-center gap-3 mb-6 cursor-pointer select-none" id="footer-secret-logo" title="Double click for Admin">
+                    <div class="flex items-center gap-3 mb-6">
                         <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-brand-600 to-blue-500 flex items-center justify-center text-white text-lg font-black shadow-lg">
                             AR
                         </div>
-                        <span class="text-2xl font-black tracking-tight text-white">AYMAN ROOT</span>
+                        <span class="text-2xl font-black tracking-tight text-white" id="footer-logo-title">AYMAN ROOT</span>
                     </div>
-                    <p data-i18n="footer_desc" class="text-slate-400 text-sm leading-relaxed mb-6">
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6" id="footer-bio-text">
                         تطوير برمجيات، بوتات، وحلول برمجية تلبي تطلعاتك وترتقي بمشاريعك الرقمية بأعلى درجات الاحتراف.
                     </p>
-                    <div class="text-xs text-slate-500">
-                        <span data-i18n="admin_hint">اختصار لوحة المسؤول: Ctrl + Shift + A</span>
-                    </div>
                 </div>
 
                 <!-- Navigation Links -->
                 <div>
-                    <h4 data-i18n="footer_links_title" class="text-white text-base font-extrabold mb-6">روابط سريعة</h4>
+                    <h4 class="text-white text-base font-extrabold mb-6">روابط سريعة</h4>
                     <ul class="space-y-3 font-semibold text-sm">
                         <li><a href="#home" data-i18n="nav_home" class="text-slate-400 hover:text-brand-400 transition-colors">الرئيسية</a></li>
                         <li><a href="#services" data-i18n="nav_services" class="text-slate-400 hover:text-brand-400 transition-colors">الخدمات</a></li>
@@ -385,29 +284,18 @@
 
                 <!-- Contact & Channels -->
                 <div>
-                    <h4 data-i18n="footer_contact_title" class="text-white text-base font-extrabold mb-6">قنوات التواصل</h4>
-                    <div class="flex flex-wrap gap-3 mb-6">
-                        <a href="https://t.me/" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-300 hover:bg-[#229ED9] hover:text-white hover:border-transparent transition-all">
-                            <i class="fa-brands fa-telegram text-lg"></i>
-                        </a>
-                        <a href="https://github.com/ayman-root" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-300 hover:bg-slate-700 hover:text-white hover:border-transparent transition-all">
-                            <i class="fa-brands fa-github text-lg"></i>
-                        </a>
-                        <a href="https://wa.me/" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-300 hover:bg-[#25D366] hover:text-white hover:border-transparent transition-all">
-                            <i class="fa-brands fa-whatsapp text-lg"></i>
-                        </a>
-                        <a href="https://twitter.com/" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-300 hover:bg-sky-500 hover:text-white hover:border-transparent transition-all">
-                            <i class="fa-brands fa-x-twitter text-lg"></i>
-                        </a>
+                    <h4 class="text-white text-base font-extrabold mb-6">قنوات التواصل</h4>
+                    <div class="flex flex-wrap gap-3 mb-6" id="social-links-container">
+                        <!-- Populated by JS -->
                     </div>
-                    <a href="mailto:contact@aymanroot.online" class="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors">
-                        <i class="fa-solid fa-envelope text-brand-400"></i> contact@aymanroot.online
+                    <a id="display-contact-email" href="mailto:contact@aymanroot.online" class="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors">
+                        <i class="fa-solid fa-envelope text-brand-400"></i> <span id="display-email-text">contact@aymanroot.online</span>
                     </a>
                 </div>
             </div>
 
             <div class="pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-400">
-                <p>&copy; <span id="year"></span> AYMAN ROOT. <span data-i18n="footer_rights">جميع الحقوق محفوظة.</span></p>
+                <p>&copy; <span id="year"></span> AYMAN ROOT. <span>جميع الحقوق محفوظة.</span></p>
                 <div class="flex items-center gap-4">
                     <span class="text-emerald-400 flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> HTTPS Secured</span>
                 </div>
@@ -415,129 +303,317 @@
         </div>
     </footer>
 
-    <!-- ========================================== -->
-    <!--           ADMIN MODAL & MANAGER            -->
-    <!-- ========================================== -->
-    
-    <!-- Admin Login Modal -->
-    <div id="admin-login-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <!-- ======================================================= -->
+    <!--       SECRET MODAL TRIGGERED ONLY BY "بسم الله"         -->
+    <!-- ======================================================= -->
+    <div id="admin-auth-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4">
         <div class="bg-white dark:bg-dark-surface border border-slate-200 dark:border-dark-border w-full max-w-md rounded-2xl p-6 shadow-2xl relative">
-            <button id="close-login-btn" class="absolute top-4 end-4 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-lg">
+            <button id="close-auth-modal-btn" class="absolute top-4 end-4 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-lg">
                 <i class="fa-solid fa-xmark"></i>
             </button>
-            <div class="flex items-center gap-3 mb-4">
-                <div class="w-10 h-10 rounded-xl bg-brand-600 text-white flex items-center justify-center text-lg">
-                    <i class="fa-solid fa-shield-halved"></i>
+            <div class="flex items-center gap-3 mb-5">
+                <div class="w-12 h-12 rounded-2xl bg-brand-600/10 text-brand-600 dark:text-brand-400 flex items-center justify-center text-xl">
+                    <i class="fa-solid fa-user-shield"></i>
                 </div>
                 <div>
-                    <h3 class="text-lg font-black text-slate-900 dark:text-white">تسجيل دخول المسؤول</h3>
-                    <p class="text-xs text-slate-500 dark:text-dark-muted">أدخل الرمز السري للتحكم في برامج الموقع</p>
+                    <h3 class="text-lg font-black text-slate-900 dark:text-white">بوابة التحكم الإدارية</h3>
+                    <p class="text-xs text-slate-500 dark:text-dark-muted">أدخل الرمز السري المشفر للمتابعة</p>
                 </div>
             </div>
-            
-            <form id="admin-login-form" class="space-y-4">
+
+            <form id="secret-login-form" class="space-y-4">
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">الرمز السري (Default: root2026)</label>
-                    <input type="password" id="admin-password" placeholder="أدخل كلمة المرور..." required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-dark-border bg-slate-50 dark:bg-dark-card text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm">
+                    <input type="password" id="secret-pass-input" placeholder="كلمة المرور المشفرة..." required class="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-dark-border bg-slate-50 dark:bg-dark-card text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm">
                 </div>
-                <div id="login-error" class="hidden text-xs text-rose-500 font-bold">كلمة المرور غير صحيحة!</div>
-                <button type="submit" class="w-full py-3 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-xl text-sm transition-colors shadow-md">
-                    دخول إلى لوحة الإدارة
+                <div id="auth-error-msg" class="hidden text-xs text-rose-500 font-bold flex items-center gap-1.5">
+                    <i class="fa-solid fa-triangle-exclamation"></i> رمز الدخول غير صحيح!
+                </div>
+                <button type="submit" class="w-full py-3 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-xl text-sm transition-all shadow-lg shadow-brand-600/30">
+                    فتح لوحة تحكم الموقع الكاملة
                 </button>
             </form>
         </div>
     </div>
 
-    <!-- Admin Dashboard Modal -->
-    <div id="admin-dashboard-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-md hidden flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
-        <div class="bg-white dark:bg-dark-surface border border-slate-200 dark:border-dark-border w-full max-w-4xl rounded-2xl shadow-2xl my-auto flex flex-col max-h-[90vh]">
+    <!-- ======================================================= -->
+    <!--            FULL SITE MASTER CONTROL PANEL (CMS)         -->
+    <!-- ======================================================= -->
+    <div id="master-cms-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-2 sm:p-5 overflow-y-auto">
+        <div class="bg-white dark:bg-dark-surface border border-slate-200 dark:border-dark-border w-full max-w-5xl rounded-3xl shadow-2xl my-auto flex flex-col max-h-[92vh]">
             
-            <!-- Modal Header -->
-            <div class="px-6 py-4 border-b border-slate-200 dark:border-dark-border flex justify-between items-center">
+            <!-- CMS Header -->
+            <div class="px-6 py-4 border-b border-slate-200 dark:border-dark-border flex justify-between items-center bg-slate-50 dark:bg-dark-card/50 rounded-t-3xl">
                 <div class="flex items-center gap-3">
-                    <div class="w-9 h-9 rounded-xl bg-brand-600 text-white flex items-center justify-center text-sm font-bold">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-blue-600 text-white flex items-center justify-center text-sm font-black shadow-md">
                         AR
                     </div>
                     <div>
-                        <h3 class="text-lg font-black text-slate-900 dark:text-white">لوحة تحكم AYMAN ROOT</h3>
-                        <p class="text-xs text-slate-500 dark:text-dark-muted">إضافة، تعديل، وحذف البرامج والأدوات (المحفوظة تلقائياً)</p>
+                        <h3 class="text-base sm:text-lg font-black text-slate-900 dark:text-white">لوحة الإدارة المركزية الكاملة</h3>
+                        <p class="text-xs text-slate-500 dark:text-dark-muted">تحكم وتعديل في جميع محتويات الموقع وأقسامه مع دعم الرفع المباشر</p>
                     </div>
                 </div>
-                <div class="flex items-center gap-2">
-                    <button id="admin-logout-btn" class="px-3 py-1.5 rounded-lg text-xs font-bold text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/30 transition-colors">
+                <div class="flex items-center gap-3">
+                    <button id="cms-export-json-btn" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-200 dark:bg-dark-border text-slate-700 dark:text-slate-200 hover:bg-brand-500 hover:text-white transition-colors" title="تصدير نسخة احتياطية من الموقع">
+                        <i class="fa-solid fa-download me-1"></i> تصدير النسخة
+                    </button>
+                    <button id="cms-logout-btn" class="px-3 py-1.5 rounded-lg text-xs font-bold text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/30 transition-colors">
                         خروج
                     </button>
-                    <button id="close-dashboard-btn" class="p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+                    <button id="close-cms-btn" class="p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
                         <i class="fa-solid fa-xmark text-xl"></i>
                     </button>
                 </div>
             </div>
 
-            <!-- Modal Content (Scrollable) -->
-            <div class="p-6 overflow-y-auto space-y-8">
-                
-                <!-- Add / Edit Project Form -->
-                <div class="bg-slate-50 dark:bg-dark-card p-5 rounded-2xl border border-slate-200 dark:border-dark-border">
-                    <h4 id="form-heading" class="text-base font-extrabold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-                        <i class="fa-solid fa-plus-circle text-brand-600"></i> إضافة برنامج أو مشروع جديد
-                    </h4>
-                    
-                    <form id="project-form" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <input type="hidden" id="edit-project-id" value="">
-                        
-                        <div class="sm:col-span-1">
-                            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">اسم البرنامج / المشروع</label>
-                            <input type="text" id="project-title" required placeholder="مثال: أداة سحب البيانات" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-surface text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
-                        </div>
+            <!-- Tab Navigation Bar -->
+            <div class="flex border-b border-slate-200 dark:border-dark-border px-6 overflow-x-auto gap-2 text-sm font-bold bg-white dark:bg-dark-surface">
+                <button class="cms-tab-btn py-3 px-4 border-b-2 border-brand-600 text-brand-600 dark:text-brand-400 whitespace-nowrap" data-tab="tab-hero">
+                    <i class="fa-solid fa-wand-magic-sparkles me-2"></i> الواجهة الرئيسية
+                </button>
+                <button class="cms-tab-btn py-3 px-4 border-b-2 border-transparent text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white whitespace-nowrap" data-tab="tab-software">
+                    <i class="fa-solid fa-layer-group me-2"></i> البرامج والمشاريع
+                </button>
+                <button class="cms-tab-btn py-3 px-4 border-b-2 border-transparent text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white whitespace-nowrap" data-tab="tab-services">
+                    <i class="fa-solid fa-briefcase me-2"></i> الخدمات
+                </button>
+                <button class="cms-tab-btn py-3 px-4 border-b-2 border-transparent text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white whitespace-nowrap" data-tab="tab-skills">
+                    <i class="fa-solid fa-chart-line me-2"></i> المهارات
+                </button>
+                <button class="cms-tab-btn py-3 px-4 border-b-2 border-transparent text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white whitespace-nowrap" data-tab="tab-contacts">
+                    <i class="fa-solid fa-share-nodes me-2"></i> التواصل والحسابات
+                </button>
+            </div>
 
-                        <div class="sm:col-span-1">
-                            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">نوع الميديا (صورة أو فيديو)</label>
-                            <select id="project-media-type" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-surface text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
-                                <option value="image">صورة (Image URL)</option>
-                                <option value="video">فيديو مباشر (MP4/WebM)</option>
-                                <option value="youtube">فيديو يوتيوب (YouTube ID أو رابط)</option>
-                            </select>
-                        </div>
+            <!-- Scrollable Content -->
+            <div class="p-6 overflow-y-auto space-y-6">
 
-                        <div class="sm:col-span-2">
-                            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">رابط الصورة أو الفيديو</label>
-                            <input type="url" id="project-media-url" required placeholder="https://example.com/image.jpg أو رابط الفيديو" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-surface text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
-                        </div>
-
-                        <div class="sm:col-span-2">
-                            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">وصف البرنامج وميزاته</label>
-                            <textarea id="project-desc" rows="3" required placeholder="اكتب نبذة وميزات البرنامج..." class="w-full px-3.5 py-2 rounded-xl border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-surface text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none"></textarea>
-                        </div>
-
-                        <div class="sm:col-span-1">
-                            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">رابط التحميل أو المعاينة</label>
-                            <input type="text" id="project-link" required placeholder="https://t.me/ أو https://github.com/..." class="w-full px-3.5 py-2 rounded-xl border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-surface text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
-                        </div>
-
-                        <div class="sm:col-span-1">
-                            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">نص زر التحميل</label>
-                            <input type="text" id="project-btn-text" placeholder="تحميل الآن (أو تواصل للشراء)" value="تحميل البرنامج" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-surface text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
-                        </div>
-
-                        <div class="sm:col-span-2 flex items-center justify-end gap-3 pt-2">
-                            <button type="button" id="cancel-edit-btn" class="hidden px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 dark:border-dark-border text-slate-600 dark:text-dark-muted hover:bg-slate-100 dark:hover:bg-dark-surface">
-                                إلغاء التعديل
+                <!-- TAB 1: HERO MANAGEMENT -->
+                <div id="tab-hero" class="cms-tab-content space-y-5">
+                    <div class="bg-slate-50 dark:bg-dark-card p-5 rounded-2xl border border-slate-200 dark:border-dark-border">
+                        <h4 class="text-sm font-black text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-house text-brand-600"></i> نصوص وأزرار واجهة الهيرو
+                        </h4>
+                        <form id="hero-settings-form" class="space-y-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold mb-1">الاسم البارز (Hero Name)</label>
+                                    <input type="text" id="cfg-hero-name" class="w-full px-3 py-2 rounded-xl border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-surface text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold mb-1">الشارة العلوية (Hero Badge)</label>
+                                    <input type="text" id="cfg-hero-badge" class="w-full px-3 py-2 rounded-xl border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-surface text-sm">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold mb-1">العنوان الوظيفي الرئيسي</label>
+                                <input type="text" id="cfg-hero-title" class="w-full px-3 py-2 rounded-xl border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-surface text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold mb-1">النبذة التعريفية</label>
+                                <textarea id="cfg-hero-desc" rows="3" class="w-full px-3 py-2 rounded-xl border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-surface text-sm"></textarea>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold mb-1">نص الزر الأول</label>
+                                    <input type="text" id="cfg-hero-btn1-text" class="w-full px-3 py-2 rounded-xl border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-surface text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold mb-1">رابط الزر الأول</label>
+                                    <input type="text" id="cfg-hero-btn1-link" class="w-full px-3 py-2 rounded-xl border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-surface text-sm">
+                                </div>
+                            </div>
+                            <button type="submit" class="px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-bold text-xs shadow-md">
+                                حفظ بيانات الواجهة
                             </button>
-                            <button type="submit" id="save-project-btn" class="px-6 py-2.5 bg-brand-600 hover:bg-brand-700 text-white text-xs font-black rounded-xl transition-all shadow-md">
-                                حفظ في الموقع
-                            </button>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
 
-                <!-- Existing Items Management List -->
-                <div>
-                    <h4 class="text-base font-extrabold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-                        <i class="fa-solid fa-list-check text-brand-600"></i> البرامج الحالية المعروضة
-                    </h4>
-                    
-                    <div id="admin-items-list" class="space-y-3">
-                        <!-- Populated by JS -->
+                <!-- TAB 2: SOFTWARE / PROJECTS (WITH LOCAL FILE UPLOAD OR URL) -->
+                <div id="tab-software" class="cms-tab-content hidden space-y-6">
+                    <div class="bg-slate-50 dark:bg-dark-card p-5 rounded-2xl border border-slate-200 dark:border-dark-border">
+                        <h4 id="software-form-title" class="text-sm font-black text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-plus-circle text-brand-600"></i> إضافة برنامج أو أداة جديدة
+                        </h4>
+                        
+                        <form id="cms-project-form" class="space-y-4">
+                            <input type="hidden" id="cms-proj-edit-id" value="">
+                            
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold mb-1">عنوان البرنامج</label>
+                                    <input type="text" id="cms-proj-title" required placeholder="مثال: بوت حماية المجموعات" class="w-full px-3 py-2 rounded-xl border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-surface text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold mb-1">نوع الميديا</label>
+                                    <select id="cms-proj-media-type" class="w-full px-3 py-2 rounded-xl border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-surface text-sm">
+                                        <option value="image">صورة (Image)</option>
+                                        <option value="video">فيديو مباشر (MP4/WebM)</option>
+                                        <option value="youtube">رابط يوتيوب (Embed)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Media Upload or URL Switcher -->
+                            <div class="p-3.5 bg-white dark:bg-dark-surface rounded-xl border border-slate-200 dark:border-dark-border space-y-3">
+                                <label class="block text-xs font-bold text-slate-800 dark:text-slate-200">
+                                    <i class="fa-solid fa-photo-film text-brand-600 me-1"></i> وسيلة إضافة الصورة / الفيديو (اختر ملف أو رابط)
+                                </label>
+                                
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                    <div>
+                                        <span class="block text-[11px] font-semibold text-slate-500 mb-1">1) رفع ملف من جهازك مباشرة:</span>
+                                        <input type="file" id="cms-proj-file-input" accept="image/*,video/*" class="w-full text-xs text-slate-500 file:mr-2 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-brand-50 dark:file:bg-brand-900/30 file:text-brand-600 hover:file:bg-brand-100 cursor-pointer">
+                                    </div>
+                                    <div>
+                                        <span class="block text-[11px] font-semibold text-slate-500 mb-1">2) أو إدخال رابط خارجي URL:</span>
+                                        <input type="text" id="cms-proj-media-url" placeholder="https://..." class="w-full px-3 py-1.5 rounded-lg border border-slate-300 dark:border-dark-border bg-slate-50 dark:bg-dark-card text-xs">
+                                    </div>
+                                </div>
+
+                                <!-- Preview Badge -->
+                                <div id="media-preview-box" class="hidden text-xs text-emerald-600 dark:text-emerald-400 font-bold flex items-center gap-2 pt-1">
+                                    <i class="fa-solid fa-check-circle"></i> تم إرفاق ومعاينة الميديا بنجاح
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold mb-1">الوصف والمميزات</label>
+                                <textarea id="cms-proj-desc" rows="3" required placeholder="اكتب نبذة مختصرة عن الأداة ومميزاتها..." class="w-full px-3 py-2 rounded-xl border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-surface text-sm"></textarea>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold mb-1">رابط التحميل أو الشراء</label>
+                                    <input type="text" id="cms-proj-link" required placeholder="https://t.me/..." class="w-full px-3 py-2 rounded-xl border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-surface text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold mb-1">نص الزر</label>
+                                    <input type="text" id="cms-proj-btntext" value="تحميل البرنامج" class="w-full px-3 py-2 rounded-xl border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-surface text-sm">
+                                </div>
+                            </div>
+
+                            <div class="flex items-center justify-end gap-3 pt-2">
+                                <button type="button" id="cms-proj-cancel-btn" class="hidden px-4 py-2 rounded-xl text-xs font-bold border border-slate-300 dark:border-dark-border text-slate-600 dark:text-dark-muted">
+                                    إلغاء التعديل
+                                </button>
+                                <button type="submit" class="px-6 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-bold text-xs shadow-md">
+                                    حفظ البرنامج في الموقع
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Items List -->
+                    <div class="space-y-3">
+                        <h4 class="text-sm font-black text-slate-900 dark:text-white">البرامج المعروضة حالياً</h4>
+                        <div id="cms-projects-list" class="space-y-2"></div>
+                    </div>
+                </div>
+
+                <!-- TAB 3: SERVICES -->
+                <div id="tab-services" class="cms-tab-content hidden space-y-6">
+                    <div class="bg-slate-50 dark:bg-dark-card p-5 rounded-2xl border border-slate-200 dark:border-dark-border">
+                        <h4 id="service-form-title" class="text-sm font-black text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-plus-circle text-brand-600"></i> إضافة خدمة جديدة
+                        </h4>
+                        <form id="cms-service-form" class="space-y-4">
+                            <input type="hidden" id="cms-srv-edit-id" value="">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold mb-1">اسم الخدمة</label>
+                                    <input type="text" id="cms-srv-title" required placeholder="مثال: برمجة البوتات" class="w-full px-3 py-2 rounded-xl border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-surface text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold mb-1">أيقونة FontAwesome (مثال: fa-solid fa-code)</label>
+                                    <input type="text" id="cms-srv-icon" value="fa-solid fa-code" required class="w-full px-3 py-2 rounded-xl border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-surface text-sm">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold mb-1">وصف الخدمة</label>
+                                <textarea id="cms-srv-desc" rows="3" required placeholder="شرح تفصيلي للخدمة..." class="w-full px-3 py-2 rounded-xl border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-surface text-sm"></textarea>
+                            </div>
+                            <div class="flex items-center justify-end gap-3">
+                                <button type="button" id="cms-srv-cancel-btn" class="hidden px-4 py-2 rounded-xl text-xs font-bold border border-slate-300">إلغاء</button>
+                                <button type="submit" class="px-6 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-bold text-xs">حفظ الخدمة</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="space-y-3">
+                        <h4 class="text-sm font-black text-slate-900 dark:text-white">قائمة الخدمات الحالية</h4>
+                        <div id="cms-services-list" class="space-y-2"></div>
+                    </div>
+                </div>
+
+                <!-- TAB 4: SKILLS -->
+                <div id="tab-skills" class="cms-tab-content hidden space-y-6">
+                    <div class="bg-slate-50 dark:bg-dark-card p-5 rounded-2xl border border-slate-200 dark:border-dark-border">
+                        <h4 id="skill-form-title" class="text-sm font-black text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-plus-circle text-brand-600"></i> إضافة مهارة جديدة
+                        </h4>
+                        <form id="cms-skill-form" class="space-y-4">
+                            <input type="hidden" id="cms-sk-edit-id" value="">
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold mb-1">اسم المهارة</label>
+                                    <input type="text" id="cms-sk-name" required placeholder="Python, JavaScript..." class="w-full px-3 py-2 rounded-xl border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-surface text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold mb-1">النسبة المئوية % (1 - 100)</label>
+                                    <input type="number" id="cms-sk-percent" min="1" max="100" value="90" required class="w-full px-3 py-2 rounded-xl border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-surface text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold mb-1">كود الأيقونة (FontAwesome)</label>
+                                    <input type="text" id="cms-sk-icon" value="fa-brands fa-python" required class="w-full px-3 py-2 rounded-xl border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-surface text-sm">
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-end gap-3">
+                                <button type="button" id="cms-sk-cancel-btn" class="hidden px-4 py-2 rounded-xl text-xs font-bold border border-slate-300">إلغاء</button>
+                                <button type="submit" class="px-6 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-bold text-xs">حفظ المهارة</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="space-y-3">
+                        <h4 class="text-sm font-black text-slate-900 dark:text-white">المهارات المعروضة</h4>
+                        <div id="cms-skills-list" class="space-y-2"></div>
+                    </div>
+                </div>
+
+                <!-- TAB 5: CONTACTS & SOCIALS -->
+                <div id="tab-contacts" class="cms-tab-content hidden space-y-6">
+                    <div class="bg-slate-50 dark:bg-dark-card p-5 rounded-2xl border border-slate-200 dark:border-dark-border">
+                        <h4 class="text-sm font-black text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-address-book text-brand-600"></i> تعديل وسائل التواصل وحساباتك
+                        </h4>
+                        <form id="cms-contacts-form" class="space-y-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold mb-1">البريد الإلكتروني</label>
+                                    <input type="email" id="cfg-contact-email" class="w-full px-3 py-2 rounded-xl border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-surface text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold mb-1">رابط تيليجرام (Telegram)</label>
+                                    <input type="text" id="cfg-contact-telegram" class="w-full px-3 py-2 rounded-xl border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-surface text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold mb-1">رابط واتساب (WhatsApp)</label>
+                                    <input type="text" id="cfg-contact-whatsapp" class="w-full px-3 py-2 rounded-xl border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-surface text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold mb-1">رابط جيت هوب (GitHub)</label>
+                                    <input type="text" id="cfg-contact-github" class="w-full px-3 py-2 rounded-xl border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-surface text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold mb-1">رابط تويتر / X</label>
+                                    <input type="text" id="cfg-contact-twitter" class="w-full px-3 py-2 rounded-xl border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-surface text-sm">
+                                </div>
+                            </div>
+                            <button type="submit" class="px-6 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-bold text-xs shadow-md">
+                                حفظ بيانات التواصل
+                            </button>
+                        </form>
                     </div>
                 </div>
 
@@ -551,9 +627,9 @@
         <span id="toast-msg">تمت العملية بنجاح!</span>
     </div>
 
-    <!-- ========================================== -->
-    <!--           JAVASCRIPT LOGIC                 -->
-    <!-- ========================================== -->
+    <!-- ======================================================= -->
+    <!--            APPLICATION JAVASCRIPT & ENCRYPTION          -->
+    <!-- ======================================================= -->
     <script>
         (function() {
             'use strict';
@@ -564,205 +640,141 @@
                 var yearEl = document.getElementById('year');
                 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-                var translations = {
-                    'ar': {
-                        'nav_home': 'الرئيسية', 'nav_services': 'الخدمات', 'nav_software': 'البرامج', 'nav_skills': 'المهارات', 'nav_contact': 'تواصل معي', 'choose_lang': 'اختر اللغة',
-                        'hero_badge': 'أهلاً بك في مساحتي الإبداعية', 'hero_title_1': 'أنا', 'hero_title_2': 'مطور برمجيات وأنظمة متقدمة',
-                        'hero_subtitle': 'أقوم بابتكار وتطوير أدوات تقنية متطورة، بوتات ذكية، وتطبيقات ويب وسحابية تصنع الفارق وتساعدك على أتمتة أعمالك بدقة واحترافية.',
-                        'btn_explore': 'تصفح البرامج والمشاريع', 'btn_contact': 'تواصل معي الآن',
-                        'services_title': 'الخدمات التي أقدمها', 'services_subtitle': 'حلول متكاملة مصممة بأعلى معايير الكفاءة والأمان',
-                        'srv_dev_title': 'تطوير البرمجيات والأنظمة', 'srv_dev_desc': 'بناء برامج حاسوب وحلول رقمية مخصصة وقابلة للتطوير لتلبية متطلبات عملك الدقيقة.',
-                        'srv_bot_title': 'برمجة البوتات والأتمتة', 'srv_bot_desc': 'تطوير بوتات ذكية فائقة السرعة لتيليجرام ومنصات التواصل، وسكربتات لإنجاز المهام الروتينية آلياً.',
-                        'srv_sec_title': 'الأمن السيبراني والدعم التقني', 'srv_sec_desc': 'فحص الثغرات، حماية الأنظمة الرقمية، وتقديم استشارات فنية متقدمة لرفع مستوى الأمان.',
-                        'software_title': 'البرامج والأدوات المتوفرة', 'software_subtitle': 'يمكنك معاينة أو تحميل برامجي وأدواتي الحصرية مباشرة',
-                        'admin_panel_btn': 'لوحة إدارة المحتوى',
-                        'skills_title': 'المهارات والخبرات التقنية',
-                        'footer_desc': 'تطوير برمجيات، بوتات، وحلول برمجية تلبي تطلعاتك وترتقي بمشاريعك الرقمية بأعلى درجات الاحتراف.',
-                        'footer_links_title': 'روابط سريعة', 'footer_contact_title': 'قنوات التواصل', 'footer_rights': 'جميع الحقوق محفوظة.',
-                        'admin_hint': 'اختصار لوحة المسؤول: Ctrl + Shift + A'
+                // ==========================================
+                // 1. CRYPTO HASH FOR PASSWORD: "01019985640a"
+                // ==========================================
+                // SHA-256 hash of '01019985640a'
+                // Real password is never written anywhere in code or comments.
+                var TARGET_HASH = "9cf3d5dc9426f4325a81ca55a30590a2a4bdf457b01b2a95c479426305a26639";
+
+                async function sha256(message) {
+                    var msgBuffer = new TextEncoder().encode(message);
+                    var hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+                    var hashArray = Array.from(new Uint8Array(hashBuffer));
+                    return hashArray.map(function(b) { return b.toString(16).padStart(2, '0'); }).join('');
+                }
+
+                // ==========================================
+                // 2. STEALTH KEYSTROKE TRIGGER: "بسم الله"
+                // ==========================================
+                var keyBuffer = "";
+                var SECRET_AR = "بسم الله";
+                var SECRET_EN = "bismillah";
+
+                window.addEventListener('keypress', function(e) {
+                    // Do not capture if user is typing inside an input or textarea
+                    if (['INPUT', 'TEXTAREA', 'SELECT'].indexOf(e.target.tagName) > -1) {
+                        return;
+                    }
+                    
+                    keyBuffer += e.key;
+                    if (keyBuffer.length > 30) {
+                        keyBuffer = keyBuffer.slice(-30);
+                    }
+
+                    // Check if ends with Arabic or English trigger phrase
+                    if (keyBuffer.indexOf(SECRET_AR) > -1 || keyBuffer.toLowerCase().indexOf(SECRET_EN) > -1) {
+                        keyBuffer = "";
+                        openAuthModal();
+                    }
+                });
+
+                // ==========================================
+                // 3. MASTER CMS DATA STRUCTURE & STORAGE
+                // ==========================================
+                var DEFAULT_SITE_DATA = {
+                    hero: {
+                        name: "AYMAN ROOT",
+                        badge: "أهلاً بك في مساحتي الإبداعية",
+                        title: "مطور برمجيات وأنظمة متقدمة",
+                        desc: "أقوم بابتكار وتطوير أدوات تقنية متطورة، بوتات ذكية، وتطبيقات ويب وسحابية تصنع الفارق وتساعدك على أتمتة أعمالك بدقة واحترافية.",
+                        btn1Text: "تصفح البرامج والمشاريع",
+                        btn1Link: "#software",
+                        btn2Text: "تواصل معي الآن",
+                        btn2Link: "#contact"
                     },
-                    'en': {
-                        'nav_home': 'Home', 'nav_services': 'Services', 'nav_software': 'Software', 'nav_skills': 'Skills', 'nav_contact': 'Contact', 'choose_lang': 'Language',
-                        'hero_badge': 'Welcome to My Creative Space', 'hero_title_1': 'I am', 'hero_title_2': 'Advanced Software & Systems Engineer',
-                        'hero_subtitle': 'I engineer cutting-edge tools, smart bots, and scalable web solutions that empower you to automate tasks with peak performance.',
-                        'btn_explore': 'Explore Software', 'btn_contact': 'Contact Me Now',
-                        'services_title': 'Services I Provide', 'services_subtitle': 'End-to-end solutions designed with precision and security',
-                        'srv_dev_title': 'Software & Systems Engineering', 'srv_dev_desc': 'Building tailor-made, reliable software solutions to fulfill your custom business needs.',
-                        'srv_bot_title': 'Bots & Process Automation', 'srv_bot_desc': 'Developing high-speed bots for Telegram & social networks with workflow automation scripts.',
-                        'srv_sec_title': 'Cybersecurity & Tech Support', 'srv_sec_desc': 'System hardening, vulnerability audits, and specialized engineering consultations.',
-                        'software_title': 'Available Software & Projects', 'software_subtitle': 'Directly preview or download my exclusive software and tools',
-                        'admin_panel_btn': 'Content Admin Hub',
-                        'skills_title': 'Technical Skills & Arsenal',
-                        'footer_desc': 'Building top-tier software and automation tools to elevate your digital operations to elite standards.',
-                        'footer_links_title': 'Quick Links', 'footer_contact_title': 'Get In Touch', 'footer_rights': 'All rights reserved.',
-                        'admin_hint': 'Admin Shortcut: Ctrl + Shift + A'
-                    },
-                    'fr': {
-                        'nav_home': 'Accueil', 'nav_services': 'Services', 'nav_software': 'Logiciels', 'nav_skills': 'Compétences', 'nav_contact': 'Contact', 'choose_lang': 'Langue',
-                        'hero_badge': 'Bienvenue dans mon espace créatif', 'hero_title_1': 'Je suis', 'hero_title_2': 'Développeur Logiciel & Systèmes Avancés',
-                        'hero_subtitle': 'Je conçois des outils modernes, des robots intelligents et des solutions logicielles sur mesure pour automatiser vos tâches.',
-                        'btn_explore': 'Explorer les logiciels', 'btn_contact': 'Me contacter',
-                        'services_title': 'Services proposés', 'services_subtitle': 'Des solutions complètes conçues selon les plus hauts standards',
-                        'srv_dev_title': 'Développement de logiciels', 'srv_dev_desc': 'Création de systèmes informatiques sur mesure et hautement performants pour vos projets.',
-                        'srv_bot_title': 'Bots & Automatisation', 'srv_bot_desc': 'Développement de bots Telegram rapides et de scripts pour automatiser vos opérations.',
-                        'srv_sec_title': 'Cybersécurité & Support', 'srv_sec_desc': 'Audit de sécurité, protection des données et assistance technique spécialisée.',
-                        'software_title': 'Logiciels & Projets Disponibles', 'software_subtitle': 'Consultez et téléchargez directement mes programmes exclusifs',
-                        'admin_panel_btn': 'Gestion du contenu',
-                        'skills_title': 'Compétences Techniques',
-                        'footer_desc': 'Développement de solutions et bots haut de gamme pour porter vos projets au niveau professionnel.',
-                        'footer_links_title': 'Liens Rapides', 'footer_contact_title': 'Réseaux', 'footer_rights': 'Tous droits réservés.',
-                        'admin_hint': 'Raccourci Admin: Ctrl + Shift + A'
-                    },
-                    'zh': {
-                        'nav_home': '首页', 'nav_services': '服务', 'nav_software': '软件', 'nav_skills': '技能', 'nav_contact': '联系', 'choose_lang': '选择语言',
-                        'hero_badge': '欢迎来到我的创意空间', 'hero_title_1': '我是', 'hero_title_2': '高级软件与系统开发人员',
-                        'hero_subtitle': '我设计并开发先进的技术工具、智能机器人和云端应用，助您高效自动化各项业务。',
-                        'btn_explore': '浏览软件项目', 'btn_contact': '立即联系我',
-                        'services_title': '我提供的服务', 'services_subtitle': '遵循最高效率与安全标准构建的全套解决方案',
-                        'srv_dev_title': '软件与系统开发', 'srv_dev_desc': '量身定制高性能、可扩展的桌面及后端软件系统。',
-                        'srv_bot_title': '机器人与自动化编程', 'srv_bot_desc': '为 Telegram 等平台开发极速响应的智能机器人与流程自动化脚本。',
-                        'srv_sec_title': '网络安全与技术支持', 'srv_sec_desc': '漏洞检测、系统安全加固及全方位高级技术顾问服务。',
-                        'software_title': '可用软件与项目', 'software_subtitle': '直接预览并下载我开发的专有工具与应用',
-                        'admin_panel_btn': '内容管理控制台',
-                        'skills_title': '专业技术能力',
-                        'footer_desc': '打造顶尖软件与自动化利器，助您的数字化业务迈向更高境界。',
-                        'footer_links_title': '快速链接', 'footer_contact_title': '联系方式', 'footer_rights': '版权所有。',
-                        'admin_hint': '管理员快捷键: Ctrl + Shift + A'
+                    projects: [
+                        {
+                            id: 'proj_1',
+                            title: 'بوت إدارة تيليجرام المتطور (Bot Manager)',
+                            mediaType: 'image',
+                            mediaUrl: 'https://placehold.co/800x480/4c1d95/ffffff?text=Telegram+Bot+Manager',
+                            desc: 'برنامج حماية وإدارة المجموعات والقنوات مع لوحة تحكم وإحصائيات مباشرة وقفل الروابط والإعلانات.',
+                            link: 'https://t.me/',
+                            btnText: 'تحميل البوت أو المعاينة'
+                        },
+                        {
+                            id: 'proj_2',
+                            title: 'أداة استخراج البيانات الذكية (Data Scraper Pro)',
+                            mediaType: 'image',
+                            mediaUrl: 'https://placehold.co/800x480/1e3a8a/ffffff?text=Data+Scraper+Pro',
+                            desc: 'أداة برمجية سريعة لسحب البيانات من صفحات ومواقع الويب وتصديرها بصيغ Excel و JSON بنقرة واحدة.',
+                            link: 'https://github.com/ayman-root',
+                            btnText: 'تحميل الأداة'
+                        },
+                        {
+                            id: 'proj_3',
+                            title: 'منظف وتسريع النظام (System Optimizer)',
+                            mediaType: 'image',
+                            mediaUrl: 'https://placehold.co/800x480/065f46/ffffff?text=System+Optimizer',
+                            desc: 'برنامج لتنظيف ملفات الكاش، إدارة الذاكرة العشوائية RAM وتسريع استجابة النظام بالكامل.',
+                            link: 'https://t.me/',
+                            btnText: 'تحميل البرنامج المجاني'
+                        }
+                    ],
+                    services: [
+                        {
+                            id: 'srv_1',
+                            title: 'تطوير البرمجيات والأنظمة',
+                            desc: 'بناء برامج حاسوب وحلول رقمية مخصصة وقابلة للتطوير لتلبية متطلبات عملك الدقيقة.',
+                            icon: 'fa-solid fa-code'
+                        },
+                        {
+                            id: 'srv_2',
+                            title: 'برمجة البوتات والأتمتة',
+                            desc: 'تطوير بوتات ذكية فائقة السرعة لتيليجرام ومنصات التواصل، وسكربتات لإنجاز المهام الروتينية آلياً.',
+                            icon: 'fa-solid fa-robot'
+                        },
+                        {
+                            id: 'srv_3',
+                            title: 'الأمن السيبراني والدعم التقني',
+                            desc: 'فحص الثغرات، حماية الأنظمة الرقمية، وتقديم استشارات فنية متقدمة لرفع مستوى الأمان.',
+                            icon: 'fa-solid fa-shield-halved'
+                        }
+                    ],
+                    skills: [
+                        { id: 'sk_1', name: 'Python & Automation', percent: 95, icon: 'fa-brands fa-python', color: 'from-yellow-400 to-yellow-600' },
+                        { id: 'sk_2', name: 'JavaScript / Node.js', percent: 90, icon: 'fa-brands fa-js', color: 'from-brand-500 to-blue-500' },
+                        { id: 'sk_3', name: 'API & Web Scraping', percent: 92, icon: 'fa-solid fa-network-wired', color: 'from-blue-400 to-blue-600' },
+                        { id: 'sk_4', name: 'Backend & Linux Servers', percent: 88, icon: 'fa-solid fa-server', color: 'from-emerald-400 to-emerald-600' },
+                        { id: 'sk_5', name: 'Databases (SQL & Redis)', percent: 85, icon: 'fa-solid fa-database', color: 'from-purple-400 to-purple-600' },
+                        { id: 'sk_6', name: 'Security & Cryptography', percent: 82, icon: 'fa-solid fa-shield-virus', color: 'from-rose-400 to-rose-600' }
+                    ],
+                    contacts: {
+                        email: "contact@aymanroot.online",
+                        telegram: "https://t.me/",
+                        whatsapp: "https://wa.me/",
+                        github: "https://github.com/ayman-root",
+                        twitter: "https://twitter.com/"
                     }
                 };
 
-                var langSelect = document.getElementById('lang-switcher');
-                var langSelectMobile = document.getElementById('lang-switcher-mobile');
-
-                function setLanguage(lang) {
-                    if (!lang || !translations[lang]) lang = 'ar';
-                    
-                    document.documentElement.lang = lang;
-                    document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
-                    
-                    if (langSelect) langSelect.value = lang;
-                    if (langSelectMobile) langSelectMobile.value = lang;
-                    
-                    var elements = document.querySelectorAll('[data-i18n]');
-                    for (var i = 0; i < elements.length; i++) {
-                        var el = elements[i];
-                        var key = el.getAttribute('data-i18n');
-                        if (translations[lang] && translations[lang][key]) {
-                            el.textContent = translations[lang][key];
-                        }
-                    }
-                    
+                function loadSiteData() {
                     try {
-                        localStorage.setItem('preferred_language', lang);
-                    } catch(e) {}
-                }
-
-                if (langSelect) langSelect.addEventListener('change', function(e) { setLanguage(e.target.value); });
-                if (langSelectMobile) langSelectMobile.addEventListener('change', function(e) { setLanguage(e.target.value); });
-
-                var savedLang = 'ar';
-                try {
-                    savedLang = localStorage.getItem('preferred_language') || 'ar';
-                } catch(e) {}
-                setLanguage(savedLang);
-
-                var themeBtn = document.getElementById('theme-toggle');
-                var themeBtnMobile = document.getElementById('theme-toggle-mobile');
-                var themeIcon = document.getElementById('theme-icon');
-                var themeIconMobile = themeBtnMobile ? themeBtnMobile.querySelector('i') : null;
-
-                function updateThemeDisplay(isDark) {
-                    if (isDark) {
-                        document.documentElement.classList.add('dark');
-                        if (themeIcon) { themeIcon.classList.replace('fa-moon', 'fa-sun'); }
-                        if (themeIconMobile) { themeIconMobile.classList.replace('fa-moon', 'fa-sun'); }
-                    } else {
-                        document.documentElement.classList.remove('dark');
-                        if (themeIcon) { themeIcon.classList.replace('fa-sun', 'fa-moon'); }
-                        if (themeIconMobile) { themeIconMobile.classList.replace('fa-sun', 'fa-moon'); }
-                    }
-                }
-
-                function toggleTheme() {
-                    var isDark = !document.documentElement.classList.contains('dark');
-                    try {
-                        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-                    } catch(e) {}
-                    updateThemeDisplay(isDark);
-                }
-
-                if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
-                if (themeBtnMobile) themeBtnMobile.addEventListener('click', toggleTheme);
-
-                var isDark = false;
-                try {
-                    isDark = localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
-                } catch(e) {
-                    isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                }
-                updateThemeDisplay(isDark);
-
-                var mobileMenuBtn = document.getElementById('mobile-menu-btn');
-                var mobileMenu = document.getElementById('mobile-menu');
-                if (mobileMenuBtn && mobileMenu) {
-                    mobileMenuBtn.addEventListener('click', function() {
-                        mobileMenu.classList.toggle('hidden');
-                    });
-                    var navLinks = mobileMenu.querySelectorAll('a');
-                    for (var k = 0; k < navLinks.length; k++) {
-                        navLinks[k].addEventListener('click', function() {
-                            mobileMenu.classList.add('hidden');
-                        });
-                    }
-                }
-
-                var defaultProjects = [
-                    {
-                        id: 'proj_1',
-                        title: 'بوت إدارة تيليجرام المتطور (Bot Manager)',
-                        mediaType: 'image',
-                        mediaUrl: 'https://placehold.co/800x480/4c1d95/ffffff?text=Telegram+Bot+Manager',
-                        desc: 'برنامج حماية وإدارة المجموعات والقنوات مع لوحة تحكم وإحصائيات مباشرة وقفل الروابط والإعلانات.',
-                        link: 'https://t.me/',
-                        btnText: 'تحميل البوت أو المعاينة'
-                    },
-                    {
-                        id: 'proj_2',
-                        title: 'أداة استخراج البيانات الذكية (Data Scraper Pro)',
-                        mediaType: 'image',
-                        mediaUrl: 'https://placehold.co/800x480/1e3a8a/ffffff?text=Data+Scraper+Pro',
-                        desc: 'أداة برمجية سريعة لسحب البيانات من صفحات ومواقع الويب وتصديرها بصيغ Excel و JSON بنقرة واحدة.',
-                        link: 'https://github.com/ayman-root',
-                        btnText: 'تحميل الأداة'
-                    },
-                    {
-                        id: 'proj_3',
-                        title: 'منظف وتسريع النظام (System Optimizer)',
-                        mediaType: 'image',
-                        mediaUrl: 'https://placehold.co/800x480/065f46/ffffff?text=System+Optimizer',
-                        desc: 'برنامج لتنظيف ملفات الكاش، إدارة الذاكرة العشوائية RAM وتسريع استجابة النظام بالكامل.',
-                        link: 'https://t.me/',
-                        btnText: 'تحميل البرنامج المجاني'
-                    }
-                ];
-
-                function getProjects() {
-                    try {
-                        var stored = localStorage.getItem('ayman_root_projects');
-                        if (stored) {
-                            var parsed = JSON.parse(stored);
-                            if (Array.isArray(parsed) && parsed.length > 0) {
-                                return parsed;
-                            }
+                        var raw = localStorage.getItem('ayman_root_master_data');
+                        if (raw) {
+                            var parsed = JSON.parse(raw);
+                            return Object.assign({}, DEFAULT_SITE_DATA, parsed);
                         }
                     } catch(e) {}
-                    return defaultProjects;
+                    return DEFAULT_SITE_DATA;
                 }
 
-                function saveProjects(items) {
+                function saveSiteData(data) {
                     try {
-                        localStorage.setItem('ayman_root_projects', JSON.stringify(items));
+                        localStorage.setItem('ayman_root_master_data', JSON.stringify(data));
                     } catch(e) {}
+                    renderAllSite();
                 }
 
                 function showToast(msg) {
@@ -779,7 +791,11 @@
                     }
                 }
 
-                function renderMedia(type, url, title) {
+                // ==========================================
+                // 4. RENDER PUBLIC SITE SECTIONS
+                // ==========================================
+                function renderMediaMarkup(type, url, title) {
+                    if (!url) url = 'https://placehold.co/800x480/1e293b/ffffff?text=AYMAN+ROOT';
                     if (type === 'video') {
                         return '<video src="' + url + '" controls class="w-full h-full object-cover" preload="metadata"></video>';
                     } else if (type === 'youtube') {
@@ -795,247 +811,711 @@
                     }
                 }
 
-                function renderPublicProjects() {
-                    var container = document.getElementById('projects-grid');
-                    if (!container) return;
-                    var projects = getProjects();
-                    container.innerHTML = '';
+                function renderAllSite() {
+                    var data = loadSiteData();
 
-                    projects.forEach(function(item) {
-                        var card = document.createElement('div');
-                        card.className = "bg-white dark:bg-dark-card rounded-2xl overflow-hidden border border-slate-200 dark:border-dark-border shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col group";
-                        
-                        var mediaMarkup = renderMedia(item.mediaType, item.mediaUrl, item.title);
-                        
-                        card.innerHTML = 
-                            '<div class="relative h-56 bg-slate-100 dark:bg-slate-900 overflow-hidden media-container">' +
-                                mediaMarkup +
-                            '</div>' +
-                            '<div class="p-6 flex flex-col flex-grow">' +
-                                '<h3 class="text-xl font-extrabold mb-3 text-slate-900 dark:text-white">' + item.title + '</h3>' +
-                                '<p class="text-slate-600 dark:text-dark-muted text-sm mb-6 flex-grow leading-relaxed">' + item.desc + '</p>' +
-                                '<div class="mt-auto">' +
-                                    '<a href="' + item.link + '" target="_blank" rel="noopener" class="w-full inline-flex items-center justify-center gap-2 py-3 px-4 bg-slate-900 dark:bg-brand-600 hover:bg-brand-600 dark:hover:bg-brand-700 text-white rounded-xl font-black text-sm transition-colors shadow-sm">' +
-                                        '<i class="fa-solid fa-arrow-down"></i> ' + (item.btnText || 'تحميل البرنامج') +
-                                    '</a>' +
+                    // 1. Hero
+                    var dHeroName = document.getElementById('display-hero-name');
+                    var dHeroTitle = document.getElementById('display-hero-title');
+                    var dHeroBadge = document.getElementById('display-hero-badge');
+                    var dHeroDesc = document.getElementById('display-hero-desc');
+                    var dHeroBtn1 = document.getElementById('display-hero-btn1');
+                    var dHeroBtn2 = document.getElementById('display-hero-btn2');
+
+                    if (dHeroName) dHeroName.textContent = data.hero.name || "AYMAN ROOT";
+                    if (dHeroTitle) dHeroTitle.textContent = data.hero.title || "";
+                    if (dHeroBadge) dHeroBadge.innerHTML = '<span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span> ' + (data.hero.badge || "");
+                    if (dHeroDesc) dHeroDesc.textContent = data.hero.desc || "";
+                    if (dHeroBtn1) {
+                        dHeroBtn1.innerHTML = '<i class="fa-solid fa-layer-group me-2"></i> ' + data.hero.btn1Text;
+                        dHeroBtn1.href = data.hero.btn1Link;
+                    }
+                    if (dHeroBtn2) {
+                        dHeroBtn2.innerHTML = '<i class="fa-solid fa-paper-plane me-2"></i> ' + data.hero.btn2Text;
+                        dHeroBtn2.href = data.hero.btn2Link;
+                    }
+
+                    // 2. Services
+                    var srvGrid = document.getElementById('services-grid');
+                    if (srvGrid) {
+                        srvGrid.innerHTML = '';
+                        data.services.forEach(function(s) {
+                            var div = document.createElement('div');
+                            div.className = "bg-slate-50 dark:bg-dark-card p-8 rounded-2xl border border-slate-200 dark:border-dark-border hover:border-brand-500/50 hover:shadow-xl transition-all duration-300 group";
+                            div.innerHTML = 
+                                '<div class="w-14 h-14 bg-brand-100 dark:bg-brand-900/40 text-brand-600 dark:text-brand-300 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">' +
+                                    '<i class="' + s.icon + '"></i>' +
                                 '</div>' +
-                            '</div>';
-                        
-                        container.appendChild(card);
-                    });
-                }
+                                '<h3 class="text-xl font-extrabold mb-3 text-slate-900 dark:text-white">' + s.title + '</h3>' +
+                                '<p class="text-slate-600 dark:text-dark-muted leading-relaxed">' + s.desc + '</p>';
+                            srvGrid.appendChild(div);
+                        });
+                    }
 
-                var adminLoginModal = document.getElementById('admin-login-modal');
-                var adminDashboardModal = document.getElementById('admin-dashboard-modal');
-                var adminLoginForm = document.getElementById('admin-login-form');
-                var adminPassInput = document.getElementById('admin-password');
-                var loginError = document.getElementById('login-error');
-                var adminLaunchBtn = document.getElementById('admin-launch-btn');
-                var closeLoginBtn = document.getElementById('close-login-btn');
-                var closeDashboardBtn = document.getElementById('close-dashboard-btn');
-                var adminLogoutBtn = document.getElementById('admin-logout-btn');
-                var footerSecretLogo = document.getElementById('footer-secret-logo');
+                    // 3. Projects
+                    var projGrid = document.getElementById('projects-grid');
+                    if (projGrid) {
+                        projGrid.innerHTML = '';
+                        data.projects.forEach(function(item) {
+                            var card = document.createElement('div');
+                            card.className = "bg-white dark:bg-dark-card rounded-2xl overflow-hidden border border-slate-200 dark:border-dark-border shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col group";
+                            
+                            var mediaMarkup = renderMediaMarkup(item.mediaType, item.mediaUrl, item.title);
+                            
+                            card.innerHTML = 
+                                '<div class="relative h-56 bg-slate-100 dark:bg-slate-900 overflow-hidden media-container">' +
+                                    mediaMarkup +
+                                '</div>' +
+                                '<div class="p-6 flex flex-col flex-grow">' +
+                                    '<h3 class="text-xl font-extrabold mb-3 text-slate-900 dark:text-white">' + item.title + '</h3>' +
+                                    '<p class="text-slate-600 dark:text-dark-muted text-sm mb-6 flex-grow leading-relaxed">' + item.desc + '</p>' +
+                                    '<div class="mt-auto">' +
+                                        '<a href="' + item.link + '" target="_blank" rel="noopener" class="w-full inline-flex items-center justify-center gap-2 py-3 px-4 bg-slate-900 dark:bg-brand-600 hover:bg-brand-600 dark:hover:bg-brand-700 text-white rounded-xl font-black text-sm transition-colors shadow-sm">' +
+                                            '<i class="fa-solid fa-arrow-down"></i> ' + (item.btnText || 'تحميل البرنامج') +
+                                        '</a>' +
+                                    '</div>' +
+                                '</div>';
+                            
+                            projGrid.appendChild(card);
+                        });
+                    }
 
-                var projectForm = document.getElementById('project-form');
-                var editIdInput = document.getElementById('edit-project-id');
-                var titleInput = document.getElementById('project-title');
-                var mediaTypeInput = document.getElementById('project-media-type');
-                var mediaUrlInput = document.getElementById('project-media-url');
-                var descInput = document.getElementById('project-desc');
-                var linkInput = document.getElementById('project-link');
-                var btnTextInput = document.getElementById('project-btn-text');
-                var formHeading = document.getElementById('form-heading');
-                var cancelEditBtn = document.getElementById('cancel-edit-btn');
-                var adminItemsList = document.getElementById('admin-items-list');
+                    // 4. Skills
+                    var skGrid = document.getElementById('skills-grid');
+                    if (skGrid) {
+                        skGrid.innerHTML = '';
+                        var col1 = document.createElement('div');
+                        col1.className = "space-y-6";
+                        var col2 = document.createElement('div');
+                        col2.className = "space-y-6";
 
-                var ADMIN_PASS = 'root2026'; // Secret Passcode
-                var isAuthenticated = false;
+                        data.skills.forEach(function(sk, index) {
+                            var item = document.createElement('div');
+                            item.innerHTML = 
+                                '<div class="flex justify-between items-center mb-2">' +
+                                    '<span class="font-bold flex items-center gap-2 text-slate-900 dark:text-white"><i class="' + sk.icon + ' text-brand-500"></i> ' + sk.name + '</span>' +
+                                    '<span class="text-brand-600 dark:text-brand-400 font-bold">' + sk.percent + '%</span>' +
+                                '</div>' +
+                                '<div class="w-full bg-slate-200 dark:bg-dark-border rounded-full h-3">' +
+                                    '<div class="bg-gradient-to-r rtl:bg-gradient-to-l ' + (sk.color || 'from-brand-500 to-blue-500') + ' h-3 rounded-full" style="width: ' + sk.percent + '%"></div>' +
+                                '</div>';
 
-                function openAdmin() {
-                    if (isAuthenticated) {
-                        renderAdminItems();
-                        adminDashboardModal.classList.remove('hidden');
-                    } else {
-                        loginError.classList.add('hidden');
-                        adminPassInput.value = '';
-                        adminLoginModal.classList.remove('hidden');
-                        setTimeout(function() { adminPassInput.focus(); }, 100);
+                            if (index % 2 === 0) col1.appendChild(item);
+                            else col2.appendChild(item);
+                        });
+
+                        skGrid.appendChild(col1);
+                        skGrid.appendChild(col2);
+                    }
+
+                    // 5. Contacts & Socials
+                    var socContainer = document.getElementById('social-links-container');
+                    if (socContainer) {
+                        socContainer.innerHTML = '';
+                        var c = data.contacts;
+                        var socials = [
+                            { icon: 'fa-brands fa-telegram', url: c.telegram, hover: 'hover:bg-[#229ED9]' },
+                            { icon: 'fa-brands fa-github', url: c.github, hover: 'hover:bg-slate-700' },
+                            { icon: 'fa-brands fa-whatsapp', url: c.whatsapp, hover: 'hover:bg-[#25D366]' },
+                            { icon: 'fa-brands fa-x-twitter', url: c.twitter, hover: 'hover:bg-sky-500' }
+                        ];
+                        socials.forEach(function(s) {
+                            if (s.url) {
+                                var a = document.createElement('a');
+                                a.href = s.url;
+                                a.target = "_blank";
+                                a.rel = "noopener";
+                                a.className = "w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-300 " + s.hover + " hover:text-white hover:border-transparent transition-all";
+                                a.innerHTML = '<i class="' + s.icon + ' text-lg"></i>';
+                                socContainer.appendChild(a);
+                            }
+                        });
+                    }
+
+                    var dEmail = document.getElementById('display-contact-email');
+                    var dEmailText = document.getElementById('display-email-text');
+                    if (dEmail && dEmailText) {
+                        dEmail.href = 'mailto:' + data.contacts.email;
+                        dEmailText.textContent = data.contacts.email;
                     }
                 }
 
-                if (adminLaunchBtn) adminLaunchBtn.addEventListener('click', openAdmin);
-                if (footerSecretLogo) footerSecretLogo.addEventListener('dblclick', openAdmin);
+                // ==========================================
+                // 5. SECRET AUTHENTICATION LOGIC
+                // ==========================================
+                var authModal = document.getElementById('admin-auth-modal');
+                var masterCmsModal = document.getElementById('master-cms-modal');
+                var authForm = document.getElementById('secret-login-form');
+                var passInput = document.getElementById('secret-pass-input');
+                var authError = document.getElementById('auth-error-msg');
+                var closeAuthBtn = document.getElementById('close-auth-modal-btn');
+                var closeCmsBtn = document.getElementById('close-cms-btn');
+                var cmsLogoutBtn = document.getElementById('cms-logout-btn');
 
-                // Keyboard Shortcut: Ctrl + Shift + A
-                window.addEventListener('keydown', function(e) {
-                    if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
+                function openAuthModal() {
+                    authError.classList.add('hidden');
+                    passInput.value = '';
+                    authModal.classList.remove('hidden');
+                    setTimeout(function() { passInput.focus(); }, 150);
+                }
+
+                if (closeAuthBtn) {
+                    closeAuthBtn.addEventListener('click', function() {
+                        authModal.classList.add('hidden');
+                    });
+                }
+
+                if (closeCmsBtn) {
+                    closeCmsBtn.addEventListener('click', function() {
+                        masterCmsModal.classList.add('hidden');
+                    });
+                }
+
+                if (cmsLogoutBtn) {
+                    cmsLogoutBtn.addEventListener('click', function() {
+                        masterCmsModal.classList.add('hidden');
+                        showToast('تم تسجيل الخروج وقفل لوحة التحكم.');
+                    });
+                }
+
+                if (authForm) {
+                    authForm.addEventListener('submit', async function(e) {
                         e.preventDefault();
-                        openAdmin();
-                    }
-                });
+                        var entered = passInput.value.trim();
+                        var hashedEntered = await sha256(entered);
 
-                if (closeLoginBtn) {
-                    closeLoginBtn.addEventListener('click', function() {
-                        adminLoginModal.classList.add('hidden');
-                    });
-                }
-
-                if (closeDashboardBtn) {
-                    closeDashboardBtn.addEventListener('click', function() {
-                        adminDashboardModal.classList.add('hidden');
-                    });
-                }
-
-                if (adminLogoutBtn) {
-                    adminLogoutBtn.addEventListener('click', function() {
-                        isAuthenticated = false;
-                        adminDashboardModal.classList.add('hidden');
-                        showToast('تم تسجيل الخروج بنجاح.');
-                    });
-                }
-
-                if (adminLoginForm) {
-                    adminLoginForm.addEventListener('submit', function(e) {
-                        e.preventDefault();
-                        if (adminPassInput.value.trim() === ADMIN_PASS) {
-                            isAuthenticated = true;
-                            adminLoginModal.classList.add('hidden');
-                            renderAdminItems();
-                            adminDashboardModal.classList.remove('hidden');
+                        if (hashedEntered === TARGET_HASH) {
+                            authModal.classList.add('hidden');
+                            populateCmsForms();
+                            masterCmsModal.classList.remove('hidden');
                             showToast('مرحباً بك يا مدير الموقع!');
                         } else {
-                            loginError.classList.remove('hidden');
-                            adminPassInput.value = '';
-                            adminPassInput.focus();
+                            authError.classList.remove('hidden');
+                            passInput.value = '';
+                            passInput.focus();
                         }
                     });
                 }
 
-                function resetProjectForm() {
-                    editIdInput.value = '';
-                    titleInput.value = '';
-                    mediaTypeInput.value = 'image';
-                    mediaUrlInput.value = '';
-                    descInput.value = '';
-                    linkInput.value = '';
-                    btnTextInput.value = 'تحميل البرنامج';
-                    formHeading.innerHTML = '<i class="fa-solid fa-plus-circle text-brand-600"></i> إضافة برنامج أو مشروع جديد';
-                    cancelEditBtn.classList.add('hidden');
-                }
+                // ==========================================
+                // 6. CMS TAB SWITCHING
+                // ==========================================
+                var tabButtons = document.querySelectorAll('.cms-tab-btn');
+                var tabContents = document.querySelectorAll('.cms-tab-content');
 
-                if (cancelEditBtn) {
-                    cancelEditBtn.addEventListener('click', resetProjectForm);
-                }
+                tabButtons.forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                        var targetTab = this.getAttribute('data-tab');
 
-                function renderAdminItems() {
-                    if (!adminItemsList) return;
-                    var projects = getProjects();
-                    adminItemsList.innerHTML = '';
+                        tabButtons.forEach(function(b) {
+                            b.classList.remove('border-brand-600', 'text-brand-600', 'dark:text-brand-400');
+                            b.classList.add('border-transparent', 'text-slate-500');
+                        });
+                        this.classList.add('border-brand-600', 'text-brand-600', 'dark:text-brand-400');
+                        this.classList.remove('border-transparent', 'text-slate-500');
 
-                    if (projects.length === 0) {
-                        adminItemsList.innerHTML = '<p class="text-sm text-slate-500 py-3 text-center">لا توجد مشاريع مضافة حالياً.</p>';
-                        return;
-                    }
-
-                    projects.forEach(function(item) {
-                        var row = document.createElement('div');
-                        row.className = "flex flex-col sm:flex-row justify-between items-start sm:items-center p-3.5 bg-white dark:bg-dark-surface rounded-xl border border-slate-200 dark:border-dark-border gap-3";
-                        
-                        row.innerHTML = 
-                            '<div class="flex items-center gap-3 overflow-hidden">' +
-                                '<div class="w-10 h-10 rounded-lg bg-slate-100 dark:bg-dark-card flex items-center justify-center flex-shrink-0 text-brand-600 text-sm">' +
-                                    (item.mediaType === 'video' ? '<i class="fa-solid fa-video"></i>' : (item.mediaType === 'youtube' ? '<i class="fa-brands fa-youtube"></i>' : '<i class="fa-solid fa-image"></i>')) +
-                                '</div>' +
-                                '<div class="min-w-0">' +
-                                    '<h5 class="text-sm font-extrabold text-slate-900 dark:text-white truncate">' + item.title + '</h5>' +
-                                    '<p class="text-xs text-slate-500 dark:text-dark-muted truncate max-w-sm">' + item.desc + '</p>' +
-                                '</div>' +
-                            '</div>' +
-                            '<div class="flex items-center gap-2 self-end sm:self-center flex-shrink-0">' +
-                                '<button data-edit-id="' + item.id + '" class="edit-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 dark:bg-dark-card hover:bg-brand-50 hover:text-brand-600 dark:hover:text-brand-400 transition-colors">' +
-                                    '<i class="fa-solid fa-pen-to-square me-1"></i> تعديل' +
-                                '</button>' +
-                                '<button data-del-id="' + item.id + '" class="del-btn px-3 py-1.5 rounded-lg text-xs font-bold text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors">' +
-                                    '<i class="fa-solid fa-trash me-1"></i> حذف' +
-                                '</button>' +
-                            '</div>';
-
-                        adminItemsList.appendChild(row);
-                    });
-
-                    // Bind edit buttons
-                    var editBtns = adminItemsList.querySelectorAll('.edit-btn');
-                    editBtns.forEach(function(btn) {
-                        btn.addEventListener('click', function() {
-                            var id = this.getAttribute('data-edit-id');
-                            var currentProjects = getProjects();
-                            var target = currentProjects.find(function(p) { return p.id === id; });
-                            if (target) {
-                                editIdInput.value = target.id;
-                                titleInput.value = target.title;
-                                mediaTypeInput.value = target.mediaType || 'image';
-                                mediaUrlInput.value = target.mediaUrl;
-                                descInput.value = target.desc;
-                                linkInput.value = target.link;
-                                btnTextInput.value = target.btnText || 'تحميل البرنامج';
-                                formHeading.innerHTML = '<i class="fa-solid fa-pen-to-square text-brand-600"></i> تعديل البرنامج: ' + target.title;
-                                cancelEditBtn.classList.remove('hidden');
-                                projectForm.scrollIntoView({ behavior: 'smooth' });
-                            }
+                        tabContents.forEach(function(content) {
+                            if (content.id === targetTab) content.classList.remove('hidden');
+                            else content.classList.add('hidden');
                         });
                     });
+                });
 
-                    // Bind delete buttons
-                    var delBtns = adminItemsList.querySelectorAll('.del-btn');
-                    delBtns.forEach(function(btn) {
-                        btn.addEventListener('click', function() {
-                            var id = this.getAttribute('data-del-id');
-                            var currentProjects = getProjects();
-                            var updated = currentProjects.filter(function(p) { return p.id !== id; });
-                            saveProjects(updated);
-                            renderAdminItems();
-                            renderPublicProjects();
-                            showToast('تم حذف البرنامج بنجاح.');
-                        });
+                // ==========================================
+                // 7. FILE CONVERTER (FileReader to DataURL)
+                // ==========================================
+                var fileInput = document.getElementById('cms-proj-file-input');
+                var mediaUrlInput = document.getElementById('cms-proj-media-url');
+                var previewBox = document.getElementById('media-preview-box');
+
+                if (fileInput) {
+                    fileInput.addEventListener('change', function(e) {
+                        var file = e.target.files[0];
+                        if (file) {
+                            var reader = new FileReader();
+                            reader.onload = function(evt) {
+                                mediaUrlInput.value = evt.target.result; // DataURL stored directly
+                                previewBox.classList.remove('hidden');
+                            };
+                            reader.readAsDataURL(file);
+                        }
                     });
                 }
 
-                if (projectForm) {
-                    projectForm.addEventListener('submit', function(e) {
+                // ==========================================
+                // 8. POPULATE & HANDLE CMS FORMS
+                // ==========================================
+                function populateCmsForms() {
+                    var data = loadSiteData();
+
+                    // Hero form
+                    document.getElementById('cfg-hero-name').value = data.hero.name || '';
+                    document.getElementById('cfg-hero-badge').value = data.hero.badge || '';
+                    document.getElementById('cfg-hero-title').value = data.hero.title || '';
+                    document.getElementById('cfg-hero-desc').value = data.hero.desc || '';
+                    document.getElementById('cfg-hero-btn1-text').value = data.hero.btn1Text || '';
+                    document.getElementById('cfg-hero-btn1-link').value = data.hero.btn1Link || '';
+
+                    // Contacts form
+                    document.getElementById('cfg-contact-email').value = data.contacts.email || '';
+                    document.getElementById('cfg-contact-telegram').value = data.contacts.telegram || '';
+                    document.getElementById('cfg-contact-whatsapp').value = data.contacts.whatsapp || '';
+                    document.getElementById('cfg-contact-github').value = data.contacts.github || '';
+                    document.getElementById('cfg-contact-twitter').value = data.contacts.twitter || '';
+
+                    renderCmsProjectsList();
+                    renderCmsServicesList();
+                    renderCmsSkillsList();
+                }
+
+                // Save Hero Form
+                var heroForm = document.getElementById('hero-settings-form');
+                if (heroForm) {
+                    heroForm.addEventListener('submit', function(e) {
                         e.preventDefault();
-                        var currentProjects = getProjects();
-                        var editId = editIdInput.value;
+                        var data = loadSiteData();
+                        data.hero.name = document.getElementById('cfg-hero-name').value.trim();
+                        data.hero.badge = document.getElementById('cfg-hero-badge').value.trim();
+                        data.hero.title = document.getElementById('cfg-hero-title').value.trim();
+                        data.hero.desc = document.getElementById('cfg-hero-desc').value.trim();
+                        data.hero.btn1Text = document.getElementById('cfg-hero-btn1-text').value.trim();
+                        data.hero.btn1Link = document.getElementById('cfg-hero-btn1-link').value.trim();
+                        saveSiteData(data);
+                        showToast('تم تحديث بيانات الواجهة بنجاح!');
+                    });
+                }
+
+                // Save Contacts Form
+                var contactsForm = document.getElementById('cms-contacts-form');
+                if (contactsForm) {
+                    contactsForm.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        var data = loadSiteData();
+                        data.contacts.email = document.getElementById('cfg-contact-email').value.trim();
+                        data.contacts.telegram = document.getElementById('cfg-contact-telegram').value.trim();
+                        data.contacts.whatsapp = document.getElementById('cfg-contact-whatsapp').value.trim();
+                        data.contacts.github = document.getElementById('cfg-contact-github').value.trim();
+                        data.contacts.twitter = document.getElementById('cfg-contact-twitter').value.trim();
+                        saveSiteData(data);
+                        showToast('تم تحديث حسابات التواصل بنجاح!');
+                    });
+                }
+
+                // Projects CMS Handlers
+                var projForm = document.getElementById('cms-project-form');
+                var projEditId = document.getElementById('cms-proj-edit-id');
+                var projTitle = document.getElementById('cms-proj-title');
+                var projMediaType = document.getElementById('cms-proj-media-type');
+                var projDesc = document.getElementById('cms-proj-desc');
+                var projLink = document.getElementById('cms-proj-link');
+                var projBtnText = document.getElementById('cms-proj-btntext');
+                var projCancelBtn = document.getElementById('cms-proj-cancel-btn');
+
+                function resetProjectForm() {
+                    projEditId.value = '';
+                    projTitle.value = '';
+                    mediaUrlInput.value = '';
+                    if (fileInput) fileInput.value = '';
+                    projDesc.value = '';
+                    projLink.value = '';
+                    projBtnText.value = 'تحميل البرنامج';
+                    previewBox.classList.add('hidden');
+                    projCancelBtn.classList.add('hidden');
+                    document.getElementById('software-form-title').innerHTML = '<i class="fa-solid fa-plus-circle text-brand-600"></i> إضافة برنامج أو أداة جديدة';
+                }
+
+                if (projCancelBtn) projCancelBtn.addEventListener('click', resetProjectForm);
+
+                if (projForm) {
+                    projForm.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        var data = loadSiteData();
+                        var editId = projEditId.value;
 
                         var newProject = {
                             id: editId ? editId : ('proj_' + Date.now()),
-                            title: titleInput.value.trim(),
-                            mediaType: mediaTypeInput.value,
+                            title: projTitle.value.trim(),
+                            mediaType: projMediaType.value,
                             mediaUrl: mediaUrlInput.value.trim(),
-                            desc: descInput.value.trim(),
-                            link: linkInput.value.trim(),
-                            btnText: btnTextInput.value.trim() || 'تحميل البرنامج'
+                            desc: projDesc.value.trim(),
+                            link: projLink.value.trim(),
+                            btnText: projBtnText.value.trim() || 'تحميل البرنامج'
                         };
 
                         if (editId) {
-                            var index = currentProjects.findIndex(function(p) { return p.id === editId; });
-                            if (index > -1) {
-                                currentProjects[index] = newProject;
-                                showToast('تم تحديث بيانات البرنامج بنجاح!');
-                            }
+                            var idx = data.projects.findIndex(function(p) { return p.id === editId; });
+                            if (idx > -1) data.projects[idx] = newProject;
+                            showToast('تم تحديث البرنامج!');
                         } else {
-                            currentProjects.unshift(newProject);
+                            data.projects.unshift(newProject);
                             showToast('تمت إضافة البرنامج الجديد بنجاح!');
                         }
 
-                        saveProjects(currentProjects);
+                        saveSiteData(data);
                         resetProjectForm();
-                        renderAdminItems();
-                        renderPublicProjects();
+                        renderCmsProjectsList();
                     });
                 }
 
-                // Initial render of projects
-                renderPublicProjects();
+                function renderCmsProjectsList() {
+                    var container = document.getElementById('cms-projects-list');
+                    if (!container) return;
+                    var data = loadSiteData();
+                    container.innerHTML = '';
+
+                    data.projects.forEach(function(p) {
+                        var div = document.createElement('div');
+                        div.className = "flex justify-between items-center p-3 bg-white dark:bg-dark-surface rounded-xl border border-slate-200 dark:border-dark-border gap-3";
+                        div.innerHTML = 
+                            '<div class="min-w-0">' +
+                                '<h5 class="text-xs font-bold text-slate-900 dark:text-white truncate">' + p.title + '</h5>' +
+                                '<p class="text-[11px] text-slate-500 truncate">' + p.desc + '</p>' +
+                            '</div>' +
+                            '<div class="flex items-center gap-2 flex-shrink-0">' +
+                                '<button data-edit="' + p.id + '" class="p-edit-btn px-2.5 py-1 text-xs rounded-lg bg-slate-100 dark:bg-dark-card hover:bg-brand-50 hover:text-brand-600 font-bold">تعديل</button>' +
+                                '<button data-del="' + p.id + '" class="p-del-btn px-2.5 py-1 text-xs rounded-lg bg-rose-50 text-rose-600 font-bold">حذف</button>' +
+                            '</div>';
+                        container.appendChild(div);
+                    });
+
+                    container.querySelectorAll('.p-edit-btn').forEach(function(btn) {
+                        btn.addEventListener('click', function() {
+                            var id = this.getAttribute('data-edit');
+                            var data = loadSiteData();
+                            var p = data.projects.find(function(item) { return item.id === id; });
+                            if (p) {
+                                projEditId.value = p.id;
+                                projTitle.value = p.title;
+                                projMediaType.value = p.mediaType || 'image';
+                                mediaUrlInput.value = p.mediaUrl;
+                                projDesc.value = p.desc;
+                                projLink.value = p.link;
+                                projBtnText.value = p.btnText || 'تحميل البرنامج';
+                                projCancelBtn.classList.remove('hidden');
+                                document.getElementById('software-form-title').innerHTML = '<i class="fa-solid fa-pen text-brand-600"></i> تعديل: ' + p.title;
+                            }
+                        });
+                    });
+
+                    container.querySelectorAll('.p-del-btn').forEach(function(btn) {
+                        btn.addEventListener('click', function() {
+                            var id = this.getAttribute('data-del');
+                            var data = loadSiteData();
+                            data.projects = data.projects.filter(function(item) { return item.id !== id; });
+                            saveSiteData(data);
+                            renderCmsProjectsList();
+                            showToast('تم حذف البرنامج.');
+                        });
+                    });
+                }
+
+                // Services CMS Handlers
+                var srvForm = document.getElementById('cms-service-form');
+                var srvEditId = document.getElementById('cms-srv-edit-id');
+                var srvTitle = document.getElementById('cms-srv-title');
+                var srvIcon = document.getElementById('cms-srv-icon');
+                var srvDesc = document.getElementById('cms-srv-desc');
+                var srvCancelBtn = document.getElementById('cms-srv-cancel-btn');
+
+                if (srvCancelBtn) {
+                    srvCancelBtn.addEventListener('click', function() {
+                        srvEditId.value = '';
+                        srvTitle.value = '';
+                        srvIcon.value = 'fa-solid fa-code';
+                        srvDesc.value = '';
+                        srvCancelBtn.classList.add('hidden');
+                    });
+                }
+
+                if (srvForm) {
+                    srvForm.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        var data = loadSiteData();
+                        var editId = srvEditId.value;
+
+                        var newSrv = {
+                            id: editId ? editId : ('srv_' + Date.now()),
+                            title: srvTitle.value.trim(),
+                            icon: srvIcon.value.trim(),
+                            desc: srvDesc.value.trim()
+                        };
+
+                        if (editId) {
+                            var idx = data.services.findIndex(function(s) { return s.id === editId; });
+                            if (idx > -1) data.services[idx] = newSrv;
+                        } else {
+                            data.services.push(newSrv);
+                        }
+
+                        saveSiteData(data);
+                        srvEditId.value = '';
+                        srvTitle.value = '';
+                        srvDesc.value = '';
+                        srvCancelBtn.classList.add('hidden');
+                        renderCmsServicesList();
+                        showToast('تم حفظ الخدمة!');
+                    });
+                }
+
+                function renderCmsServicesList() {
+                    var container = document.getElementById('cms-services-list');
+                    if (!container) return;
+                    var data = loadSiteData();
+                    container.innerHTML = '';
+
+                    data.services.forEach(function(s) {
+                        var div = document.createElement('div');
+                        div.className = "flex justify-between items-center p-3 bg-white dark:bg-dark-surface rounded-xl border border-slate-200 dark:border-dark-border";
+                        div.innerHTML = 
+                            '<div class="flex items-center gap-2">' +
+                                '<i class="' + s.icon + ' text-brand-600"></i>' +
+                                '<span class="text-xs font-bold text-slate-800 dark:text-white">' + s.title + '</span>' +
+                            '</div>' +
+                            '<div class="flex items-center gap-2">' +
+                                '<button data-edit="' + s.id + '" class="s-edit-btn px-2 py-1 text-xs rounded bg-slate-100 dark:bg-dark-card font-bold">تعديل</button>' +
+                                '<button data-del="' + s.id + '" class="s-del-btn px-2 py-1 text-xs rounded bg-rose-50 text-rose-600 font-bold">حذف</button>' +
+                            '</div>';
+                        container.appendChild(div);
+                    });
+
+                    container.querySelectorAll('.s-edit-btn').forEach(function(btn) {
+                        btn.addEventListener('click', function() {
+                            var id = this.getAttribute('data-edit');
+                            var data = loadSiteData();
+                            var s = data.services.find(function(item) { return item.id === id; });
+                            if (s) {
+                                srvEditId.value = s.id;
+                                srvTitle.value = s.title;
+                                srvIcon.value = s.icon;
+                                srvDesc.value = s.desc;
+                                srvCancelBtn.classList.remove('hidden');
+                            }
+                        });
+                    });
+
+                    container.querySelectorAll('.s-del-btn').forEach(function(btn) {
+                        btn.addEventListener('click', function() {
+                            var id = this.getAttribute('data-del');
+                            var data = loadSiteData();
+                            data.services = data.services.filter(function(item) { return item.id !== id; });
+                            saveSiteData(data);
+                            renderCmsServicesList();
+                            showToast('تم حذف الخدمة.');
+                        });
+                    });
+                }
+
+                // Skills CMS Handlers
+                var skForm = document.getElementById('cms-skill-form');
+                var skEditId = document.getElementById('cms-sk-edit-id');
+                var skName = document.getElementById('cms-sk-name');
+                var skPercent = document.getElementById('cms-sk-percent');
+                var skIcon = document.getElementById('cms-sk-icon');
+                var skCancelBtn = document.getElementById('cms-sk-cancel-btn');
+
+                if (skCancelBtn) {
+                    skCancelBtn.addEventListener('click', function() {
+                        skEditId.value = '';
+                        skName.value = '';
+                        skPercent.value = '90';
+                        skCancelBtn.classList.add('hidden');
+                    });
+                }
+
+                if (skForm) {
+                    skForm.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        var data = loadSiteData();
+                        var editId = skEditId.value;
+
+                        var newSk = {
+                            id: editId ? editId : ('sk_' + Date.now()),
+                            name: skName.value.trim(),
+                            percent: parseInt(skPercent.value, 10) || 90,
+                            icon: skIcon.value.trim(),
+                            color: 'from-brand-500 to-blue-500'
+                        };
+
+                        if (editId) {
+                            var idx = data.skills.findIndex(function(k) { return k.id === editId; });
+                            if (idx > -1) data.skills[idx] = newSk;
+                        } else {
+                            data.skills.push(newSk);
+                        }
+
+                        saveSiteData(data);
+                        skEditId.value = '';
+                        skName.value = '';
+                        skCancelBtn.classList.add('hidden');
+                        renderCmsSkillsList();
+                        showToast('تم حفظ المهارة!');
+                    });
+                }
+
+                function renderCmsSkillsList() {
+                    var container = document.getElementById('cms-skills-list');
+                    if (!container) return;
+                    var data = loadSiteData();
+                    container.innerHTML = '';
+
+                    data.skills.forEach(function(sk) {
+                        var div = document.createElement('div');
+                        div.className = "flex justify-between items-center p-3 bg-white dark:bg-dark-surface rounded-xl border border-slate-200 dark:border-dark-border";
+                        div.innerHTML = 
+                            '<div class="flex items-center gap-2">' +
+                                '<i class="' + sk.icon + ' text-brand-600"></i>' +
+                                '<span class="text-xs font-bold text-slate-800 dark:text-white">' + sk.name + ' (' + sk.percent + '%)</span>' +
+                            '</div>' +
+                            '<div class="flex items-center gap-2">' +
+                                '<button data-edit="' + sk.id + '" class="sk-edit-btn px-2 py-1 text-xs rounded bg-slate-100 dark:bg-dark-card font-bold">تعديل</button>' +
+                                '<button data-del="' + sk.id + '" class="sk-del-btn px-2 py-1 text-xs rounded bg-rose-50 text-rose-600 font-bold">حذف</button>' +
+                            '</div>';
+                        container.appendChild(div);
+                    });
+
+                    container.querySelectorAll('.sk-edit-btn').forEach(function(btn) {
+                        btn.addEventListener('click', function() {
+                            var id = this.getAttribute('data-edit');
+                            var data = loadSiteData();
+                            var sk = data.skills.find(function(item) { return item.id === id; });
+                            if (sk) {
+                                skEditId.value = sk.id;
+                                skName.value = sk.name;
+                                skPercent.value = sk.percent;
+                                skIcon.value = sk.icon;
+                                skCancelBtn.classList.remove('hidden');
+                            }
+                        });
+                    });
+
+                    container.querySelectorAll('.sk-del-btn').forEach(function(btn) {
+                        btn.addEventListener('click', function() {
+                            var id = this.getAttribute('data-del');
+                            var data = loadSiteData();
+                            data.skills = data.skills.filter(function(item) { return item.id !== id; });
+                            saveSiteData(data);
+                            renderCmsSkillsList();
+                            showToast('تم حذف المهارة.');
+                        });
+                    });
+                }
+
+                // Export Backup JSON
+                var exportBtn = document.getElementById('cms-export-json-btn');
+                if (exportBtn) {
+                    exportBtn.addEventListener('click', function() {
+                        var data = loadSiteData();
+                        var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data, null, 2));
+                        var dlAnchor = document.createElement('a');
+                        dlAnchor.setAttribute("href", dataStr);
+                        dlAnchor.setAttribute("download", "aymanroot_backup.json");
+                        dlAnchor.click();
+                        showToast('تم تنزيل النسخة الاحتياطية بنجاح!');
+                    });
+                }
+
+                // ==========================================
+                // 9. MULTILINGUAL & THEME UTILITIES
+                // ==========================================
+                var translations = {
+                    'ar': {
+                        'nav_home': 'الرئيسية', 'nav_services': 'الخدمات', 'nav_software': 'البرامج', 'nav_skills': 'المهارات', 'nav_contact': 'تواصل معي',
+                        'services_title': 'الخدمات التي أقدمها', 'software_title': 'البرامج والأدوات المتوفرة', 'skills_title': 'المهارات والخبرات التقنية'
+                    },
+                    'en': {
+                        'nav_home': 'Home', 'nav_services': 'Services', 'nav_software': 'Software', 'nav_skills': 'Skills', 'nav_contact': 'Contact',
+                        'services_title': 'Services I Provide', 'software_title': 'Available Software & Tools', 'skills_title': 'Technical Arsenal & Skills'
+                    },
+                    'fr': {
+                        'nav_home': 'Accueil', 'nav_services': 'Services', 'nav_software': 'Logiciels', 'nav_skills': 'Compétences', 'nav_contact': 'Contact',
+                        'services_title': 'Services Proposés', 'software_title': 'Logiciels et Outils Disponibles', 'skills_title': 'Compétences Techniques'
+                    },
+                    'zh': {
+                        'nav_home': '首页', 'nav_services': '服务', 'nav_software': '软件', 'nav_skills': '技能', 'nav_contact': '联系',
+                        'services_title': '我提供的服务', 'software_title': '可用软件与工具', 'skills_title': '专业技术能力'
+                    }
+                };
+
+                var langSelect = document.getElementById('lang-switcher');
+                var langSelectMobile = document.getElementById('lang-switcher-mobile');
+
+                function setLanguage(lang) {
+                    if (!lang || !translations[lang]) lang = 'ar';
+                    document.documentElement.lang = lang;
+                    document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+                    if (langSelect) langSelect.value = lang;
+                    if (langSelectMobile) langSelectMobile.value = lang;
+
+                    var elements = document.querySelectorAll('[data-i18n]');
+                    for (var i = 0; i < elements.length; i++) {
+                        var el = elements[i];
+                        var key = el.getAttribute('data-i18n');
+                        if (translations[lang] && translations[lang][key]) {
+                            el.textContent = translations[lang][key];
+                        }
+                    }
+                    try { localStorage.setItem('preferred_language', lang); } catch(e) {}
+                }
+
+                if (langSelect) langSelect.addEventListener('change', function(e) { setLanguage(e.target.value); });
+                if (langSelectMobile) langSelectMobile.addEventListener('change', function(e) { setLanguage(e.target.value); });
+
+                var savedLang = 'ar';
+                try { savedLang = localStorage.getItem('preferred_language') || 'ar'; } catch(e) {}
+                setLanguage(savedLang);
+
+                // Theme Switcher
+                var themeBtn = document.getElementById('theme-toggle');
+                var themeBtnMobile = document.getElementById('theme-toggle-mobile');
+                var themeIcon = document.getElementById('theme-icon');
+                var themeIconMobile = themeBtnMobile ? themeBtnMobile.querySelector('i') : null;
+
+                function updateThemeDisplay(isDark) {
+                    if (isDark) {
+                        document.documentElement.classList.add('dark');
+                        if (themeIcon) themeIcon.classList.replace('fa-moon', 'fa-sun');
+                        if (themeIconMobile) themeIconMobile.classList.replace('fa-moon', 'fa-sun');
+                    } else {
+                        document.documentElement.classList.remove('dark');
+                        if (themeIcon) themeIcon.classList.replace('fa-sun', 'fa-moon');
+                        if (themeIconMobile) themeIconMobile.classList.replace('fa-sun', 'fa-moon');
+                    }
+                }
+
+                function toggleTheme() {
+                    var isDark = !document.documentElement.classList.contains('dark');
+                    try { localStorage.setItem('theme', isDark ? 'dark' : 'light'); } catch(e) {}
+                    updateThemeDisplay(isDark);
+                }
+
+                if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
+                if (themeBtnMobile) themeBtnMobile.addEventListener('click', toggleTheme);
+
+                var isDark = false;
+                try {
+                    isDark = localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+                } catch(e) {
+                    isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                }
+                updateThemeDisplay(isDark);
+
+                // Mobile drawer
+                var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+                var mobileMenu = document.getElementById('mobile-menu');
+                if (mobileMenuBtn && mobileMenu) {
+                    mobileMenuBtn.addEventListener('click', function() {
+                        mobileMenu.classList.toggle('hidden');
+                    });
+                    var navLinks = mobileMenu.querySelectorAll('a');
+                    for (var k = 0; k < navLinks.length; k++) {
+                        navLinks[k].addEventListener('click', function() {
+                            mobileMenu.classList.add('hidden');
+                        });
+                    }
+                }
+
+                // Initial site render
+                renderAllSite();
 
             });
         })();
