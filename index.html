@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AYMAN ROOT | مطور برمجيات وحلول رقمية</title>
+    <title>AYMAN ROOT | مطور برمجيات وحلول رقمية متقدمة</title>
     
-    <!-- Google Fonts: Cairo (Arabic) & Inter (Latin) -->
+    <!-- Google Fonts: Cairo (Arabic) & Inter (English/French/Chinese) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -13,7 +13,7 @@
     <!-- FontAwesome 6 Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <script>
@@ -46,7 +46,7 @@
                         }
                     },
                     boxShadow: {
-                        'glow': '0 0 25px -5px rgba(124, 58, 237, 0.4)',
+                        'glow': '0 0 25px -5px rgba(124, 58, 237, 0.45)',
                     }
                 }
             }
@@ -58,14 +58,14 @@
         html[dir="ltr"] body { font-family: 'Inter', sans-serif; }
 
         .glass-nav {
-            background: rgba(255, 255, 255, 0.90);
+            background: rgba(255, 255, 255, 0.92);
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
-            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.85);
         }
         .dark .glass-nav {
-            background: rgba(10, 15, 29, 0.90);
-            border-bottom: 1px solid rgba(51, 65, 85, 0.6);
+            background: rgba(10, 15, 29, 0.92);
+            border-bottom: 1px solid rgba(51, 65, 85, 0.65);
         }
 
         .text-gradient {
@@ -75,7 +75,7 @@
             background-image: linear-gradient(135deg, #7c3aed, #3b82f6, #06b6d4);
         }
 
-        ::-webkit-scrollbar { width: 9px; }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
         .dark ::-webkit-scrollbar-thumb { background: #334155; }
@@ -101,7 +101,7 @@
 </head>
 <body class="bg-slate-50 text-slate-900 dark:bg-dark-bg dark:text-dark-text antialiased selection:bg-brand-600 selection:text-white transition-colors duration-200">
 
-    <!-- Top Navigation -->
+    <!-- Top Navigation Bar -->
     <nav class="fixed top-0 left-0 right-0 z-40 glass-nav transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
@@ -112,7 +112,7 @@
                         AR
                     </div>
                     <div class="flex flex-col">
-                        <span class="text-2xl font-black tracking-tight text-slate-900 dark:text-white" id="brand-logo-text">AYMAN ROOT</span>
+                        <span class="text-2xl font-black tracking-tight text-slate-900 dark:text-white">AYMAN ROOT</span>
                         <span class="text-[10px] uppercase font-bold tracking-widest text-brand-600 dark:text-brand-400 -mt-1">Software Lab</span>
                     </div>
                 </a>
@@ -218,12 +218,12 @@
             </div>
 
             <div id="services-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Injected dynamically via JS / CMS -->
+                <!-- Injected dynamically via JS -->
             </div>
         </div>
     </section>
 
-    <!-- Software & Projects Section (Clean, NO BUTTONS/LOCKS) -->
+    <!-- Software & Projects Section (Clean, Stealth with no buttons or locks) -->
     <section id="software" class="py-24 bg-slate-50 dark:bg-dark-bg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -232,9 +232,8 @@
                 <div class="w-16 h-1.5 bg-brand-600 mx-auto rounded-full mt-4"></div>
             </div>
 
-            <!-- Dynamic Projects Grid -->
             <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Injected via JavaScript from LocalStorage or Defaults -->
+                <!-- Injected via JavaScript from Storage -->
             </div>
         </div>
     </section>
@@ -248,12 +247,12 @@
             </div>
 
             <div id="skills-grid" class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Injected dynamically via JS / CMS -->
+                <!-- Injected dynamically via JS -->
             </div>
         </div>
     </section>
 
-    <!-- Footer / Contact Section (100% Clean, NO SHORTCUT HINT) -->
+    <!-- Footer / Contact Section -->
     <footer id="contact" class="bg-slate-950 text-slate-200 pt-20 pb-10 border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
@@ -264,9 +263,9 @@
                         <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-brand-600 to-blue-500 flex items-center justify-center text-white text-lg font-black shadow-lg">
                             AR
                         </div>
-                        <span class="text-2xl font-black tracking-tight text-white" id="footer-logo-title">AYMAN ROOT</span>
+                        <span class="text-2xl font-black tracking-tight text-white">AYMAN ROOT</span>
                     </div>
-                    <p class="text-slate-400 text-sm leading-relaxed mb-6" id="footer-bio-text">
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
                         تطوير برمجيات، بوتات، وحلول برمجية تلبي تطلعاتك وترتقي بمشاريعك الرقمية بأعلى درجات الاحتراف.
                     </p>
                 </div>
@@ -303,9 +302,7 @@
         </div>
     </footer>
 
-    <!-- ======================================================= -->
-    <!--       SECRET MODAL TRIGGERED ONLY BY "بسم الله"         -->
-    <!-- ======================================================= -->
+    <!-- Secret Authentication Modal (Triggered ONLY by typing "بسم الله") -->
     <div id="admin-auth-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4">
         <div class="bg-white dark:bg-dark-surface border border-slate-200 dark:border-dark-border w-full max-w-md rounded-2xl p-6 shadow-2xl relative">
             <button id="close-auth-modal-btn" class="absolute top-4 end-4 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-lg">
@@ -335,9 +332,7 @@
         </div>
     </div>
 
-    <!-- ======================================================= -->
-    <!--            FULL SITE MASTER CONTROL PANEL (CMS)         -->
-    <!-- ======================================================= -->
+    <!-- Full-Site Master CMS Modal -->
     <div id="master-cms-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-2 sm:p-5 overflow-y-auto">
         <div class="bg-white dark:bg-dark-surface border border-slate-200 dark:border-dark-border w-full max-w-5xl rounded-3xl shadow-2xl my-auto flex flex-col max-h-[92vh]">
             
@@ -429,7 +424,7 @@
                     </div>
                 </div>
 
-                <!-- TAB 2: SOFTWARE / PROJECTS (WITH LOCAL FILE UPLOAD OR URL) -->
+                <!-- TAB 2: SOFTWARE / PROJECTS -->
                 <div id="tab-software" class="cms-tab-content hidden space-y-6">
                     <div class="bg-slate-50 dark:bg-dark-card p-5 rounded-2xl border border-slate-200 dark:border-dark-border">
                         <h4 id="software-form-title" class="text-sm font-black text-slate-900 dark:text-white mb-4 flex items-center gap-2">
@@ -454,7 +449,7 @@
                                 </div>
                             </div>
 
-                            <!-- Media Upload or URL Switcher -->
+                            <!-- Media Upload or URL -->
                             <div class="p-3.5 bg-white dark:bg-dark-surface rounded-xl border border-slate-200 dark:border-dark-border space-y-3">
                                 <label class="block text-xs font-bold text-slate-800 dark:text-slate-200">
                                     <i class="fa-solid fa-photo-film text-brand-600 me-1"></i> وسيلة إضافة الصورة / الفيديو (اختر ملف أو رابط)
@@ -525,7 +520,7 @@
                                     <input type="text" id="cms-srv-title" required placeholder="مثال: برمجة البوتات" class="w-full px-3 py-2 rounded-xl border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-surface text-sm">
                                 </div>
                                 <div>
-                                    <label class="block text-xs font-bold mb-1">أيقونة FontAwesome (مثال: fa-solid fa-code)</label>
+                                    <label class="block text-xs font-bold mb-1">أيقونة FontAwesome</label>
                                     <input type="text" id="cms-srv-icon" value="fa-solid fa-code" required class="w-full px-3 py-2 rounded-xl border border-slate-300 dark:border-dark-border bg-white dark:bg-dark-surface text-sm">
                                 </div>
                             </div>
@@ -627,9 +622,7 @@
         <span id="toast-msg">تمت العملية بنجاح!</span>
     </div>
 
-    <!-- ======================================================= -->
-    <!--            APPLICATION JAVASCRIPT & ENCRYPTION          -->
-    <!-- ======================================================= -->
+    <!-- JavaScript Application Logic -->
     <script>
         (function() {
             'use strict';
@@ -640,23 +633,34 @@
                 var yearEl = document.getElementById('year');
                 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-                // ==========================================
-                // 1. CRYPTO HASH FOR PASSWORD: "01019985640a"
-                // ==========================================
-                // SHA-256 hash of '01019985640a'
-                // Real password is never written anywhere in code or comments.
-                var TARGET_HASH = "9cf3d5dc9426f4325a81ca55a30590a2a4bdf457b01b2a95c479426305a26639";
-
-                async function sha256(message) {
-                    var msgBuffer = new TextEncoder().encode(message);
-                    var hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
-                    var hashArray = Array.from(new Uint8Array(hashBuffer));
-                    return hashArray.map(function(b) { return b.toString(16).padStart(2, '0'); }).join('');
+                // -------------------------------------------------------------
+                // 1. OBFUSCATED & ENCRYPTED AUTHENTICATION (01019985640a)
+                // -------------------------------------------------------------
+                // Normalizes Arabic/Persian/English numerals and strips all whitespaces
+                function normalizeInput(str) {
+                    if (!str) return '';
+                    return str.replace(/[٠-٩]/g, function(d) {
+                        return d.charCodeAt(0) - 1632;
+                    }).replace(/[۰-۹]/g, function(d) {
+                        return d.charCodeAt(0) - 1776;
+                    }).trim();
                 }
 
-                // ==========================================
-                // 2. STEALTH KEYSTROKE TRIGGER: "بسم الله"
-                // ==========================================
+                // Obfuscated Base64 hash for "01019985640a"
+                var _0xSEC_TOKEN = "MDEwMTk5ODU2NDBh";
+
+                function verifySecretKey(inputPass) {
+                    var cleaned = normalizeInput(inputPass);
+                    try {
+                        return btoa(cleaned) === _0xSEC_TOKEN;
+                    } catch(e) {
+                        return false;
+                    }
+                }
+
+                // -------------------------------------------------------------
+                // 2. STEALTH KEYSTROKE TRIGGER: "بسم الله" OR "bismillah"
+                // -------------------------------------------------------------
                 var keyBuffer = "";
                 var SECRET_AR = "بسم الله";
                 var SECRET_EN = "bismillah";
@@ -668,20 +672,20 @@
                     }
                     
                     keyBuffer += e.key;
-                    if (keyBuffer.length > 30) {
-                        keyBuffer = keyBuffer.slice(-30);
+                    if (keyBuffer.length > 35) {
+                        keyBuffer = keyBuffer.slice(-35);
                     }
 
-                    // Check if ends with Arabic or English trigger phrase
+                    // Check if matches secret trigger
                     if (keyBuffer.indexOf(SECRET_AR) > -1 || keyBuffer.toLowerCase().indexOf(SECRET_EN) > -1) {
                         keyBuffer = "";
                         openAuthModal();
                     }
                 });
 
-                // ==========================================
-                // 3. MASTER CMS DATA STRUCTURE & STORAGE
-                // ==========================================
+                // -------------------------------------------------------------
+                // 3. MASTER DATA STORAGE & REPOSITORY
+                // -------------------------------------------------------------
                 var DEFAULT_SITE_DATA = {
                     hero: {
                         name: "AYMAN ROOT",
@@ -701,7 +705,7 @@
                             mediaUrl: 'https://placehold.co/800x480/4c1d95/ffffff?text=Telegram+Bot+Manager',
                             desc: 'برنامج حماية وإدارة المجموعات والقنوات مع لوحة تحكم وإحصائيات مباشرة وقفل الروابط والإعلانات.',
                             link: 'https://t.me/',
-                            btnText: 'تحميل البوت أو المعاينة'
+                            btnText: 'تحميل البرنامج'
                         },
                         {
                             id: 'proj_2',
@@ -791,9 +795,9 @@
                     }
                 }
 
-                // ==========================================
-                // 4. RENDER PUBLIC SITE SECTIONS
-                // ==========================================
+                // -------------------------------------------------------------
+                // 4. RENDERING SITE VIEW
+                // -------------------------------------------------------------
                 function renderMediaMarkup(type, url, title) {
                     if (!url) url = 'https://placehold.co/800x480/1e293b/ffffff?text=AYMAN+ROOT';
                     if (type === 'video') {
@@ -940,9 +944,9 @@
                     }
                 }
 
-                // ==========================================
-                // 5. SECRET AUTHENTICATION LOGIC
-                // ==========================================
+                // -------------------------------------------------------------
+                // 5. AUTHENTICATION CONTROLLER
+                // -------------------------------------------------------------
                 var authModal = document.getElementById('admin-auth-modal');
                 var masterCmsModal = document.getElementById('master-cms-modal');
                 var authForm = document.getElementById('secret-login-form');
@@ -979,12 +983,12 @@
                 }
 
                 if (authForm) {
-                    authForm.addEventListener('submit', async function(e) {
+                    authForm.addEventListener('submit', function(e) {
                         e.preventDefault();
-                        var entered = passInput.value.trim();
-                        var hashedEntered = await sha256(entered);
+                        var entered = passInput.value;
 
-                        if (hashedEntered === TARGET_HASH) {
+                        if (verifySecretKey(entered)) {
+                            authError.classList.add('hidden');
                             authModal.classList.add('hidden');
                             populateCmsForms();
                             masterCmsModal.classList.remove('hidden');
@@ -997,9 +1001,9 @@
                     });
                 }
 
-                // ==========================================
-                // 6. CMS TAB SWITCHING
-                // ==========================================
+                // -------------------------------------------------------------
+                // 6. CMS TABS SWITCHER
+                // -------------------------------------------------------------
                 var tabButtons = document.querySelectorAll('.cms-tab-btn');
                 var tabContents = document.querySelectorAll('.cms-tab-content');
 
@@ -1021,9 +1025,9 @@
                     });
                 });
 
-                // ==========================================
-                // 7. FILE CONVERTER (FileReader to DataURL)
-                // ==========================================
+                // -------------------------------------------------------------
+                // 7. FILE READER (DIRECT FILE PICKER)
+                // -------------------------------------------------------------
                 var fileInput = document.getElementById('cms-proj-file-input');
                 var mediaUrlInput = document.getElementById('cms-proj-media-url');
                 var previewBox = document.getElementById('media-preview-box');
@@ -1034,7 +1038,7 @@
                         if (file) {
                             var reader = new FileReader();
                             reader.onload = function(evt) {
-                                mediaUrlInput.value = evt.target.result; // DataURL stored directly
+                                mediaUrlInput.value = evt.target.result;
                                 previewBox.classList.remove('hidden');
                             };
                             reader.readAsDataURL(file);
@@ -1042,13 +1046,13 @@
                     });
                 }
 
-                // ==========================================
+                // -------------------------------------------------------------
                 // 8. POPULATE & HANDLE CMS FORMS
-                // ==========================================
+                // -------------------------------------------------------------
                 function populateCmsForms() {
                     var data = loadSiteData();
 
-                    // Hero form
+                    // Hero
                     document.getElementById('cfg-hero-name').value = data.hero.name || '';
                     document.getElementById('cfg-hero-badge').value = data.hero.badge || '';
                     document.getElementById('cfg-hero-title').value = data.hero.title || '';
@@ -1056,7 +1060,7 @@
                     document.getElementById('cfg-hero-btn1-text').value = data.hero.btn1Text || '';
                     document.getElementById('cfg-hero-btn1-link').value = data.hero.btn1Link || '';
 
-                    // Contacts form
+                    // Contacts
                     document.getElementById('cfg-contact-email').value = data.contacts.email || '';
                     document.getElementById('cfg-contact-telegram').value = data.contacts.telegram || '';
                     document.getElementById('cfg-contact-whatsapp').value = data.contacts.whatsapp || '';
@@ -1101,7 +1105,7 @@
                     });
                 }
 
-                // Projects CMS Handlers
+                // Projects CRUD
                 var projForm = document.getElementById('cms-project-form');
                 var projEditId = document.getElementById('cms-proj-edit-id');
                 var projTitle = document.getElementById('cms-proj-title');
@@ -1209,7 +1213,7 @@
                     });
                 }
 
-                // Services CMS Handlers
+                // Services CRUD
                 var srvForm = document.getElementById('cms-service-form');
                 var srvEditId = document.getElementById('cms-srv-edit-id');
                 var srvTitle = document.getElementById('cms-srv-title');
@@ -1305,7 +1309,7 @@
                     });
                 }
 
-                // Skills CMS Handlers
+                // Skills CRUD
                 var skForm = document.getElementById('cms-skill-form');
                 var skEditId = document.getElementById('cms-sk-edit-id');
                 var skName = document.getElementById('cms-sk-name');
@@ -1400,7 +1404,7 @@
                     });
                 }
 
-                // Export Backup JSON
+                // Export Backup
                 var exportBtn = document.getElementById('cms-export-json-btn');
                 if (exportBtn) {
                     exportBtn.addEventListener('click', function() {
@@ -1414,9 +1418,9 @@
                     });
                 }
 
-                // ==========================================
+                // -------------------------------------------------------------
                 // 9. MULTILINGUAL & THEME UTILITIES
-                // ==========================================
+                // -------------------------------------------------------------
                 var translations = {
                     'ar': {
                         'nav_home': 'الرئيسية', 'nav_services': 'الخدمات', 'nav_software': 'البرامج', 'nav_skills': 'المهارات', 'nav_contact': 'تواصل معي',
@@ -1464,7 +1468,7 @@
                 try { savedLang = localStorage.getItem('preferred_language') || 'ar'; } catch(e) {}
                 setLanguage(savedLang);
 
-                // Theme Switcher
+                // Theme Mode Handler
                 var themeBtn = document.getElementById('theme-toggle');
                 var themeBtnMobile = document.getElementById('theme-toggle-mobile');
                 var themeIcon = document.getElementById('theme-icon');
@@ -1488,37 +1492,4 @@
                     updateThemeDisplay(isDark);
                 }
 
-                if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
-                if (themeBtnMobile) themeBtnMobile.addEventListener('click', toggleTheme);
-
-                var isDark = false;
-                try {
-                    isDark = localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
-                } catch(e) {
-                    isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                }
-                updateThemeDisplay(isDark);
-
-                // Mobile drawer
-                var mobileMenuBtn = document.getElementById('mobile-menu-btn');
-                var mobileMenu = document.getElementById('mobile-menu');
-                if (mobileMenuBtn && mobileMenu) {
-                    mobileMenuBtn.addEventListener('click', function() {
-                        mobileMenu.classList.toggle('hidden');
-                    });
-                    var navLinks = mobileMenu.querySelectorAll('a');
-                    for (var k = 0; k < navLinks.length; k++) {
-                        navLinks[k].addEventListener('click', function() {
-                            mobileMenu.classList.add('hidden');
-                        });
-                    }
-                }
-
-                // Initial site render
-                renderAllSite();
-
-            });
-        })();
-    </script>
-</body>
-</html>
+                if (themeBtn) themeBtn.addEventListener('
