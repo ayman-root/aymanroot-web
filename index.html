@@ -11,13 +11,6 @@
     <script>
         tailwind.config = {
             darkMode: 'class',
-            safelist: [
-                { pattern: /(bg|text|border)-(primary|blue|green|yellow)-(100|400|500|600|900)/ },
-                { pattern: /from-(primary|blue|green|yellow)-(400|500)/ },
-                { pattern: /to-(primary|blue|green|yellow)-(600|500)/ },
-                { pattern: /border-(primary|blue|green|yellow)-500\/30/ },
-                { pattern: /bg-(primary|blue|green|yellow)-900\/30/ }
-            ],
             theme: {
                 extend: {
                     fontFamily: {
@@ -51,9 +44,16 @@
             50% { transform: translate(20px, -20px) scale(1.1); }
             100% { transform: translate(-20px, 20px) scale(0.9); }
         }
+        @keyframes shimmer { 
+            0% { transform: translateX(-100%); } 
+            100% { transform: translateX(100%); } 
+        }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-900 dark:bg-dark-bg dark:text-gray-100 antialiased overflow-x-hidden">
+<body class="bg-gray-50 text-gray-900 dark:bg-dark-bg dark:text-gray-100 antialiased">
+
+    <!-- Tailwind Safelist (Hidden) -->
+    <div class="hidden bg-primary-100 text-primary-600 text-primary-400 text-primary-500 bg-primary-500/5 bg-primary-500/20 border-primary-200 border-primary-800/50 border-primary-500/30 bg-primary-900/30 from-primary-400 to-primary-600 shadow-primary-500/10 hover:border-primary-500/30 hover:shadow-primary-500/10 group-hover:bg-primary-500/20 bg-blue-100 text-blue-600 text-blue-400 text-blue-500 bg-blue-500/5 bg-blue-500/20 border-blue-200 border-blue-800/50 border-blue-500/30 bg-blue-900/30 from-blue-400 to-blue-600 shadow-blue-500/10 hover:border-blue-500/30 hover:shadow-blue-500/10 group-hover:bg-blue-500/20 bg-green-100 text-green-600 text-green-400 text-green-500 bg-green-500/5 bg-green-500/20 border-green-200 border-green-800/50 border-green-500/30 bg-green-900/30 from-green-400 to-green-600 shadow-green-500/10 hover:border-green-500/30 hover:shadow-green-500/10 group-hover:bg-green-500/20 bg-yellow-100 text-yellow-600 text-yellow-400 text-yellow-500 bg-yellow-500/5 bg-yellow-500/20 border-yellow-200 border-yellow-800/50 border-yellow-500/30 bg-yellow-900/30 from-yellow-400 to-yellow-600 shadow-yellow-500/10 hover:border-yellow-500/30 hover:shadow-yellow-500/10 group-hover:bg-yellow-500/20 border-primary-500 hover:border-green-500/50 hover:border-blue-500/50 hover:border-yellow-500/50"></div>
 
     <nav class="fixed w-full z-40 glass transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -102,7 +102,7 @@
         </div>
     </section>
 
-    <section id="services" class="py-24 bg-white dark:bg-dark-bg transition-colors relative z-10">
+    <section id="services" class="py-24 bg-white dark:bg-dark-bg transition-colors relative z-10 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 data-i18n="services_title" class="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-4">الخدمات التي أقدمها</h2>
@@ -112,7 +112,7 @@
         </div>
     </section>
 
-    <section id="software" class="py-24 bg-gray-50 dark:bg-dark-surface border-y border-gray-200 dark:border-gray-800 transition-colors relative z-10">
+    <section id="software" class="py-24 bg-gray-50 dark:bg-dark-surface border-y border-gray-200 dark:border-gray-800 transition-colors relative z-10 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 data-i18n="software_title" class="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-4">أحدث البرامج والمشاريع</h2>
@@ -122,7 +122,7 @@
         </div>
     </section>
 
-    <section id="skills" class="py-24 bg-white dark:bg-dark-bg transition-colors relative z-10">
+    <section id="skills" class="py-24 bg-white dark:bg-dark-bg transition-colors relative z-10 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 data-i18n="skills_title" class="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-4">مهاراتي التقنية</h2>
@@ -260,7 +260,7 @@
     <script>
         (function() {
             'use strict';
-            AOS.init({ duration: 800, once: true, offset: 50 });
+            
             document.getElementById('year').textContent = new Date().getFullYear();
 
             const defaultData = {
@@ -283,7 +283,16 @@
                 contact: { tg: 'https://t.me/aymanroot', wa: 'https://wa.me/201000000000', gh: 'https://github.com/aymanroot', tw: 'https://x.com/aymanroot', em: 'contact@aymanroot.com' }
             };
 
-            let siteData = JSON.parse(localStorage.getItem('aymanRootCMSData')) || defaultData;
+            let siteData = defaultData;
+            try {
+                const stored = localStorage.getItem('aymanRootCMSData');
+                if(stored) {
+                    siteData = JSON.parse(stored);
+                }
+            } catch(e) {
+                console.warn('Corrupted local storage data. Resetting to default.');
+                localStorage.removeItem('aymanRootCMSData');
+            }
 
             function fixUrl(url) {
                 if (!url || url.trim() === '') return '#';
@@ -310,7 +319,7 @@
 
                 const swGrid = document.getElementById('software-grid');
                 swGrid.innerHTML = siteData.software.map((s, idx) => `
-                    <div data-aos="fade-up" data-aos-delay="${idx * 100}" class="bg-white dark:bg-dark-surface rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-${siteData.services[0].color || 'primary'}-500/10 border border-gray-100 dark:border-gray-800 transition-all duration-300 flex flex-col group transform hover:-translate-y-2">
+                    <div data-aos="fade-up" data-aos-delay="${idx * 100}" class="bg-white dark:bg-dark-surface rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-${siteData.services.length > 0 ? siteData.services[0].color : 'primary'}-500/10 border border-gray-100 dark:border-gray-800 transition-all duration-300 flex flex-col group transform hover:-translate-y-2">
                         <div class="relative h-64 overflow-hidden bg-gray-200 dark:bg-gray-800">
                             ${s.img.includes('<iframe') || s.img.includes('<video') ? s.img : `<img src="${s.img}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out">`}
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -332,9 +341,9 @@
                             <span class="text-xl font-bold flex items-center gap-3 dark:text-white"><i class="fa-brands ${s.icon} text-${s.color}-500 text-2xl bg-${s.color}-100 dark:bg-${s.color}-900/30 p-2 rounded-lg"></i> ${s.name}</span>
                             <span class="text-${s.color}-600 dark:text-${s.color}-400 font-black text-xl">${s.percent}%</span>
                         </div>
-                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-4 overflow-hidden shadow-inner">
-                            <div class="bg-gradient-to-r rtl:bg-gradient-to-l from-${s.color}-400 to-${s.color}-600 h-full rounded-full relative" style="width: ${s.percent}%">
-                                <div class="absolute inset-0 bg-white/20 w-full h-full animate-[shimmer_2s_infinite]"></div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-4 overflow-hidden shadow-inner relative">
+                            <div class="bg-gradient-to-r rtl:bg-gradient-to-l from-${s.color}-400 to-${s.color}-600 h-full rounded-full absolute top-0 right-0 rtl:right-auto rtl:left-0" style="width: ${s.percent}%">
+                                <div class="absolute inset-0 bg-white/20 w-full h-full" style="animation: shimmer 2s infinite"></div>
                             </div>
                         </div>
                     </div>`).join('');
@@ -353,6 +362,12 @@
             }
 
             renderSite();
+            
+            setTimeout(() => {
+                try {
+                    AOS.init({ duration: 800, once: true, offset: 50 });
+                } catch(e) {}
+            }, 100);
 
             const translations = {
                 'ar': { 'nav_home': 'الرئيسية', 'nav_services': 'الخدمات', 'nav_software': 'البرامج', 'nav_skills': 'المهارات', 'services_title': 'الخدمات التي أقدمها', 'software_title': 'أحدث البرامج والمشاريع', 'skills_title': 'مهاراتي التقنية', 'footer_links_title': 'روابط هامة', 'footer_contact_title': 'تواصل معي', 'footer_desc': 'أقدم لك أفضل الحلول البرمجية المتكاملة لتطوير أعمالك ونقلها إلى مستوى احترافي.', 'footer_rights': 'جميع الحقوق محفوظة.' },
@@ -370,7 +385,7 @@
                     if (translations[lang] && translations[lang][key]) el.innerHTML = el.innerHTML.replace(el.textContent.trim(), translations[lang][key]);
                 });
                 localStorage.setItem('preferred_language', lang);
-                setTimeout(() => AOS.refresh(), 100);
+                setTimeout(() => { if(typeof AOS !== 'undefined') AOS.refresh(); }, 100);
             }
             document.getElementById('lang-switcher').addEventListener('change', e => setLanguage(e.target.value));
             setLanguage(localStorage.getItem('preferred_language') || 'ar');
@@ -395,7 +410,7 @@
 
             let keyBuffer = '';
             window.addEventListener('keydown', e => {
-                if(e.key.length === 1) keyBuffer += e.key;
+                if(e.key && e.key.length === 1) keyBuffer += e.key;
                 if(keyBuffer.length > 20) keyBuffer = keyBuffer.slice(-20);
                 if(keyBuffer.includes('بسم الله') || keyBuffer.toLowerCase().includes('bismillah')) {
                     document.getElementById('secret-modal').classList.remove('hidden');
@@ -443,7 +458,6 @@
                 renderCMSLists();
             }
 
-            // Image compressor to prevent localStorage QuotaExceededError
             function processFile(file, callback) {
                 if (!file.type.startsWith('image/')) {
                     const reader = new FileReader();
@@ -467,7 +481,7 @@
                         canvas.width = width; canvas.height = height;
                         const ctx = canvas.getContext('2d');
                         ctx.drawImage(img, 0, 0, width, height);
-                        callback(canvas.toDataURL('image/jpeg', 0.7)); // Compress
+                        callback(canvas.toDataURL('image/jpeg', 0.7)); 
                     }
                     img.src = e.target.result;
                 }
@@ -609,15 +623,6 @@
                 reader.readAsText(file);
                 e.target.value = ''; 
             };
-
-            // Custom tailwind injected animation for skills bar
-            const style = document.createElement('style');
-            style.innerHTML = `
-            @keyframes shimmer { 
-                0% { transform: translateX(-100%); } 
-                100% { transform: translateX(100%); } 
-            }`;
-            document.head.appendChild(style);
 
         })();
     </script>
